@@ -1,0 +1,73 @@
+{
+    "privacyPage": {
+        "hero": {
+            "title": "Kebijakan Privasi",
+            "description": "Privasi Anda penting bagi kami. Pelajari bagaimana kami mengumpulkan, menggunakan, dan melindungi data pribadi Anda."
+        },
+        "content": {
+            "headline": "Kebijakan",
+            "headline-span": "Privasi",
+            "effectiveDate": "Berlaku efektif sejak 22 Oktober 2025",
+            "section1": {
+                "title": "1. Ketentuan Umum",
+                "p1": "Perlindungan atas Data Pribadi adalah hal yang terpenting bagi {{companyName}} (\"Kami\"). Kami berkomitmen untuk melindungi dan menghormati privasi pengguna (\"Anda\") saat mengakses dan menggunakan situs {{siteUrl}} dan situs-situs turunannya (\"Situs\").",
+                "p2": "Kebijakan Privasi ini (\"Kebijakan\") mengatur landasan dasar mengenai bagaimana Kami mengumpulkan, menyimpan, menggunakan, mengolah, dan melindungi Data Pribadi Anda. Mohon membaca Kebijakan Privasi Kami dengan saksama sehingga Anda dapat memahami pendekatan dan cara Kami dalam menggunakan informasi tersebut.",
+                "p3": "Dengan mengunjungi dan/atau menggunakan layanan pada Situs Kami, Anda menerima dan menyetujui pendekatan dan cara-cara yang diuraikan dalam Kebijakan Privasi ini."
+            },
+            "section2": {
+                "title": "2. Data Pribadi yang Kami Kumpulkan",
+                "p1": "Kami mengumpulkan informasi yang mengidentifikasikan atau dapat digunakan untuk mengidentifikasi Anda (\"Data Pribadi\"). Data Pribadi yang kami kumpulkan dapat diberikan oleh Anda secara langsung atau dikumpulkan secara otomatis.",
+                "subheadingA": "a. Data yang Anda Berikan",
+                "p2": "Anda dapat memberikan informasi melalui formulir elektronik pada Situs Kami (seperti formulir kontak) maupun dengan berkorespondensi melalui telepon, surat elektronik, dan sebagainya. Ini termasuk nama, alamat email, nomor telepon, nama perusahaan, dan isi pesan yang Anda kirimkan.",
+                "subheadingB": "b. Data yang Kami Kumpulkan Secara Otomatis",
+                "p3": "Untuk setiap kunjungan Anda ke Situs Kami, Kami dapat mengumpulkan informasi teknis secara otomatis, termasuk alamat Protokol Internet (IP address), jenis dan versi peramban (browser), pengaturan zona waktu, sistem operasi, dan informasi kunjungan (seperti halaman yang dilihat dan waktu respon halaman)."
+            },
+            "section3": {
+                "title": "3. Penggunaan Data Pribadi",
+                "p1": "Kami dapat menggunakan Data Pribadi yang telah Kami terima untuk tujuan-tujuan sebagai berikut:",
+                "list": [
+                    "Untuk menjalankan kewajiban Kami dalam menyediakan informasi dan layanan kepada Anda (contoh: menanggapi pertanyaan Anda melalui formulir kontak).",
+                    "Untuk mengelola dan mengembangkan layanan dan Situs Kami, termasuk pencarian sumber masalah (troubleshooting) dan analisis data.",
+                    "Untuk memelihara, mengembangkan, menguji, dan meningkatkan Situs Kami untuk memenuhi kebutuhan dan preferensi Anda.",
+                    "Untuk memberitahukan Anda tentang perubahan pada layanan Kami.",
+                    "Untuk memastikan bahwa konten dari Situs Kami disajikan dengan cara yang paling efektif bagi Anda."
+                ]
+            },
+            "section4": {
+                "title": "4. Pengungkapan Data Pribadi",
+                "p1": "Kami dapat membagi atau mengungkapkan Data Pribadi Anda kepada:",
+                "list": [
+                    "Anggota kelompok usaha atau afiliasi Kami, untuk membantu operasional dan penyediaan layanan.",
+                    "Mitra bisnis, vendor, dan sub-kontraktor (misalnya, penyedia hosting) dalam penyelenggaraan kontrak yang Kami laksanakan.",
+                    "Penyedia analisis dan mesin pencari yang membantu Kami untuk memperbaiki dan mengoptimalisasi Situs Kami.",
+                    "Pihak ketiga jika Kami diwajibkan oleh hukum atau proses hukum untuk mengungkapkannya (contoh: kepada lembaga pemerintah yang berwenang)."
+                ]
+            },
+            "section5": {
+                "title": "5. Keamanan dan Penyimpanan Data",
+                "p1": "Kerahasiaan Data Pribadi Anda merupakan prioritas bagi Kami. Kami akan mengambil langkah-langkah teknis dan organisasi yang wajar untuk memastikan bahwa Data Pribadi Anda aman dan terlindungi dari akses tidak sah.",
+                "p2": "Mohon untuk dapat diperhatikan bahwa transmisi informasi melalui internet tidak sepenuhnya aman. Meskipun demikian, Kami akan berusaha sebaik mungkin untuk melindungi Data Pribadi tersebut. Kami tidak bisa menjamin keamanan data yang dikirimkan ke Situs Kami; risiko dari setiap transmisi menjadi tanggung jawab Anda.",
+                "p3": "Kami akan menyimpan Data Pribadi Anda hanya selama dibutuhkan untuk mencapai tujuan pengumpulannya, atau sebagaimana diwajibkan oleh peraturan perundang-undangan yang berlaku."
+            },
+            "section6": {
+                "title": "6. Cookies",
+                "p1": "Ketika Anda menggunakan Situs, Kami dapat menempatkan sejumlah cookies pada browser Anda. Cookies adalah berkas digital kecil berisi huruf dan angka yang Kami simpan pada browser atau hard drive perangkat Anda.",
+                "p2": "Kami menggunakan cookies untuk mengaktifkan fungsi tertentu, memberikan analisis, dan menyimpan preferensi Anda. Ini membantu Kami memperbaiki cara kerja Situs Kami, misalnya, dengan memastikan pengguna menemukan apa yang mereka cari dengan mudah.",
+                "p3": "Anda dapat menghapus atau menolak cookies dengan cara melakukan pengaturan pada web browser Anda. Akan tetapi, Anda mungkin tidak dapat mengakses seluruh atau sebagian Situs Kami."
+            },
+            "section7": {
+                "title": "7. Hak Anda",
+                "p1": "Anda memiliki hak untuk meminta akses dan/atau mengoreksi Data Pribadi Anda yang berada dalam kepemilikan kami. Anda juga dapat memohon untuk penghapusan Data Pribadi Anda pada sistem Kami.",
+                "p2": "Situs Kami dapat memuat tautan menuju dan dari situs-situs milik jaringan mitra atau afiliasi. Jika Anda mengikuti tautan ke salah satu situs tersebut, mohon perhatikan bahwa situs-situs tersebut memiliki kebijakan privasi mereka sendiri dan Kami tidak bertanggung jawab atas kebijakan-kebijakan tersebut."
+            },
+            "section8": {
+                "title": "8. Perubahan Kebijakan Privasi",
+                "p1": "Perubahan apapun yang Kami lakukan terhadap Kebijakan Privasi Kami di masa depan akan diterbitkan melalui halaman ini dan, apabila terdapat perubahan materiil, Kami akan memberitahukan kepada Anda melalui sarana yang wajar."
+            },
+            "section9": {
+                "title": "9. Cara Menghubungi Kami",
+                "contactText": "Jika Anda memiliki pertanyaan mengenai Kebijakan Privasi ini atau ingin menggunakan hak Anda, silahkan menghubungi Kami melalui"
+            }
+        }
+    }
+}

@@ -1,0 +1,39 @@
+{
+  "contactPage": {
+    "hero": {
+      "title": "Hubungi Kami",
+      "description": "Mari kita bangun sesuatu yang hebat bersama. Hubungi tim kami untuk mendiskusikan proyek Anda atau tanyakan apa pun."
+    },
+    "section": {
+      "headline": "Kontak",
+      "headline-span": "Kami",
+      "description": "Punya proyek yang ingin didiskusikan atau ingin tahu lebih lanjut tentang layanan kami? Kami ingin mendengar dari Anda.",
+      "info": {
+        "email": "Email",
+        "phone": "Telepon",
+        "address": "Alamat"
+      },
+      "hours": {
+        "title": "Jam Kerja",
+        "weekdays": "Senin - Jumat: 9:00 - 16:00",
+        "weekends": "Minggu - Sabtu: Tutup"
+      },
+      "form": {
+        "title": "Kirimkan Kami Pesan",
+        "labels": {
+          "name": "Nama Lengkap",
+          "email": "Alamat Email",
+          "company": "Perusahaan",
+          "message": "Pesan"
+        },
+        "placeholders": {
+          "name": "John Doe",
+          "email": "john@example.com",
+          "company": "Perusahaan Anda",
+          "message": "Ceritakan tentang proyek Anda..."
+        },
+        "button": "Kirim Pesan"
+      }
+    }
+  }
+}

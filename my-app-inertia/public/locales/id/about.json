@@ -1,0 +1,55 @@
+{
+    "aboutPage": {
+        "hero": {
+            "title": "Tentang Kami",
+            "description": "ICP - Membangun kesuksesan bersama dengan memberdayakan inovasi dan memperkuat kemitraan di industri tekstil."
+        },
+        "aboutOne": {
+            "title": "PT. Ikateks Citra Persada",
+            "description": [
+                "PT. Ikateks Citra Persada (ICP) didirikan pada tanggal 6 April 2018, oleh Bapak Himawan Syaputra, di Tangerang Selatan. ICP memulai karyanya dengan menjadi penasihat bagi beberapa perusahaan tekstil terkait kualitas produksi, efisiensi, dan inovasi produk tekstil.",
+                "Sebagai pendiri ICP, Bapak Himawan merupakan anggota dari Ikatan Ahli Tekstil Indonesia yang memberi ruang bagi para ahli tekstil lokal untuk mengambil peran lebih besar dalam pengembangan industri tekstil di tanah air dengan memanfaatkan sumber daya alam Indonesia.",
+                "PT. Ikateks Citra Persada tidak hanya bergerak di bidang perdagangan tekstil, tetapi juga berperan dalam pengembangan produk tekstil dan industri peralatan perlindungan keselamatan yang terbuat dari bahan tekstil."
+            ],
+            "imageAlt": "keunggulan-perusahaan"
+        },
+        "aboutTwo": {
+            "title": "Misi dan Visi.",
+            "description": [
+                "PT. Ikateks Citra Persada (ICP) memiliki visi untuk mengembangkan potensi dan sumber daya lokal menuju pasar internasional.",
+                "Untuk mencapai tujuannya, PT. Ikateks Citra Persada memiliki misi untuk meningkatkan kualitas produk tekstil dengan meningkatkan kapasitas sumber daya manusia dan sumber daya alam lokal sehingga dapat bersaing di pasar internasional” menuju kemandirian ketahanan sandang nasional."
+            ],
+            "imageAlt": "Himawan Syaputra"
+        },
+        "aboutThree": {
+            "title": "Produk dan Layanan",
+            "description": [
+                "PT. Ikateks Citra Persada (ICP) berfokus pada pengembangan kualitas produk tekstil lokal agar dapat bersaing di pasar internasional, khususnya pada industri peralatan pelindung dan keselamatan berbahan baku tekstil, termasuk produk tekstil yang memiliki keunggulan khusus dalam fungsi dan kualitas.",
+                "Kami berkomitmen untuk menjadi mitra tepercaya yang mendorong bisnis Anda maju melalui inovasi, keandalan, dan kolaborasi, memberikan nilai berkelanjutan dalam industri tekstil."
+            ],
+            "imageAlt": "keunggulan-perusahaan"
+        },
+        "companyAdvantage": {
+            "headline": "Keunggulan",
+            "headline-span": "Perusahaan",
+            "description": "PT. Ikateks Citra Persada (ICP) adalah mitra tepercaya di industri tekstil, yang berdedikasi untuk mengembangkan potensi dan sumber daya lokal agar mampu bersaing di pasar internasional.",
+            "items": {
+                "expertise": {
+                    "title": "Keahlian & Inovasi",
+                    "description": "PT. Ikateks Citra Persada memiliki peluang yang sangat luas untuk memberdayakan para ahli tekstil Indonesia dalam upaya menjaga dan meningkatkan kualitas, serta meneliti dan mengembangkan varian produk tekstil."
+                },
+                "partnership": {
+                    "title": "Kemitraan Strategis",
+                    "description": "PT. Ikateks Citra Persada dapat menjadi mitra bagi pengusaha lokal untuk membantu meningkatkan kualitas dan memecahkan masalah seputar produk tekstil."
+                },
+                "global": {
+                    "title": "Global & Siap Masa Depan",
+                    "description": "PT. Ikateks Citra Persada memanfaatkan keahlian dan sumber daya tekstil Indonesia untuk memberikan solusi inovatif bagi tantangan masa depan di era global."
+                }
+            }
+        },
+        "tagline": {
+            "quote": "Bangun Kesuksesan Bersama"
+        }
+    }
+}

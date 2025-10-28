@@ -1,0 +1,81 @@
+{
+  "news": {
+    "title": "Berita",
+    "headline": "Berita",
+    "headline-span": "Kami.",
+    "description": "Solusi komprehensif yang disesuaikan dengan kebutuhan bisnis Anda.",
+    "supplyChain": {
+      "title": "Rantai Pasok",
+      "keywords": "ketahanan, visibilitas, ketangkasan, optimisasi jaringan, logistik digital",
+      "description": "Di ekonomi yang saling terhubung saat ini, rantai pasok harus tangguh, transparan, dan adaptif. Banyak bisnis beralih dari model linear ke jaringan yang lebih fleksibel dan didorong teknologi. Di Indonesia dan di seluruh Asia Tenggara, ekosistem rantai pasok sedang mengalami transformasi cepat, dengan visibilitas digital, efisiensi biaya, dan manajemen risiko menjadi pusat prioritas strategis.",
+      "whyMeruBrings": "kami membantu bisnis membangun visibilitas end-to-end, mengoptimalkan alur di seluruh geografi, dan merancang strategi rantai pasok yang tangkas yang menyeimbangkan efisiensi biaya, ketahanan, dan kecepatan masuk ke pasar."
+    },
+    "technology": {
+      "title": "Teknologi",
+      "keywords": "transformasi digital, platform, cloud, AI, keamanan siber, berbasis data",
+      "description": "Teknologi mengubah cara organisasi bersaing, beroperasi, dan bertumbuh. Di Indonesia, ekonomi digital berkembang pesat seiring adopsi cloud, integrasi AI, dan model bisnis berbasis platform menjadi mainstream. Pemain teknologi global meningkatkan kehadiran mereka, mencerminkan kepercayaan pada potensi negara ini untuk menjadi hub digital di kawasan ini.",
+      "whyMeruBrings": "kami membimbing klien dalam mendefinisikan peta jalan teknologi, merancang platform digital, menanamkan kemampuan berbasis AI, dan mengamankan infrastruktur teknologi mereka untuk menciptakan bisnis yang terukur dan berbasis data."
+    },
+    "manufacturing": {
+      "title": "Manufaktur",
+      "keywords": "keunggulan operasional, Industri 4.0, lean, otomatisasi, skala, integrasi pasokan",
+      "description": "Sektor manufaktur sedang beralih dari produksi massal tradisional ke sistem yang cerdas, fleksibel, dan efisien. Di Indonesia, kemampuan industri berkembang seiring pergerakan perusahaan ke rantai nilai yang lebih tinggi, didukung oleh industri berbasis sumber daya yang kuat dan meningkatnya investasi dalam otomatisasi dan manufaktur digital.",
+      "whyMeruBrings": "kami membantu organisasi menanamkan kemampuan Industri 4.0, merampingkan operasi, mendorong efisiensi biaya, dan menyelaraskan strategi manufaktur dengan rantai nilai global yang terus berkembang."
+    },
+    "healthcare": {
+      "title": "Layanan Kesehatan",
+      "keywords": "hasil, kesehatan digital, efisiensi operasional, berpusat pada pasien, regulasi, telemedisin",
+      "description": "Sistem layanan kesehatan di seluruh dunia berada di bawah tekanan yang meningkat untuk memberikan hasil yang lebih baik, biaya lebih rendah, dan merangkul inovasi digital. Di Indonesia, sektor ini mempercepat transformasi digitalnya, dengan telemedisin, healthtech, dan model perawatan terintegrasi menjadi prioritas utama.",
+      "whyMeruBrings": "kami bekerja dengan penyedia layanan kesehatan dan mitra untuk merancang ulang operasi, mengintegrasikan strategi kesehatan digital, mengoptimalkan alur perawatan pasien, dan memastikan keberlanjutan regulasi dan finansial."
+    },
+    "energy": {
+      "title": "Energi",
+      "keywords": "transisi terbarukan, dekarbonisasi, ketahanan energi, modernisasi jaringan, energi bersih",
+      "description": "Lanskap energi sedang mengalami transformasi mendalam, ditandai dengan dorongan global untuk dekarbonisasi dan adopsi energi bersih. Di Indonesia, sektor energi berada pada titik penting, menyeimbangkan perannya sebagai produsen sumber daya utama dengan percepatan peralihan ke energi terbarukan, elektrifikasi, dan infrastruktur yang dimodernisasi.",
+      "whyMeruBrings": "kami membantu klien menavigasi transisi ini melalui desain portofolio strategis, penyelarasan regulasi, perencanaan investasi energi bersih, dan peta jalan energi berkelanjutan."
+    },
+    "banking": {
+      "title": "Perbankan/Keuangan",
+      "keywords": "inklusi keuangan, perbankan digital, risiko & kepatuhan, keuangan tertanam, fintech",
+      "description": "Sektor keuangan mengalami digitalisasi yang cepat, dengan inovasi fintech dan evolusi regulasi mendefinisikan ulang model perbankan tradisional. Indonesia telah menjadi salah satu ekosistem fintech paling dinamis di kawasan ini, dengan adopsi luas perbankan digital, platform pembayaran, dan layanan keuangan tertanam.",
+      "whyMeruBrings": "kami mendukung lembaga keuangan dan pemain fintech dalam merancang strategi perbankan digital, memperkuat kerangka kerja risiko dan kepatuhan, dan mendorong pertumbuhan melalui inovasi dan kemitraan strategis."
+    },
+    "realEstate": {
+      "title": "Properti",
+      "keywords": "optimisasi aset, penggunaan campuran, proptech, penciptaan nilai, keberlanjutan",
+      "description": "Pasar properti berkembang pesat seiring urbanisasi, adopsi teknologi, dan keberlanjutan membentuk strategi investasi dan pengembangan. Di Indonesia, pertumbuhan perkotaan, permintaan perumahan, dan kebangkitan proptech menciptakan peluang baru bagi pengembang dan investor untuk memikirkan kembali model tradisional.",
+      "whyMeruBrings": "kami membantu klien dalam mengembangkan konsep penggunaan campuran, mengintegrasikan teknologi, mengoptimalkan kinerja aset, dan menanamkan strategi berbasis ESG (Lingkungan, Sosial, & Tata Kelola) untuk memaksimalkan nilai jangka panjang."
+    },
+    "travel": {
+      "title": "Perjalanan & Pariwisata",
+      "keywords": "ekonomi pengalaman, ketahanan, perjalanan tamu digital, pariwisata berkelanjutan, pemulihan permintaan",
+      "description": "Industri perjalanan dan pariwisata bertransformasi menjadi ekosistem yang lebih berbasis pengalaman dan berkelanjutan. Indonesia, dengan aset budaya dan alamnya yang kaya, berfokus pada diversifikasi destinasi, perbaikan infrastruktur, dan pemberdayaan digital untuk meningkatkan pengalaman pengunjung dan ketahanan.",
+      "whyMeruBrings": "kami membantu operator pariwisata dan pemangku kepentingan destinasi merancang strategi pemulihan terintegrasi, membangun perjalanan tamu digital yang mulus, dan menanamkan keberlanjutan di seluruh rantai nilai pariwisata mereka."
+    },
+    "telecommunication": {
+      "title": "Telekomunikasi",
+      "keywords": "konektivitas, 5G/6G, monetisasi jaringan, platform digital, infrastruktur",
+      "description": "Telekomunikasi bukan lagi hanya tentang konektivitas — ini tentang mengaktifkan seluruh ekosistem digital. Di Indonesia, percepatan cakupan broadband, penyebaran 5G, dan investasi dalam infrastruktur data membuka jalan bagi model bisnis baru dan inovasi layanan.",
+      "whyMeruBrings": "kami memandu pemain telekomunikasi dalam memonetisasi jaringan, memperluas infrastruktur, menggabungkan layanan digital, dan bertransformasi menjadi bisnis berbasis platform yang membentuk masa depan konektivitas."
+    },
+    "discoverMore": {
+      "title": "Temukan Berita Lainnya",
+      "description": "Jelajahi semua berita kami"
+    },
+    "aria": {
+      "prev": "Slide Sebelumnya",
+      "next": "Slide Berikutnya"
+    }
+  },
+
+  "newsPage": {
+    "hero": {
+      "title": "Berita",
+      "description": "Kami membawa keahlian teknis yang mendalam di berbagai domain untuk memberikan solusi komprehensif yang mendorong transformasi digital dan pertumbuhan bisnis."
+    },
+    "cta": {
+      "title": "Siap Membangun Bersama Kami?",
+      "linkText": "Mari berdiskusi dengan kami"
+    }
+  }
+}

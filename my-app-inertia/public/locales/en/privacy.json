@@ -1,0 +1,73 @@
+{
+    "privacyPage": {
+        "hero": {
+            "title": "Privacy Policy",
+            "description": "Your privacy is important to us. Learn how we collect, use, and protect your personal data."
+        },
+        "content": {
+            "headline": "Privacy",
+            "headline-span": "Policy",
+            "effectiveDate": "Effective as of October 22, 2025",
+            "section1": {
+                "title": "1. General Provisions",
+                "p1": "The protection of Personal Data is of utmost importance to {{companyName}} (\"We\", \"Us\"). We are committed to protecting and respecting the privacy of users (\"You\") when accessing and using the {{siteUrl}} site and its derivative sites (\"Site\").",
+                "p2": "This Privacy Policy (\"Policy\") governs the basic principles of how We collect, store, use, process, and protect Your Personal Data. Please read Our Privacy Policy carefully so You can understand our approach and methods for using such information.",
+                "p3": "By visiting and/or using the services on Our Site, You accept and agree to the approaches and methods described in this Privacy Policy."
+            },
+            "section2": {
+                "title": "2. Personal Data We Collect",
+                "p1": "We collect information that identifies or can be used to identify You (\"Personal Data\"). The Personal Data we collect may be provided by You directly or collected automatically.",
+                "subheadingA": "a. Data You Provide",
+                "p2": "You may provide information via electronic forms on Our Site (such as contact forms) or by corresponding via telephone, email, and so on. This includes name, email address, phone number, company name, and the content of the message You send.",
+                "subheadingB": "b. Data We Collect Automatically",
+                "p3": "For each of Your visits to Our Site, We may collect technical information automatically, including Internet Protocol (IP) address, browser type and version, time zone settings, operating system, and visit information (such as pages viewed and page response times)."
+            },
+            "section3": {
+                "title": "3. Use of Personal Data",
+                "p1": "We may use the Personal Data We have received for the following purposes:",
+                "list": [
+                    "To carry out Our obligations in providing information and services to You (e.g., responding to Your inquiries via the contact form).",
+                    "To manage and develop Our services and Site, including troubleshooting and data analysis.",
+                    "To maintain, develop, test, and improve Our Site to meet Your needs and preferences.",
+                    "To notify You about changes to Our services.",
+                    "To ensure that content from Our Site is presented in the most effective manner for You."
+                ]
+            },
+            "section4": {
+                "title": "4. Disclosure of Personal Data",
+                "p1": "We may share or disclose Your Personal Data to:",
+                "list": [
+                    "Members of Our business group or affiliates, to assist in operations and service provision.",
+                    "Business partners, vendors, and sub-contractors (e.g., hosting providers) in the performance of contracts We execute.",
+                    "Analytics and search engine providers that assist Us in improving and optimizing Our Site.",
+                    "Third parties if We are required by law or legal process to disclose it (e.g., to authorized government agencies)."
+                ]
+            },
+            "section5": {
+                "title": "5. Data Security and Storage",
+                "p1": "The confidentiality of Your Personal Data is a priority for Us. We will take reasonable technical and organizational steps to ensure that Your Personal Data is secure and protected from unauthorized access.",
+                "p2": "Please note that the transmission of information via the internet is not completely secure. Nevertheless, We will do Our best to protect such Personal Data. We cannot guarantee the security of data transmitted to Our Site; the risk of any transmission is Your responsibility.",
+                "p3": "We will store Your Personal Data only as long as needed to achieve the purpose of its collection, or as required by applicable laws and regulations."
+            },
+            "section6": {
+                "title": "6. Cookies",
+                "p1": "When You use the Site, We may place a number of cookies in Your browser. Cookies are small digital files containing letters and numbers that We store on Your browser or Your device's hard drive.",
+                "p2": "We use cookies to enable certain functions, provide analytics, and store Your preferences. This helps Us improve the way Our Site works, for example, by ensuring users find what they are looking for easily.",
+                "p3": "You can delete or refuse cookies by adjusting Your web browser settings. However, You may not be able to access all or parts of Our Site."
+            },
+            "section7": {
+                "title": "7. Your Rights",
+                "p1": "You have the right to request access to and/or correct Your Personal Data in our possession. You may also request the deletion of Your Personal Data from Our systems.",
+                "p2": "Our Site may contain links to and from the sites of partner networks or affiliates. If You follow a link to one of these sites, please note that these sites have their own privacy policies and We are not responsible or liable for these policies."
+            },
+            "section8": {
+                "title": "8. Changes to the Privacy Policy",
+                "p1": "Any changes We make to Our Privacy Policy in the future will be published on this page and, if there are material changes, We will notify You through reasonable means."
+            },
+            "section9": {
+                "title": "9. How to Contact Us",
+                "contactText": "If You have questions regarding this Privacy Policy or wish to exercise Your rights, please contact Us via"
+            }
+        }
+    }
+}

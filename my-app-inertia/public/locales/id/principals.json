@@ -1,0 +1,151 @@
+{
+    "principals": {
+        "title": "Layanan Kami",
+        "headline": "KAMI MENGUATKAN",
+        "headline-span": "INOVASI TEKSTIL.",
+        "description": "Dari pengembangan benang hingga strategi pasar global, kami adalah mitra Anda dalam keunggulan tekstil.",
+        "marketEntry": {
+            "title": "Strategi Masuk Pasar Tekstil",
+            "description": "Memasuki pasar tekstil global atau domestik baru membutuhkan kejelasan strategis. ICP menganalisis dinamika pasar, tren konsumen, dan hambatan regulasi untuk memposisikan produk Anda (benang, kain, pakaian jadi) untuk kesuksesan dan penerimaan merek yang berkelanjutan.",
+            "overviewMethodology": [
+                "Analisis pasar & tren tekstil",
+                "Pemetaan lanskap kompetitor & positioning",
+                "Pemeriksaan kepatuhan impor/ekspor & regulasi",
+                "Pengembangan strategi 'Go-to-market'"
+            ],
+            "keywords": [
+                "Masuk Pasar Global",
+                "Branding Tekstil",
+                "Strategi Sourcing"
+            ]
+        },
+        "feasibilityStudy": {
+            "title": "Studi Kelayakan Produk & Pabrik",
+            "description": "Sebelum berinvestasi di lini produk atau pabrik baru, studi kelayakan yang ketat sangat penting. Kami menganalisis kelayakan teknis (mesin, bahan baku), permintaan pasar, dan proyeksi keuangan untuk memastikan investasi Anda sehat, menguntungkan, dan terukur.",
+            "overviewMethodology": [
+                "Penilaian kelayakan teknis & material",
+                "Analisis permintaan pasar & titik harga",
+                "Pemodelan keuangan & perhitungan ROI",
+                "Analisis biaya-manfaat operasional"
+            ],
+            "keywords": [
+                "Kelayakan Produk",
+                "Perencanaan Pabrik",
+                "Textile ROI"
+            ]
+        },
+        "competitorIntelligence": {
+            "title": "Intelijen Kompetitor Tekstil",
+            "description": "Tetap terdepan dalam industri tekstil yang bergerak cepat. Kami memberikan wawasan mendalam tentang inovasi produk pesaing, strategi harga, efisiensi rantai pasok, dan klaim keberlanjutan, memungkinkan Anda mengidentifikasi peluang dan memitigasi ancaman.",
+            "overviewMethodology": [
+                "Benchmarking produk & kualitas kompetitor",
+                "Analisis rantai pasok & sourcing",
+                "Pelacakan harga & promosi",
+                "Pemantauan klaim keberlanjutan & kepatuhan"
+            ],
+            "keywords": [
+                "Benchmarking Tekstil",
+                "Intelijen Pasar",
+                "Analisis Pesaing"
+            ]
+        },
+        "businessPlan": {
+            "title": "Pengembangan Rencana Bisnis Tekstil",
+            "description": "Rencana bisnis yang kuat adalah peta jalan Anda. Kami membantu pengusaha tekstil dan pabrik yang sudah mapan mengembangkan rencana komprehensif untuk investor atau panduan internal, merinci peluang pasar, rencana produksi, prakiraan keuangan, dan strategi pertumbuhan.",
+            "overviewMethodology": [
+                "Penilaian peluang pasar & definisi ceruk",
+                "Perencanaan produksi & operasional",
+                "Prakiraan keuangan & strategi pendanaan",
+                "Manajemen risiko untuk volatilitas harga bahan baku"
+            ],
+            "keywords": [
+                "Model Bisnis Tekstil",
+                "Prakiraan Keuangan",
+                "Peta Jalan Strategis"
+            ]
+        },
+        "corporateAction": {
+            "title": "Kemitraan Strategis & M&A",
+            "description": "Pertumbuhan dapat dipercepat melalui kemitraan strategis, usaha patungan, atau M&A. Kami membantu dalam mengidentifikasi dan mengevaluasi mitra potensial (pemasok, penyedia teknologi, merek) dan mendukung proses uji tuntas (due diligence) serta integrasi.",
+            "overviewMethodology": [
+                "Identifikasi & penyaringan mitra",
+                "Analisis kesesuaian strategis & sinergi",
+                "Uji tuntas (operasional & keuangan)",
+                "Strukturisasi usaha patungan & kemitraan"
+            ],
+            "keywords": ["Aliansi Strategis", "Textile M&A", "Due Diligence"]
+        },
+        "transformation": {
+            "title": "Transformasi Digital & Keberlanjutan",
+            "description": "Masa depan tekstil adalah digital dan berkelanjutan. Kami memandu perusahaan dalam mentransformasi operasi mereka, mulai dari menerapkan teknologi hijau dan model ekonomi sirkular hingga mengintegrasikan alur kerja digital (ERP, PLM) untuk rantai pasok yang lebih transparan.",
+            "overviewMethodology": [
+                "Audit ekonomi sirkular & keberlanjutan",
+                "Peta jalan teknologi digital (Industri 4.0)",
+                "Desain sistem pelacakan (traceability)",
+                "Manajemen perubahan & adopsi proses baru"
+            ],
+            "keywords": [
+                "Keberlanjutan",
+                "Transformasi Digital",
+                "Ekonomi Sirkular"
+            ]
+        },
+        "operationalExcellence": {
+            "title": "Keunggulan Produksi & Operasional",
+            "description": "Efisiensi adalah kunci profitabilitas. Kami menerapkan prinsip 'Lean manufacturing' yang disesuaikan untuk produksi tekstil (pemintalan, tenun, pencelupan) untuk mengurangi limbah (air, energi, bahan), meningkatkan kontrol kualitas, dan mengoptimalkan alur kerja.",
+            "overviewMethodology": [
+                "Lean manufacturing & pengurangan limbah",
+                "Sistem kontrol & penjaminan mutu (TQM)",
+                "Optimalisasi alur kerja produksi",
+                "Manajemen rantai pasok & inventaris"
+            ],
+            "keywords": [
+                "Lean Manufacturing",
+                "Optimalisasi Proses",
+                "Kontrol Kualitas"
+            ]
+        },
+        "implementation": {
+            "title": "Implementasi Strategi & Proyek",
+            "description": "Strategi hanya seefektif eksekusinya. Tim kami memberikan dukungan langsung untuk mengimplementasikan proyek-proyek kompleks, baik itu meluncurkan merek baru, memasang mesin baru, atau meluncurkan sistem ERP, memastikan tepat waktu dan sesuai anggaran.",
+            "overviewMethodology": [
+                "Manajemen proyek (PMO) untuk proyek tekstil",
+                "Integrasi mesin & teknologi baru",
+                "Dukungan 'Go-live' & pelatihan pengguna",
+                "Pemantauan kinerja & KPI"
+            ],
+            "keywords": [
+                "Manajemen Proyek",
+                "Peluncuran Teknologi",
+                "Dukungan Implementasi"
+            ]
+        },
+        "investmentAdvisory": {
+            "title": "Penasihat Investasi Tekstil",
+            "description": "Kami memberikan saran berbasis data untuk investasi pada teknologi, mesin, atau perusahaan tekstil. Kami mengevaluasi potensi keuangan, keunggulan teknologi, dan kesesuaian strategis dari peluang investasi untuk membantu Anda mengalokasikan modal secara efektif.",
+            "overviewMethodology": [
+                "Analisis ROI teknologi & mesin",
+                "Penyaringan peluang investasi (misalnya green tech)",
+                "Penilaian potensi pasar & risiko",
+                "Strategi portofolio untuk aset tekstil"
+            ],
+            "keywords": [
+                "Strategi Investasi",
+                "ROI Teknologi",
+                "Penilaian Peluang"
+            ]
+        },
+        "learnMore": "Pelajari Lebih Lanjut",
+        "viewAll": "Lihat Layanan Lainnya"
+    },
+    "principalsPage": {
+        "hero": {
+            "title": "Layanan Kami",
+            "description": "Solusi ahli yang mendorong inovasi dan kualitas di seluruh rantai nilai tekstil."
+        },
+        "cta": {
+            "title": "Siap Berinovasi Bersama Kami?",
+            "linkText": "Mari diskusikan dengan kami"
+        }
+    }
+}

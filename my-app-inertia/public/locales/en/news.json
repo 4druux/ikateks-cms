@@ -1,0 +1,81 @@
+{
+  "news": {
+    "title": "News",
+    "headline": "Our",
+    "headline-span": "News.",
+    "description": "Comprehensive solutions tailored to your business needs.",
+    "supplyChain": {
+      "title": "Supply Chain",
+      "keywords": "resilience, visibility, agility, network optimization, digital logistics",
+      "description": "In today’s interconnected economy, supply chains must be resilient, transparent, and adaptive. Many businesses are shifting from linear models to more flexible, technology-driven networks. In Indonesia and across Southeast Asia, supply chain ecosystems are undergoing rapid transformation, with digital visibility, cost efficiency, and risk management at the center of strategic priorities.",
+      "whyMeruBrings": "we help businesses build end-to-end visibility, optimize flows across geographies, and design agile supply chain strategies that balance cost efficiency, resilience, and speed to market."
+    },
+    "technology": {
+      "title": "Technology",
+      "keywords": "digital transformation, platforms, cloud, AI, cybersecurity, data-driven",
+      "description": "Technology is reshaping how organizations compete, operate, and grow. In Indonesia, the digital economy is expanding rapidly as cloud adoption, AI integration, and platform-based business models become mainstream. Global tech players are increasing their presence, reflecting confidence in the country’s potential to be a digital hub in the region.",
+      "whyMeruBrings": "we guide clients in defining technology roadmaps, architecting digital platforms, embedding AI-driven capabilities, and securing their technology infrastructure to create scalable, data-driven businesses."
+    },
+    "manufacturing": {
+      "title": "Manufacturing",
+      "keywords": "operational excellence, Industry 4.0, lean, automation, scale, supply integration",
+      "description": "The manufacturing sector is shifting from traditional mass production to smart, flexible, and efficient systems. In Indonesia, industrial capabilities are evolving as companies move further up the value chain, supported by strong resource-based industries and growing investments in automation and digital manufacturing.",
+      "whyMeruBrings": "we help organizations embed Industry 4.0 capabilities, streamline operations, drive cost efficiency, and align manufacturing strategies with evolving global value chains."
+    },
+    "healthcare": {
+      "title": "Healthcare",
+      "keywords": "outcomes, digital health, operational efficiency, patient-centric, regulatory, telemedicine",
+      "description": "Healthcare systems worldwide are under increasing pressure to deliver better outcomes, lower costs, and embrace digital innovation. In Indonesia, the sector is accelerating its digital transformation, with telemedicine, healthtech, and integrated care models becoming key priorities.",
+      "whyMeruBrings": "we work with healthcare providers and partners to redesign operations, integrate digital health strategies, optimize patient care pathways, and ensure regulatory and financial sustainability."
+    },
+    "energy": {
+      "title": "Energy",
+      "keywords": "renewable transition, decarbonization, energy security, grid modernization, clean energy",
+      "description": "The energy landscape is undergoing a profound transformation, marked by the global push for decarbonization and clean energy adoption. In Indonesia, the energy sector stands at a pivotal point, balancing its role as a major resource producer with an accelerating shift toward renewable energy, electrification, and modernized infrastructure.",
+      "whyMeruBrings": "we help clients navigate this transition through strategic portfolio design, regulatory alignment, clean energy investment planning, and sustainable energy roadmaps."
+    },
+    "banking": {
+      "title": "Banking/Finance",
+      "keywords": "financial inclusion, digital banking, risk & compliance, embedded finance, fintech",
+      "description": "The financial sector is experiencing rapid digitalization, with fintech innovation and regulatory evolution redefining traditional banking models. Indonesia has become one of the most dynamic fintech ecosystems in the region, with widespread adoption of digital banking, payment platforms, and embedded financial services.",
+      "whyMeruBrings": "we support financial institutions and fintech players in designing digital banking strategies, strengthening risk and compliance frameworks, and driving growth through innovation and strategic partnerships."
+    },
+    "realEstate": {
+      "title": "Real Estate",
+      "keywords": "asset optimization, mixed-use, proptech, value creation, sustainability",
+      "description": "Real estate markets are evolving rapidly as urbanization, technology adoption, and sustainability shape investment and development strategies. In Indonesia, urban growth, housing demand, and the rise of proptech are creating new opportunities for developers and investors to rethink traditional models.",
+      "whyMeruBrings": "we assist clients in developing mixed-use concepts, integrating technology, optimizing asset performance, and embedding ESG-driven strategies to maximize long-term value."
+    },
+    "travel": {
+      "title": "Travel & Tourism",
+      "keywords": "experience economy, resilience, digital guest journey, sustainable tourism, demand recovery",
+      "description": "The travel and tourism industry is transforming into a more experience-driven and sustainable ecosystem. Indonesia, with its rich cultural and natural assets, is focusing on destination diversification, infrastructure improvement, and digital enablement to enhance visitor experiences and resilience.",
+      "whyMeruBrings": "we help tourism operators and destination stakeholders design integrated recovery strategies, build seamless digital guest journeys, and embed sustainability across their tourism value chain."
+    },
+    "telecommunication": {
+      "title": "Telecommunication",
+      "keywords": "connectivity, 5G/6G, network monetization, digital platforms, infrastructure",
+      "description": "Telecommunication is no longer just about connectivity — it’s about enabling entire digital ecosystems. In Indonesia, accelerating broadband coverage, 5G deployment, and investments in data infrastructure are paving the way for new business models and service innovation.",
+      "whyMeruBrings": "we guide telecom players in monetizing networks, expanding infrastructure, bundling digital services, and transforming into platform-driven businesses that shape the future of connectivity."
+    },
+    "discoverMore": {
+      "title": "Discover More News",
+      "description": "Explore all our areas of news"
+    },
+    "aria": {
+      "prev": "Previous Slide",
+      "next": "Next Slide"
+    }
+  },
+
+  "newsPage": {
+    "hero": {
+      "title": "News",
+      "description": "We bring deep technical expertise across multiple domains to deliver comprehensive solutions that drive digital transformation and business growth."
+    },
+    "cta": {
+      "title": "Ready to Build With Us?",
+      "linkText": "Let's discuss with us"
+    }
+  }
+}

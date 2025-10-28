@@ -1,0 +1,42 @@
+{
+    "nav": {
+        "home": "Home",
+        "about": "About Us",
+        "products": "Products",
+        "principals": "Principals",
+        "news": "News",
+        "customers": "Customers",
+        "contact": "Contact Us",
+        "privacy": "Privacy Policy"
+    },
+
+    "modal": {
+        "close": "Close modal",
+        "description": "Description",
+        "whyMeruBrings": "Why ICP Brings?",
+        "ourNews": "Our News",
+        "overviewMethodology": "Overview & Methodology"
+    },
+
+    "footer": {
+        "description": "ICP - Driving Excellence, Conquering Challenges, Capturing Opportunity. We are committed to being a trusted partner that propels your business to new heights.",
+        "moreAbout": "More About Us",
+        "followUs": "Follow Us",
+        "aria": {
+            "facebook": "Facebook",
+            "instagram": "Instagram",
+            "x": "X (Twitter)",
+            "linkedin": "LinkedIn",
+            "youtube": "YouTube"
+        },
+        "headings": {
+            "navigation": "Navigation",
+            "contact": "Contact Us",
+            "location": "Location"
+        },
+        "links": {
+            "privacy": "Privacy Policy"
+        },
+        "copyright": "All Rights Reserved"
+    }
+}

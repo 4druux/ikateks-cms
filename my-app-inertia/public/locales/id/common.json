@@ -1,0 +1,42 @@
+{
+    "nav": {
+        "home": "Beranda",
+        "about": "Tentang Kami",
+        "products": "Produk",
+        "principals": "Prinsipals",
+        "news": "Berita",
+        "customers": "Pelanggan",
+        "contact": "Hubungi Kami",
+        "privacy": "Kebijakan Privasi"
+    },
+
+    "modal": {
+        "close": "Tutup modal",
+        "description": "Deskripsi",
+        "whyMeruBrings": "Mengapa ICP Membantu?",
+        "ourNews": "Berita Kami",
+        "overviewMethodology": "Gambaran Umum & Metodologi"
+    },
+
+    "footer": {
+        "description": "ICP - Mendorong Keunggulan, Menaklukkan Tantangan, Menangkap Peluang. Kami berkomitmen untuk menjadi mitra tepercaya yang mendorong bisnis Anda ke tingkat yang lebih tinggi.",
+        "moreAbout": "Tentang Kami Lebih Lanjut",
+        "followUs": "Ikuti Kami",
+        "aria": {
+            "facebook": "Facebook",
+            "instagram": "Instagram",
+            "x": "X (Twitter)",
+            "linkedin": "LinkedIn",
+            "youtube": "YouTube"
+        },
+        "headings": {
+            "navigation": "Navigasi",
+            "contact": "Hubungi Kami",
+            "location": "Lokasi"
+        },
+        "links": {
+            "privacy": "Kebijakan Privasi"
+        },
+        "copyright": "Hak Cipta Dilindungi"
+    }
+}

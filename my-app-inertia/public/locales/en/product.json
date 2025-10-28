@@ -1,0 +1,271 @@
+{
+  "productCategoriesPage": {
+    "headline": "Products",
+    "headline-span": "Categories.",
+    "description": "Explore our diverse range of high-quality textile products and solutions.",
+    "hero": {
+      "title": "Products Categories",
+      "description": "We provide a wide array of textile products, from raw fibers to finished technical fabrics, tailored to meet your specific needs."
+    },
+    "cta": {
+      "title": "Interested in Our Products?",
+      "linkText": "Contact Us"
+    }
+  },
+  "productPage": {
+    "headline": "Our",
+    "headline-span": "Products.",
+    "description": "Explore our diverse range of high-quality textile products and solutions.",
+    "hero": {
+      "title": "Products",
+      "description": "We provide a wide array of textile products, from raw fibers to finished technical fabrics, tailored to meet your specific needs."
+    },
+    "cta": {
+      "title": "Interested in Our Products?",
+      "linkText": "Contact Us"
+    }
+  },
+  "product": {
+    "navigation": {
+      "backToCategories": "Back to Categories",
+      "backToCategory": "Back to {{categoryTitle}}"
+    },
+    "headings": {
+      "productsInCategory": "Products in this Category",
+      "relatedProducts": "Related Products",
+      "category": "Category"
+    },
+    "notFound": {
+      "categoryTitle": "Category Not Found",
+      "categoryDescription": "Sorry, we couldn't find the category for \"{{categorySlug}}\".",
+      "productTitle": "Product Not Found",
+      "productDescription": "Sorry, we couldn't find the product you're looking for."
+    },
+    "common": {
+      "noProducts": "No specific products for this category."
+    },
+    "headline": "Our",
+    "headline-span": "Products.",
+    "description": "Explore our diverse range of high-quality textile products and solutions.",
+    "dyesChemical": {
+      "title": "DYES CHEMICAL",
+      "description": "High-performance dyes and specialty chemicals for various textile applications.",
+      "products": [
+        {
+          "key": "acidDyes",
+          "name": "Acid Dyes",
+          "description": "High-quality anionic dyes ideal for coloring protein fibers such as wool, silk, and nylon. Known for vibrant colors and excellent lightfastness."
+        },
+        {
+          "key": "reactiveDyes",
+          "name": "Reactive Dyes",
+          "description": "Forms a strong, covalent bond with cellulosic fibers like cotton and linen. Offers superior wash-fastness and brilliant shades."
+        },
+        {
+          "key": "textilePigmentEmulsion",
+          "name": "Textile Pigment Emulsion",
+          "description": "A versatile pigment solution used for textile printing. Provides excellent coverage and is suitable for a wide range of fabrics."
+        },
+        {
+          "key": "colourForFood",
+          "name": "Colour for Food",
+          "description": "Safe, certified colorants specifically formulated for use in food and beverage products, meeting all regulatory standards."
+        },
+        {
+          "key": "specialityChemicals",
+          "name": "Speciality Chemicals",
+          "description": "Auxiliary chemicals including fixing agents, softeners, and leveling agents to enhance the dyeing and finishing process."
+        }
+      ]
+    },
+    "fashionMaterials": {
+      "title": "FASHION MATERIALS",
+      "description": "Premium fabrics and materials for the modern fashion industry.",
+      "products": [
+        {
+          "key": "knittedFabric",
+          "name": "Knitted Fabric",
+          "description": "High-quality jersey, interlock, and rib-knit fabrics perfect for apparel. Known for their stretch, comfort, and breathability."
+        }
+      ]
+    },
+    "halalProduct": {
+      "title": "HALAL PRODUCT",
+      "description": "Certified halal products meeting requisite standards.",
+      "products": [
+        {
+          "key": "ihram",
+          "name": "Ihram",
+          "description": "Seamless, 100% cotton white garments for Hajj and Umrah. Designed for comfort and adherence to religious requirements."
+        },
+        {
+          "key": "mukena",
+          "name": "Mukena",
+          "description": "Beautifully crafted prayer garments for women, made from cooling and comfortable materials like cotton or silk."
+        }
+      ]
+    },
+    "naturalFibers": {
+      "title": "NATURAL FIBERS",
+      "description": "Sustainable and eco-friendly natural fibers for diverse applications.",
+      "products": [
+        {
+          "key": "rami",
+          "name": "Rami",
+          "description": "A strong, lustrous natural fiber known for its durability and resistance to bacteria. Similar in feel to high-quality linen."
+        },
+        {
+          "key": "kenaf",
+          "name": "Kenaf",
+          "description": "A sustainable and durable bast fiber commonly used for cordage, sacking, and industrial composite materials."
+        },
+        {
+          "key": "nanas",
+          "name": "Nanas",
+          "description": "Fine and lightweight fiber (Piña) extracted from pineapple leaves, prized for its natural sheen in luxury textiles."
+        }
+      ]
+    },
+    "specialFiber": {
+      "title": "SPECIAL FIBER",
+      "description": "Advanced fibers engineered for specific high-tech functions.",
+      "products": [
+        {
+          "key": "nanoFiber",
+          "name": "Nano Fiber",
+          "description": "Ultra-fine fibers with diameters in the nanometer range, offering exceptional properties for filtration, medical, and electronics."
+        }
+      ]
+    },
+    "technicalTextile": {
+      "title": "TECHNICAL TEXTILE MATERIALS",
+      "description": "Innovative textiles designed for performance, safety, and industrial use.",
+      "products": [
+        {
+          "key": "cutResistanceFabric",
+          "name": "Cut Resistance Fabric",
+          "description": "Engineered with high-performance fibers (e.g., Kevlar®) to protect against sharp objects. Ideal for gloves and protective apparel."
+        },
+        {
+          "key": "waterRepellentFabric",
+          "name": "Water Repellent Fabric",
+          "description": "Treated with advanced coatings (DWR) to make water bead up and roll off, keeping the user dry in wet conditions."
+        },
+        {
+          "key": "bulletproofFabric",
+          "name": "Bulletproof Fabric",
+          "description": "Aramid-based ballistic fabrics designed to stop projectiles. Used in personal body armor and vehicle protection."
+        },
+        {
+          "key": "materialForLifeVestJacket",
+          "name": "Material For Life Vest Jacket",
+          "description": "Highly buoyant, water-resistant, and durable materials certified for personal flotation devices (PFDs)."
+        },
+        {
+          "key": "textileForSafety",
+          "name": "Textile for safety",
+          "description": "High-visibility, flame-retardant (FR), and anti-static textiles for comprehensive personal protective equipment (PPE)."
+        },
+        {
+          "key": "textileForAutomotive",
+          "name": "Textile for Automotive",
+          "description": "Durable fabrics for vehicle interiors, including seating, headliners, carpets, and airbag components."
+        },
+        {
+          "key": "textileForConstruction",
+          "name": "Textile for construction",
+          "description": "Geotextiles used for soil stabilization, erosion control, and reinforcement in construction projects."
+        },
+        {
+          "key": "nonWovenFabric",
+          "name": "Non woven fabric",
+          "description": "Fabrics made from fibers bonded together chemically or thermally. Used in filters, medical supplies, and disposables."
+        }
+      ]
+    },
+    "textileAccessories": {
+      "title": "TEXTILE ACCESSORIES",
+      "description": "A complete range of accessories to finish your textile products.",
+      "products": [
+        {
+          "key": "webbing",
+          "name": "Webbing",
+          "description": "Strong, narrow-woven fabric used for straps, belts, and handles in bags, safety equipment, and apparel."
+        },
+        {
+          "key": "interlining",
+          "name": "Interlining",
+          "description": "Fabric layer placed between the lining and the outer fabric to add shape, structure, and support to garments."
+        },
+        {
+          "key": "buckle",
+          "name": "Buckle",
+          "description": "Durable metal and plastic buckles for fastening straps, available in various sizes and styles."
+        },
+        {
+          "key": "zipper",
+          "name": "Zipper",
+          "description": "High-quality coil, metal, and plastic zippers for apparel, bags, and industrial applications."
+        },
+        {
+          "key": "button",
+          "name": "Button",
+          "description": "A wide variety of buttons in different materials, sizes, and colors to match any design aesthetic."
+        }
+      ]
+    },
+    "textileMachineries": {
+      "title": "TEXTILE MACHINERIES",
+      "description": "Reliable new and second-hand machinery for textile production.",
+      "products": [
+        {
+          "key": "secondHandMachinery",
+          "name": "Second Hand Machinery",
+          "description": "Refurbished and well-maintained second-hand textile machinery, offering a cost-effective solution for production."
+        }
+      ]
+    },
+    "wovenFabric": {
+      "title": "WOVEN FABRIC",
+      "description": "Versatile woven fabrics including Bemberg, RFP, and custom prints.",
+      "products": [
+        {
+          "key": "bemberg",
+          "name": "Bemberg",
+          "description": "A high-quality regenerated cellulose fiber (Cupro), known for its silky-smooth feel and excellent breathability. Often used as a premium lining."
+        },
+        {
+          "key": "rfpFabric",
+          "name": "RFP Fabric",
+          "description": "Recycled Polyester Fabric (RFP) made from post-consumer materials. A sustainable choice for eco-conscious apparel."
+        },
+        {
+          "key": "customisePrintedFabric",
+          "name": "Customise printed fabric",
+          "description": "Your design, our fabric. We offer high-resolution digital and screen printing services on a variety of woven bases."
+        }
+      ]
+    },
+    "yarn": {
+      "title": "YARN",
+      "description": "High-quality yarns from natural and technical fibers.",
+      "products": [
+        {
+          "key": "yarnFromBastAndLeafFiber",
+          "name": "Yarn From Bast And Leaf Fiber",
+          "description": "Strong and rustic yarns spun from natural fibers like linen, hemp, rami, and kenaf. Ideal for durable textiles."
+        },
+        {
+          "key": "technicalYarn",
+          "name": "Technical Yarn",
+          "description": "Yarns engineered with specific properties, such as flame retardancy, cut resistance, or high strength for industrial use."
+        }
+      ]
+    },
+    "cta": {
+      "askOnWhatsApp": "Ask on WhatsApp",
+      "waMessage": "Hello, I'm interested in the product: {{productName}}"
+    },
+    "viewAll": "Discover More Product"
+  }
+}

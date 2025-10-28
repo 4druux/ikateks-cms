@@ -1,0 +1,39 @@
+{
+  "contactPage": {
+    "hero": {
+      "title": "Contact Us",
+      "description": "Let's build something great together. Reach out to our team to discuss your project or ask us anything."
+    },
+    "section": {
+      "headline": "Get In",
+      "headline-span": "Touch",
+      "description": "Have a project in mind or want to learn more about our services? We'd love to hear from you.",
+      "info": {
+        "email": "Email",
+        "phone": "Phone",
+        "address": "Address"
+      },
+      "hours": {
+        "title": "Business Hours",
+        "weekdays": "Monday - Friday: 9:00 AM - 4:00 PM",
+        "weekends": "Sunday - Saturday: Closed"
+      },
+      "form": {
+        "title": "Send Us a Message",
+        "labels": {
+          "name": "Full Name",
+          "email": "Email Address",
+          "company": "Company",
+          "message": "Message"
+        },
+        "placeholders": {
+          "name": "John Doe",
+          "email": "john@example.com",
+          "company": "Your Company",
+          "message": "Tell us about your project..."
+        },
+        "button": "Send Message"
+      }
+    }
+  }
+}
