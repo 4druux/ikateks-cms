@@ -11,9 +11,11 @@ return new class extends Migration
         Schema::create('product_categories', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('title_id');
             $table->string('slug')->unique();
-            $table->text('description')->nullable();
-            $table->string('image_path')->nullable();
+            $table->text('description');
+            $table->text('description_id');
+            $table->string('image_path');
             $table->timestamps();
         });
     }

@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { Loader2, LogIn } from "lucide-react";
 import InputField from "@/Components/common/InputField";
 import PasswordField from "@/Components/common/PasswordField";
-import Button from "@/Components/ui/Button";
+import Button from "@/Components/common/Button";
 
 type ErrorMessages = Record<string, string[]>;
 
@@ -33,7 +33,7 @@ export default function SignInForm() {
             await axios.post("/api/login", values);
 
             toast.success("Login berhasil!");
-            router.visit("/");
+            router.visit("/admin");
         } catch (error) {
             const loginErrorMessage = "Email atau password salah.";
 

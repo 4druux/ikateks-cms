@@ -32,3 +32,14 @@
     font-style: normal;
     font-display: swap;
 }
+
+@keyframes bounce-delay {
+    0%,
+    80%,
+    100% {
+        transform: scale(0);
+    }
+    40% {
+        transform: scale(1);
+    }
+}

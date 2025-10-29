@@ -1,16 +1,36 @@
+import Lenis from "lenis";
+import { useEffect, useState, ReactNode } from "react";
 import Header from "@/Components/Header";
 import Sidebar from "@/Components/Sidebar";
-import { useEffect, useState } from "react";
 import { usePage, router } from "@inertiajs/react";
 import DotLoader from "@/Components/ui/DotLoader";
+import { LenisContext } from "@/Context/LenisContext";
 
-export default function AuthenticatedLayout({ children, title }) {
-    const { auth } = usePage().props;
+interface User {
+    [key: string]: any;
+}
+
+interface PageProps {
+    auth: {
+        user: User | null;
+    };
+    [key: string]: any;
+}
+
+interface AuthenticatedLayoutProps {
+    children: ReactNode;
+    title: string;
+}
+
+export default function AuthenticatedLayout({
+    children,
+}: AuthenticatedLayoutProps) {
+    const { auth } = usePage<PageProps>().props;
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
     useEffect(() => {
         if (!auth.user) {
-            router.visit(route("login"), { replace: true });
+            router.visit("/login", { replace: true });
         }
     }, [auth]);
 
@@ -57,6 +77,24 @@ export default function AuthenticatedLayout({ children, title }) {
         };
     }, []);
 
+    const [lenis, setLenis] = useState<Lenis | null>(null);
+
+    useEffect(() => {
+        const lenisInstance = new Lenis();
+        setLenis(lenisInstance);
+
+        function raf(time: number) {
+            lenisInstance.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        return () => {
+            lenisInstance.destroy();
+            setLenis(null);
+        };
+    }, []);
+
     if (!auth.user) {
         return (
             <div className="fixed inset-0 flex items-center justify-center">
@@ -66,13 +104,14 @@ export default function AuthenticatedLayout({ children, title }) {
     }
 
     return (
-        <div className="min-h-screen">
-            <Header onMenuClick={toggleSidebar} pageTitle={title} />
-            <div className="flex">
-                <Sidebar isOpen={isSidebarOpen} />
-                <div
-                    onClick={toggleSidebar}
-                    className={`
+        <LenisContext.Provider value={lenis}>
+            <div className="min-h-screen bg-white lg:bg-zinc-50">
+                <Header onMenuClick={toggleSidebar} />
+                <div className="flex">
+                    <Sidebar isOpen={isSidebarOpen} />
+                    <button
+                        onClick={toggleSidebar}
+                        className={`
                         fixed inset-0 bg-black/40 z-40 transition-opacity duration-300
                         ${
                             isSidebarOpen
@@ -81,15 +120,16 @@ export default function AuthenticatedLayout({ children, title }) {
                         }
                         lg:hidden
                     `}
-                />
-                <div
-                    className={`min-w-0 w-full transition-all duration-300 ease-in-out ${
-                        isSidebarOpen ? "lg:ml-72" : "lg:ml-0"
-                    }`}
-                >
-                    <main className="px-4 lg:px-6 mt-2">{children}</main>
+                    />
+                    <div
+                        className={`min-w-0 w-full transition-all duration-300 ease-in-out ${
+                            isSidebarOpen ? "lg:ml-72" : "lg:ml-0"
+                        }`}
+                    >
+                        <main className="px-4 lg:px-6 mt-2">{children}</main>
+                    </div>
                 </div>
             </div>
-        </div>
+        </LenisContext.Provider>
     );
 }

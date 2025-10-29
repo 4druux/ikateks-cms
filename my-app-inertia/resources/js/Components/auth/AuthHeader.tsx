@@ -11,7 +11,7 @@ export default function AuthHeader() {
                 </div>
 
                 <div className="flex flex-col items-start">
-                    <h2 className="text-md font-medium text-gray-800">
+                    <h2 className="text-md font-medium text-zinc-800">
                         PT. Ikateks Citra Persada - CMS Company Profile
                     </h2>
                 </div>

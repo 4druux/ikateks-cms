@@ -1,6 +1,6 @@
-import { Link } from "@inertiajs/react";
 import { ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import Button from "@/Components/common/Button";
 
 const About = () => {
     const { t } = useTranslation("home");
@@ -60,13 +60,14 @@ const About = () => {
             </div>
 
             <div className="text-center mt-12">
-                <Link
+                <Button
+                    as="link"
                     href="/about"
-                    className="text-red-700 font-medium border px-4 py-3 border-red-800 hover:bg-red-800 hover:text-white transition-colors duration-300 inline-flex items-center group"
+                    variant="outline"
+                    iconRight={<ArrowRight className="h-5 w-5" />}
                 >
                     {t("homePage.aboutSection.linkText")}
-                    <ArrowRight className="ml-1 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-                </Link>
+                </Button>
             </div>
         </div>
     );

@@ -1,14 +1,14 @@
 import { ArrowLeft, Phone } from "lucide-react";
-import { type ProductItem } from "./ProductCategoriesDetail";
-import { TFunction } from "i18next";
+import { Product } from "@/Utils/api";
+import { useTranslation } from "react-i18next";
 import { Link } from "@inertiajs/react";
+import ProductContent from "../ui/ProductContent";
 
 interface ProductDetailProps {
-    currentProduct: ProductItem;
-    relatedProducts: ProductItem[];
+    currentProduct: Product;
+    relatedProducts: Product[];
     categorySlug: string;
     categoryTitle: string;
-    t: TFunction<"product", undefined>;
 }
 
 const ProductDetail = ({
@@ -16,11 +16,20 @@ const ProductDetail = ({
     relatedProducts,
     categorySlug,
     categoryTitle,
-    t,
 }: ProductDetailProps) => {
+    const { t, i18n } = useTranslation("product");
+
+    const productName =
+        i18n.language === "id" ? currentProduct.name_id : currentProduct.name;
+
+    const productDescription =
+        i18n.language === "id"
+            ? currentProduct.description_id
+            : currentProduct.description;
+
     const phoneNumber = "6285810249867";
     const message = t("product.cta.waMessage", {
-        productName: currentProduct.name,
+        productName: productName,
     });
     const waLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
         message
@@ -37,20 +46,20 @@ const ProductDetail = ({
             </Link>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-16 lg:gap-20">
-                <div className="w-full relative overflow-hidden group shadow-lg">
+                <div className="w-full aspect-[4/3] relative overflow-hidden group">
                     <img
-                        src={currentProduct.img}
-                        alt={currentProduct.name}
+                        src={currentProduct.image_url}
+                        alt={productName}
                         className="h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
                 <div className="flex flex-col justify-center">
                     <h1 className="text-3xl md:text-4xl font-extrabold text-zinc-800 uppercase">
-                        {currentProduct.name}
+                        {productName}
                     </h1>
                     <p className="mt-1 text-lg text-zinc-600">
-                        {currentProduct.description}
+                        {productDescription}
                     </p>
 
                     <div className="text-start mt-6">
@@ -73,30 +82,26 @@ const ProductDetail = ({
                         {t("product.headings.relatedProducts")}
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {relatedProducts.map((product) => (
-                            <Link
-                                key={product.name}
-                                href={`/products/${categorySlug}/${product.key}`}
-                                className="block group"
-                            >
-                                <div className="relative h-64 w-full overflow-hidden shadow-lg transition-shadow duration-300 hover:shadow-2xl">
-                                    <img
-                                        src={product.img}
-                                        alt={product.name}
-                                        className="h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
-                                    <div className="absolute bottom-0 left-0 w-full p-6 text-white">
-                                        <h3 className="text-2xl font-bold transition-transform duration-300">
-                                            {product.name}
-                                        </h3>
-                                        <p className="md:max-h-0 text-zinc-200 opacity-100 md:opacity-0 transition-all duration-500 group-hover:max-h-40 group-hover:opacity-100 line-clamp-2">
-                                            {product.description}
-                                        </p>
-                                    </div>
-                                </div>
-                            </Link>
-                        ))}
+                        {relatedProducts.map((product) => {
+                            const title =
+                                i18n.language === "id"
+                                    ? product.name_id
+                                    : product.name;
+                            const description =
+                                i18n.language === "id"
+                                    ? product.description_id
+                                    : product.description;
+
+                            return (
+                                <ProductContent
+                                    key={product.id}
+                                    imageUrl={product.image_url}
+                                    title={title}
+                                    description={description}
+                                    href={`/products/${categorySlug}/${product.slug}`}
+                                />
+                            );
+                        })}
                     </div>
                 </div>
             )}

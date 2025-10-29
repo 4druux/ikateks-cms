@@ -56,11 +56,20 @@ export default [
 
             "react/react-in-jsx-scope": "off",
             "react/prop-types": "off",
-            "no-unused-vars": "warn",
             "react/no-children-prop": "warn",
             "react/no-unescaped-entities": "warn",
-
             "import/no-unresolved": "error",
+
+            "no-unused-vars": "off",
+
+            "@typescript-eslint/no-unused-vars": [
+                "warn",
+                {
+                    argsIgnorePattern: "^_",
+                    varsIgnorePattern: "^_",
+                    caughtErrorsIgnorePattern: "^_",
+                },
+            ],
         },
 
         settings: {

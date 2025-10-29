@@ -6,11 +6,11 @@ import {
     type TranslatedPrincipalsItem,
     type StaticPrincipalsItem,
 } from "../../data/principals";
-import ModalPrincipals from "../ui/ModalPrincipals";
+import ModalPrincipals from "@/Components/ui/ModalPrincipals";
 import { useTranslation } from "react-i18next";
 import { ArrowRight } from "lucide-react";
-import { Link } from "@inertiajs/react";
-import PrincipalsContent from "../ui/PrincipalsContent";
+import PrincipalsContent from "@/Components/ui/PrincipalsContent";
+import Button from "@/Components/common/Button";
 
 interface PrincipalssProps {
     lenis: Lenis | null;
@@ -89,13 +89,14 @@ const Principals = ({
 
             {showViewAllButton && (
                 <div className="text-center mt-12">
-                    <Link
+                    <Button
+                        as="link"
                         href="/principals"
-                        className="text-red-700 font-medium border px-4 py-3 border-red-800 hover:bg-red-800 hover:text-white transition-colors duration-300 inline-flex items-center group"
+                        variant="outline"
+                        iconRight={<ArrowRight className="h-5 w-5" />}
                     >
                         {t("principals.viewAll")}
-                        <ArrowRight className="ml-1 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-                    </Link>
+                    </Button>
                 </div>
             )}
 

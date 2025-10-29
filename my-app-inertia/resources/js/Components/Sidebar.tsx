@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import {
-    Users,
     ChevronDown,
     HomeIcon,
-    UserCog,
-    ClipboardCheck,
     LucideIcon,
+    Package,
+    Newspaper,
+    Building2,
+    Handshake,
 } from "lucide-react";
 import { Link, usePage } from "@inertiajs/react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
@@ -58,8 +59,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
     const getIsActive = (href: string) => {
         const pathname = window.location.pathname;
 
-        if (href === "/beranda") {
-            return pathname === "/beranda" || pathname.startsWith("/beranda/");
+        if (href === "/admin") {
+            return pathname === "/admin";
         }
 
         return pathname === href || pathname.startsWith(href + "/");
@@ -68,34 +69,42 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
     const menuItems: MenuItem[] = [
         {
             id: "home",
-            label: "Beranda",
+            label: "Home",
             icon: HomeIcon,
-            description: "Halaman utama",
-            href: "/",
+            description: "Home Page",
+            href: "/admin",
             canView: !!auth.user,
         },
         {
-            id: "data-siswa",
-            label: "Data Kelas & Siswa",
-            icon: Users,
-            description: "Kelola data kelas & siswa",
-            href: "/data-siswa",
+            id: "products",
+            label: "Products",
+            icon: Package,
+            description: "Manage products",
+            href: "/admin/categories",
             canView: !!auth.user && hasAccess(["superadmin", "admin"]),
         },
         {
-            id: "manajemen-akun",
-            label: "Manajemen Akun",
-            icon: UserCog,
-            description: "Kelola akun pengguna",
-            href: "/manajemen-akun",
+            id: "news",
+            label: "News",
+            icon: Newspaper,
+            description: "Manage News",
+            href: "/admin/news",
             canView: !!auth.user && hasAccess(["superadmin", "admin"]),
         },
         {
-            id: "absensi-siswa",
-            label: "Absensi Siswa",
-            icon: ClipboardCheck,
-            description: "Absensi siswa",
-            href: "/absensi-siswa",
+            id: "principals",
+            label: "Principals",
+            icon: Building2,
+            description: "Manage Prinsipals",
+            href: "/admin/principals",
+            canView: !!auth.user && hasAccess(["superadmin", "admin"]),
+        },
+        {
+            id: "customers",
+            label: "Customers",
+            icon: Handshake,
+            description: "Manage Customers",
+            href: "/admin/customers",
             canView: !!auth.user && hasAccess(["superadmin", "admin"]),
         },
     ];
@@ -154,12 +163,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
                 <div className="pt-6 px-4">
                     <div className="flex items-center gap-2 lg:gap-4">
                         <div>
-                            <h1 className="text-md md:text-lg uppercase font-medium text-gray-700">
-                                PT. Ikateks Citra Persada{" "}
-                                {new Date().getFullYear()}
-                            </h1>
-                            <p className="text-xs md:text-sm text-gray-600">
-                                CMS Company Profile
+                            <p className="text-xs md:text-sm text-zinc-600">
+                                Pt. Ikateks Citra Persada - CMS Company Profile
                             </p>
                         </div>
                     </div>
@@ -196,8 +201,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
                                                     type="button"
                                                     className={`w-full flex items-center justify-between p-3 rounded-r-full border-r border-y transition-all duration-200 text-left cursor-pointer group ${
                                                         isParentActive
-                                                            ? "bg-indigo-100 border-indigo-500"
-                                                            : "text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-transparent"
+                                                            ? "bg-red-900 border-red-800"
+                                                            : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-800 border-transparent"
                                                     }`}
                                                     onClick={() =>
                                                         setOpenSubMenu(
@@ -212,15 +217,15 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
                                                         <Icon
                                                             className={`w-7 h-7 ${
                                                                 isParentActive
-                                                                    ? "text-indigo-600"
-                                                                    : "text-gray-600"
+                                                                    ? "text-white"
+                                                                    : "text-zinc-600"
                                                             }`}
                                                         />
                                                         <div className="flex-1">
                                                             <div
                                                                 className={`font-medium text-sm ${
                                                                     isParentActive
-                                                                        ? "text-indigo-600"
+                                                                        ? "text-white"
                                                                         : ""
                                                                 }`}
                                                             >
@@ -229,8 +234,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
                                                             <div
                                                                 className={`text-xs ${
                                                                     isParentActive
-                                                                        ? "text-indigo-600"
-                                                                        : "text-gray-500 group-hover:text-gray-800"
+                                                                        ? "text-white"
+                                                                        : "text-zinc-500 group-hover:text-zinc-800"
                                                                 }`}
                                                             >
                                                                 {
@@ -247,8 +252,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
                                                                 : ""
                                                         } ${
                                                             isParentActive
-                                                                ? "text-indigo-600"
-                                                                : "text-gray-600"
+                                                                ? "text-white"
+                                                                : "text-zinc-600"
                                                         }`}
                                                     />
                                                 </button>
@@ -293,8 +298,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
                                                                                 }
                                                                                 className={`w-full flex p-2 items-center rounded-full text-left ${
                                                                                     isSubActive
-                                                                                        ? "bg-indigo-100 text-indigo-600 font-medium border-indigo-400 border"
-                                                                                        : "text-gray-600 hover:bg-gray-50 hover:text-gray-800 hover:translate-x-1 transition-transform duration-300 will-change-transform"
+                                                                                        ? "bg-red-100 text-white font-medium border-red-400 border"
+                                                                                        : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-800 hover:translate-x-1 transition-transform duration-300 will-change-transform"
                                                                                 }`}
                                                                             >
                                                                                 <span className="text-sm ml-2">
@@ -324,22 +329,22 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
                                                 href={item.href!}
                                                 className={`w-full flex items-center space-x-2 p-3 rounded-r-full border-r border-y transition-all duration-200 text-left cursor-pointer group ${
                                                     isActive
-                                                        ? "bg-indigo-100 border-indigo-500"
-                                                        : "text-gray-600 hover:bg-gray-50 hover:text-gray-800 border-transparent"
+                                                        ? "bg-red-900 border-red-800"
+                                                        : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-800 border-transparent"
                                                 }`}
                                             >
                                                 <Icon
                                                     className={`w-7 h-7 ${
                                                         isActive
-                                                            ? "text-indigo-600"
-                                                            : "text-gray-600"
+                                                            ? "text-white"
+                                                            : "text-zinc-600"
                                                     }`}
                                                 />
                                                 <div className="flex-1">
                                                     <div
                                                         className={`font-medium text-sm ${
                                                             isActive
-                                                                ? "text-indigo-600"
+                                                                ? "text-white"
                                                                 : ""
                                                         }`}
                                                     >
@@ -348,8 +353,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
                                                     <div
                                                         className={`text-xs ${
                                                             isActive
-                                                                ? "text-indigo-600"
-                                                                : "text-gray-500 group-hover:text-gray-800"
+                                                                ? "text-white"
+                                                                : "text-zinc-500 group-hover:text-zinc-800"
                                                         }`}
                                                     >
                                                         {item.description}
@@ -366,13 +371,13 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
 
                 <AnimatePresence>
                     {isOpen && (
-                        <div className="p-4 border-t border-gray-200">
+                        <div className="p-4 border-t border-zinc-200">
                             <motion.p
                                 initial="hidden"
                                 animate="visible"
                                 exit="hidden"
                                 variants={footerVariants}
-                                className="text-xs uppercase text-gray-500 text-center"
+                                className="text-xs uppercase text-zinc-500 text-center"
                             >
                                 PT. Ikateks Citra Persada &copy;{" "}
                                 {new Date().getFullYear()}

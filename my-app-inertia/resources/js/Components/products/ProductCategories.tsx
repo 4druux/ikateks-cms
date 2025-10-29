@@ -1,44 +1,10 @@
-import {
-    productCategories as staticProductCategoryData,
-    type TranslatedProductCategoryItem,
-    type StaticProductCategoryItem,
-} from "../../data/product-categories";
 import { useTranslation } from "react-i18next";
 import { ArrowRight } from "lucide-react";
-import { Link } from "@inertiajs/react";
-
-const slugify = (str: string) => {
-    return str.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2").toLowerCase();
-};
-
-interface ProductCategoriesContentProps {
-    item: TranslatedProductCategoryItem;
-}
-
-const ProductCategoriesContent = ({ item }: ProductCategoriesContentProps) => {
-    const slug = slugify(item.i18nKey);
-
-    return (
-        <Link href={`/products/${slug}`} className="block group">
-            <div className="relative h-80 w-full overflow-hidden shadow-lg transition-shadow duration-300 hover:shadow-2xl">
-                <img
-                    src={item.img}
-                    alt={item.title}
-                    className="h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
-                <div className="absolute bottom-0 left-0 w-full p-6 text-white">
-                    <h3 className="text-xl font-bold transition-transform duration-300">
-                        {item.title}
-                    </h3>
-                    <p className="md:max-h-0 text-zinc-200 opacity-100 md:opacity-0 transition-all duration-500 group-hover:max-h-40 group-hover:opacity-100 line-clamp-2">
-                        {item.description}
-                    </p>
-                </div>
-            </div>
-        </Link>
-    );
-};
+import Button from "@/Components/common/Button";
+import ProductContent from "@/Components/ui/ProductContent";
+import useSWR from "swr";
+import { Category, fetcher } from "@/Utils/api";
+import DotLoader from "@/Components/ui/DotLoader";
 
 interface ProductCategoriesProps {
     headlineKey?: string;
@@ -55,23 +21,31 @@ const ProductCategories = ({
     limit,
     showViewAllButton,
 }: ProductCategoriesProps) => {
-    const { t } = useTranslation("product");
+    const { t, i18n } = useTranslation("product");
 
-    const translatedProductCategories: TranslatedProductCategoryItem[] =
-        staticProductCategoryData.map((item: StaticProductCategoryItem) => {
-            const translations = t(`product.${item.i18nKey}`, {
-                returnObjects: true,
-            }) as Omit<TranslatedProductCategoryItem, "id" | "img" | "i18nKey">;
+    const {
+        data: categories,
+        error,
+        isLoading,
+    } = useSWR<Category[]>("/api/categories", fetcher);
 
-            return {
-                ...item,
-                ...translations,
-            };
-        });
+    const categoriesToShow = limit ? categories?.slice(0, limit) : categories;
 
-    const categoriesToShow = limit
-        ? translatedProductCategories.slice(0, limit)
-        : translatedProductCategories;
+    if (isLoading) {
+        return (
+            <div className="flex justify-center items-center h-64">
+                <DotLoader />
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="text-center text-red-600">
+                Gagal memuat kategori.
+            </div>
+        );
+    }
 
     return (
         <div>
@@ -88,20 +62,39 @@ const ProductCategories = ({
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-6 md:mt-12 gap-4">
-                {categoriesToShow.map((item) => (
-                    <ProductCategoriesContent key={item.id} item={item} />
-                ))}
+                {categoriesToShow &&
+                    categoriesToShow.map((item) => {
+                        const title =
+                            i18n.language === "id"
+                                ? item.title_id
+                                : item.title;
+                        const description =
+                            i18n.language === "id"
+                                ? item.description_id
+                                : item.description;
+
+                        return (
+                            <ProductContent
+                                key={item.id}
+                                imageUrl={item.image_url}
+                                title={title}
+                                description={description}
+                                href={`/products/${item.slug}`}
+                            />
+                        );
+                    })}
             </div>
 
             {showViewAllButton && (
                 <div className="text-center mt-12">
-                    <Link
+                    <Button
+                        as="link"
                         href="/products"
-                        className="text-red-700 font-medium border px-4 py-3 border-red-800 hover:bg-red-800 hover:text-white transition-colors duration-300 inline-flex items-center group"
+                        variant="outline"
+                        iconRight={<ArrowRight className="h-5 w-5" />}
                     >
                         {t("product.viewAll")}
-                        <ArrowRight className="ml-1 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-                    </Link>
+                    </Button>
                 </div>
             )}
         </div>

@@ -1,267 +1,52 @@
 {
-  "productCategoriesPage": {
-    "headline": "Produk",
-    "headline-span": "Kategori.",
-    "description": "Jelajahi beragam produk dan solusi tekstil berkualitas tinggi kami.",
-    "hero": {
-      "title": "Kategori Produk",
-      "description": "Kami menyediakan beragam produk tekstil, dari serat mentah hingga kain teknis jadi, yang disesuaikan untuk memenuhi kebutuhan spesifik Anda."
+    "productCategoriesPage": {
+        "headline": "Produk",
+        "headline-span": "Kategori.",
+        "description": "Jelajahi beragam produk dan solusi tekstil berkualitas tinggi kami.",
+        "hero": {
+            "title": "Kategori Produk",
+            "description": "Kami menyediakan beragam produk tekstil, dari serat mentah hingga kain teknis jadi, yang disesuaikan untuk memenuhi kebutuhan spesifik Anda."
+        },
+        "cta": {
+            "title": "Tertarik dengan Produk Kami?",
+            "linkText": "Hubungi Kami"
+        }
     },
-    "cta": {
-      "title": "Tertarik dengan Produk Kami?",
-      "linkText": "Hubungi Kami"
+    "productPage": {
+        "headline": "Produk",
+        "headline-span": "Kami.",
+        "description": "Jelajahi beragam produk dan solusi tekstil berkualitas tinggi kami.",
+        "hero": {
+            "title": "Produk",
+            "description": "Kami menyediakan beragam produk tekstil, dari serat mentah hingga kain teknis jadi, yang disesuaikan untuk memenuhi kebutuhan spesifik Anda."
+        },
+        "cta": {
+            "title": "Tertarik dengan Produk Kami?",
+            "linkText": "Hubungi Kami"
+        }
+    },
+    "product": {
+        "navigation": {
+            "backToCategories": "Kembali ke Kategori",
+            "backToCategory": "Kembali ke {{categoryTitle}}"
+        },
+        "headings": {
+            "productsInCategory": "Produk dalam Kategori Ini",
+            "relatedProducts": "Produk Terkait",
+            "category": "Kategori"
+        },
+        "notFound": {
+            "categoryTitle": "Kategori Tidak Ditemukan",
+            "categoryDescription": "Maaf, kami tidak dapat menemukan kategori untuk \"{{categorySlug}}\".",
+            "productTitle": "Produk Tidak Ditemukan",
+            "productDescription": "Maaf, kami tidak dapat menemukan produk yang Anda cari."
+        },
+        "common": {
+            "noProducts": "Tidak ada produk spesifik untuk kategori ini."
+        },
+        "headline": "Produk",
+        "headline-span": "Kami.",
+        "description": "Jelajahi beragam produk dan solusi tekstil berkualitas tinggi kami.",
+        "viewAll": "Lihat Lebih Banyak Produk"
     }
-  },
-  "productPage": {
-    "headline": "Produk",
-    "headline-span": "Kami.",
-    "description": "Jelajahi beragam produk dan solusi tekstil berkualitas tinggi kami.",
-    "hero": {
-      "title": "Produk",
-      "description": "Kami menyediakan beragam produk tekstil, dari serat mentah hingga kain teknis jadi, yang disesuaikan untuk memenuhi kebutuhan spesifik Anda."
-    },
-    "cta": {
-      "title": "Tertarik dengan Produk Kami?",
-      "linkText": "Hubungi Kami"
-    }
-  },
-  "product": {
-    "navigation": {
-      "backToCategories": "Kembali ke Kategori",
-      "backToCategory": "Kembali ke {{categoryTitle}}"
-    },
-    "headings": {
-      "productsInCategory": "Produk dalam Kategori Ini",
-      "relatedProducts": "Produk Terkait",
-      "category": "Kategori"
-    },
-    "notFound": {
-      "categoryTitle": "Kategori Tidak Ditemukan",
-      "categoryDescription": "Maaf, kami tidak dapat menemukan kategori untuk \"{{categorySlug}}\".",
-      "productTitle": "Produk Tidak Ditemukan",
-      "productDescription": "Maaf, kami tidak dapat menemukan produk yang Anda cari."
-    },
-    "common": {
-      "noProducts": "Tidak ada produk spesifik untuk kategori ini."
-    },
-    "headline": "Produk",
-    "headline-span": "Kami.",
-    "description": "Jelajahi beragam produk dan solusi tekstil berkualitas tinggi kami.",
-    "dyesChemical": {
-      "title": "ZAT PEWARNA & KIMIA",
-      "description": "Zat pewarna performa tinggi dan bahan kimia khusus untuk berbagai aplikasi tekstil.",
-      "products": [
-        {
-          "key": "acidDyes",
-          "name": "Pewarna Asam",
-          "description": "Pewarna anionik berkualitas tinggi yang ideal untuk mewarnai serat protein seperti wol, sutra, dan nilon. Dikenal dengan warna-warna cerah dan ketahanan luntur terhadap cahaya yang sangat baik."
-        },
-        {
-          "key": "reactiveDyes",
-          "name": "Pewarna Reaktif",
-          "description": "Membentuk ikatan kovalen yang kuat dengan serat selulosa seperti katun dan linen. Menawarkan ketahanan luntur saat dicuci yang superior dan warna-warna cemerlang."
-        },
-        {
-          "key": "textilePigmentEmulsion",
-          "name": "Emulsi Pigmen Tekstil",
-          "description": "Solusi pigmen serbaguna yang digunakan untuk pencetakan tekstil. Memberikan daya tutup yang sangat baik dan cocok untuk berbagai jenis kain."
-        },
-        {
-          "key": "colourForFood",
-          "name": "Pewarna Makanan",
-          "description": "Pewarna aman dan bersertifikat yang diformulasikan khusus untuk digunakan dalam produk makanan dan minuman, memenuhi semua standar peraturan."
-        },
-        {
-          "key": "specialityChemicals",
-          "name": "Bahan Kimia Khusus",
-          "description": "Bahan kimia bantu termasuk zat fiksasi, pelembut, dan zat penyamarataan untuk meningkatkan proses pewarnaan dan penyempurnaan."
-        }
-      ]
-    },
-    "fashionMaterials": {
-      "title": "BAHAN FASHION",
-      "description": "Kain dan bahan premium untuk industri fashion modern.",
-      "products": [
-        {
-          "key": "knittedFabric",
-          "name": "Kain Rajut ",
-          "description": "Kain jersey, interlock, dan rib-knit berkualitas tinggi yang sempurna untuk pakaian. Dikenal karena elastisitas, kenyamanan, dan sirkulasi udaranya."
-        }
-      ]
-    },
-    "halalProduct": {
-      "title": "PRODUK HALAL",
-      "description": "Produk bersertifikat halal yang memenuhi standar yang disyaratkan.",
-      "products": [
-        {
-          "key": "ihram",
-          "name": "Ihram",
-          "description": "Pakaian putih 100% katun tanpa jahitan untuk Haji dan Umrah. Dirancang untuk kenyamanan dan kepatuhan pada persyaratan agama."
-        },
-        {
-          "key": "mukena",
-          "name": "Mukena",
-          "description": "Pakaian salat wanita yang dibuat dengan indah, terbuat dari bahan yang sejuk dan nyaman seperti katun atau sutra."
-        }
-      ]
-    },
-    "naturalFibers": {
-      "title": "SERAT ALAMI",
-      "description": "Serat alami yang berkelanjutan dan ramah lingkungan untuk beragam aplikasi.",
-      "products": [
-        {
-          "key": "rami",
-          "name": "Rami",
-          "description": "Serat alami yang kuat dan berkilau yang dikenal karena daya tahan dan ketahanannya terhadap bakteri. Terasa mirip dengan linen berkualitas tinggi."
-        },
-        {
-          "key": "kenaf",
-          "name": "Kenaf",
-          "description": "Serat kulit kayu yang berkelanjutan dan tahan lama yang biasa digunakan untuk tali-temali, karung goni, dan bahan komposit industri."
-        },
-        {
-          "key": "nanas",
-          "name": "Nanas",
-          "description": "Serat halus dan ringan (Piña) yang diekstrak dari daun nanas, dihargai karena kilau alaminya dalam tekstil mewah."
-        }
-      ]
-    },
-    "specialFiber": {
-      "title": "SERAT KHUSUS",
-      "description": "Serat canggih yang direkayasa untuk fungsi teknologi tinggi tertentu.",
-      "products": [
-        {
-          "key": "nanoFiber",
-          "name": "Serat Nano",
-          "description": "Serat ultra-halus dengan diameter dalam rentang nanometer, menawarkan sifat luar biasa untuk filtrasi, medis, dan elektronik."
-        }
-      ]
-    },
-    "technicalTextile": {
-      "title": "BAHAN TEKSTIL TEKNIS",
-      "description": "Tekstil inovatif yang dirancang untuk performa, keamanan, dan penggunaan industri.",
-      "products": [
-        {
-          "key": "cutResistanceFabric",
-          "name": "Kain Tahan Potong",
-          "description": "Direkayasa dengan serat performa tinggi (misalnya Kevlar®) untuk melindungi dari benda tajam. Ideal untuk sarung tangan dan pakaian pelindung."
-        },
-        {
-          "key": "waterRepellentFabric",
-          "name": "Kain Anti Air",
-          "description": "Dilapisi dengan lapisan canggih (DWR) untuk membuat air menjadi butiran dan menggelincir, menjaga pengguna tetap kering dalam kondisi basah."
-        },
-        {
-          "key": "bulletproofFabric",
-          "name": "Kain Anti Peluru",
-          "description": "Kain balistik berbasis aramid yang dirancang untuk menghentikan proyektil. Digunakan dalam pelindung tubuh pribadi dan perlindungan kendaraan."
-        },
-        {
-          "key": "materialForLifeVestJacket",
-          "name": "Bahan untuk Jaket Pelampung",
-          "description": "Bahan yang sangat mudah mengapung, tahan air, dan tahan lama yang disertifikasi untuk perangkat pelampung pribadi (PFD)."
-        },
-        {
-          "key": "textileForSafety",
-          "name": "Tekstil untuk keselamatan",
-          "description": "Tekstil dengan visibilitas tinggi, tahan api (FR), dan anti-statis untuk alat pelindung diri (APD) yang komprehensif."
-        },
-        {
-          "key": "textileForAutomotive",
-          "name": "Tekstil untuk Otomotif",
-          "description": "Kain tahan lama untuk interior kendaraan, termasuk tempat duduk, plafon, karpet, dan komponen kantung udara (airbag)."
-        },
-        {
-          "key": "textileForConstruction",
-          "name": "Tekstil untuk konstruksi",
-          "description": "Geotekstil yang digunakan untuk stabilisasi tanah, pengendalian erosi, dan penguatan dalam proyek konstruksi."
-        },
-        {
-          "key": "nonWovenFabric",
-          "name": "Kain Non-Tenun",
-          "description": "Kain yang terbuat dari serat yang diikat bersama secara kimiawi atau termal. Digunakan dalam filter, perlengkapan medis, dan barang sekali pakai."
-        }
-      ]
-    },
-    "textileAccessories": {
-      "title": "AKSESORI TEKSTIL",
-      "description": "Rangkaian lengkap aksesori untuk melengkapi produk tekstil Anda.",
-      "products": [
-        {
-          "key": "webbing",
-          "name": "Webbing",
-          "description": "Kain tenun sempit yang kuat digunakan untuk tali, sabuk, dan pegangan di tas, peralatan keselamatan, dan pakaian."
-        },
-        {
-          "key": "interlining",
-          "name": "Interlining",
-          "description": "Lapisan kain yang ditempatkan di antara lapisan dalam dan kain luar untuk menambah bentuk, struktur, dan dukungan pada pakaian."
-        },
-        {
-          "key": "buckle",
-          "name": "Gesper",
-          "description": "Gesper logam dan plastik tahan lama untuk mengencangkan tali, tersedia dalam berbagai ukuran dan gaya."
-        },
-        {
-          "key": "zipper",
-          "name": "Ritsleting",
-          "description": "Ritsleting koil, logam, dan plastik berkualitas tinggi untuk pakaian, tas, dan aplikasi industri."
-        },
-        {
-          "key": "button",
-          "name": "Kancing",
-          "description": "Berbagai macam kancing dalam berbagai bahan, ukuran, dan warna untuk disesuaikan dengan estetika desain apa pun."
-        }
-      ]
-    },
-    "textileMachineries": {
-      "title": "MESIN TEKSTIL",
-      "description": "Mesin baru dan bekas yang andal untuk produksi tekstil.",
-      "products": [
-        {
-          "key": "secondHandMachinery",
-          "name": "Mesin Bekas",
-          "description": "Mesin tekstil bekas yang telah diperbaharui dan terawat dengan baik, menawarkan solusi hemat biaya untuk produksi."
-        }
-      ]
-    },
-    "wovenFabric": {
-      "title": "KAIN TENUN",
-      "description": "Kain tenun serbaguna termasuk Bemberg, kain RFP, dan kain cetak kustom.",
-      "products": [
-        {
-          "key": "bemberg",
-          "name": "Bemberg",
-          "description": "Serat selulosa regenerasi berkualitas tinggi (Cupro), dikenal karena rasa halusnya yang seperti sutra dan sirkulasi udara yang sangat baik. Sering digunakan sebagai lapisan premium."
-        },
-        {
-          "key": "rfpFabric",
-          "name": "Kain RFP",
-          "description": "Kain Poliester Daur Ulang (RFP) yang terbuat dari bahan pasca-konsumen. Pilihan berkelanjutan untuk pakaian ramah lingkungan."
-        },
-        {
-          "key": "customisePrintedFabric",
-          "name": "Kain Cetak Kustom",
-          "description": "Desain Anda, kain kami. Kami menawarkan layanan cetak digital dan sablon resolusi tinggi pada berbagai bahan dasar tenun."
-        }
-      ]
-    },
-    "yarn": {
-      "title": "BENANG",
-      "description": "Benang berkualitas tinggi dari serat alami dan teknis.",
-      "products": [
-        {
-          "key": "yarnFromBastAndLeafFiber",
-          "name": "Benang dari Serat Kulit Kayu dan Daun",
-          "description": "Benang kuat dan rustic yang dipintal dari serat alami seperti linen, rami, rami, dan kenaf. Ideal untuk tekstil tahan lama."
-        },
-        {
-          "key": "technicalYarn",
-          "name": "Benang Teknis",
-          "description": "Benang yang direkayasa dengan sifat-sifat spesifik, seperti tahan api, tahan potong, atau kekuatan tinggi untuk penggunaan industri."
-        }
-      ]
-    },
-    "viewAll": "Lihat Lebih Banyak Produk"
-  }
 }
