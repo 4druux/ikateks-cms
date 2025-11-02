@@ -89,7 +89,7 @@ const ModalNews = ({ item, allNews, onClose, onChangeItem }: ModalProps) => {
                         <h3 className="text-xl font-semibold text-zinc-800">
                             {t("common:modal.description")}{" "}
                         </h3>
-                        <p className="mb-4 leading-relaxed text-zinc-700">
+                        <p className="mb-4 leading-relaxed text-zinc-700 whitespace-pre-wrap">
                             {description}
                         </p>
                     </div>

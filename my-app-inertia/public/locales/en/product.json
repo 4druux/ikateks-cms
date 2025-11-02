@@ -42,7 +42,9 @@
             "productDescription": "Sorry, we couldn't find the product you're looking for."
         },
         "common": {
-            "noProducts": "No specific products for this category."
+            "noProducts": "No specific products for this category.",
+            "categories": "Categories",
+            "products": "Products"
         },
         "headline": "Our",
         "headline-span": "Products.",

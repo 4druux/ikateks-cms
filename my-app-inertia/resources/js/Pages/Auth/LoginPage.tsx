@@ -10,8 +10,8 @@ const LoginPage = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 min-h-screen">
                 <div className="hidden sm:flex sm:col-span-1 xl:col-span-2 items-center justify-center bg-zinc-50 p-12 relative overflow-hidden">
                     <Badge
-                        imageSrc="./images/login.svg"
-                        altText="Login Illustration"
+                        imageSrc="./images/sign.png"
+                        altText="Register Illustration"
                     />
                 </div>
 

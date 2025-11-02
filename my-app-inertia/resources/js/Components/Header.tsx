@@ -36,15 +36,15 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
         const logoutPromise = axios.post("/api/logout");
 
         toast.promise(logoutPromise, {
-            loading: "Sedang keluar...",
+            loading: "Logging out...",
             success: () => {
                 window.location.href = "/login";
-                return "Anda berhasil keluar.";
+                return "You have successfully logged out.";
             },
             error: (err: any) => {
                 console.error("Logout failed:", err);
                 window.location.href = "/login";
-                return "Gagal keluar, coba lagi.";
+                return "Logout failed, please try again.";
             },
         });
     };
@@ -76,7 +76,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
 
             <header className="lg:py-3 lg:px-6 text-zinc-700 sticky top-0 z-30">
                 <div className="flex items-center justify-between bg-white lg:border border-zinc-300 rounded-lg lg:shadow-sm py-3 lg:px-4">
-                    <div className="flex items-center gap-2 pl-3 sm:pl-0">
+                    <div className="flex items-center gap-2 pl-3 lg:pl-0">
                         <img
                             src="/images/icp.png"
                             alt="Logo ICP"

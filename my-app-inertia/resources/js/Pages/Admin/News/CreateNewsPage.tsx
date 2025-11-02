@@ -20,6 +20,7 @@ const CreateNewsPage: React.FC = () => {
     const {
         data,
         errors,
+        setError,
         clearErrors,
         reset,
         imagePreview,
@@ -33,15 +34,36 @@ const CreateNewsPage: React.FC = () => {
         e.preventDefault();
         clearErrors();
 
-        const formDataToSend = buildFormData("title"); // mainField key is 'title' for news
+        const formDataToSend = buildFormData("title");
 
-        await handleCreate(formDataToSend, () => {
-            reset();
-            handleRemoveImage();
-            router.visit("/admin/news");
-        });
+        await handleCreate(
+            formDataToSend,
+
+            () => {
+                reset();
+                handleRemoveImage();
+                router.visit("/admin/news");
+            },
+
+            (backendErrors) => {
+                if (backendErrors.title) {
+                    setError("mainField", backendErrors.title[0]);
+                }
+                if (backendErrors.description) {
+                    setError("description", backendErrors.description[0]);
+                }
+                if (backendErrors.title_id) {
+                    setError("mainField_id", backendErrors.title_id[0]);
+                }
+                if (backendErrors.description_id) {
+                    setError("description_id", backendErrors.description_id[0]);
+                }
+                if (backendErrors.image) {
+                    setError("image", backendErrors.image[0]);
+                }
+            }
+        );
     };
-
     return (
         <>
             <Head title="Create News" />

@@ -98,6 +98,7 @@ class NewsController extends Controller
             }
             $imagePath = $request->file('image')->store('news', 'public');
             $validated['image_path'] = $imagePath;
+            unset($validated['image']);
         } else {
             unset($validated['image']);
         }

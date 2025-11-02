@@ -23,10 +23,13 @@ interface UseNewsReturn {
     isMutating: boolean;
     error: any;
     handleDelete: (id: number) => Promise<void>;
+
     handleCreate: (
         formData: FormData,
-        onSuccess?: () => void
+        onSuccess: () => void,
+        onValidationError: (errors: Record<string, string[]>) => void
     ) => Promise<boolean>;
+
     handleUpdate: (
         slug: string,
         formData: FormData,
@@ -50,7 +53,9 @@ export default function useNews(): UseNewsReturn {
     const handleCreate = useCallback(
         async (
             formData: FormData,
-            onSuccess?: () => void
+
+            onSuccess: () => void,
+            onValidationError: (errors: Record<string, string[]>) => void
         ): Promise<boolean> => {
             setIsMutating(true);
             const toastId = toast.loading("Creating news item...");
@@ -76,6 +81,8 @@ export default function useNews(): UseNewsReturn {
                     axios.isAxiosError<ValidationErrorResponse>(err) &&
                     err.response?.status === 422
                 ) {
+                    onValidationError(err.response.data.errors);
+
                     toast.error(
                         err.response.data.message ||
                             "Validation failed. Please check the form.",

@@ -32,7 +32,7 @@ export default function HomePage() {
             <div className="min-h-screen bg-zinc-50">
                 <Hero onScrollDown={handleScrollDown} />
                 <News lenis={lenis} newsSectionRef={newsSectionRef} />
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-16 mt-10 md:mt-16 lg:mt-20 xl:mt-24 2xl:mt-28 space-y-16 md:space-y-20 lg:space-y-24 xl:space-y-32 2xl:space-y-40">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 mt-10 md:mt-16 lg:mt-20 xl:mt-24 2xl:mt-28 space-y-16 md:space-y-20 lg:space-y-24 xl:space-y-32 2xl:space-y-40">
                     <About />
                     <ProductCategories
                         headlineKey="product.headline"

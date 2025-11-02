@@ -13,7 +13,7 @@ const DescriptionField: React.FC<DescriptionFieldProps> = ({
     id,
     name,
     label,
-    rows = 4,
+    rows = 6,
     disabled = false,
     error,
     className,
@@ -33,7 +33,7 @@ const DescriptionField: React.FC<DescriptionFieldProps> = ({
         "focus:outline-none",
         "focus:ring-0",
         "sm:text-sm",
-        "min-h-[calc(theme(spacing.3)*2+theme(fontSize.sm[1].lineHeight)*var(--tw-rows,4))]",
+        "min-h-[calc(theme(spacing.3)*2+theme(fontSize.sm[1].lineHeight)*var(--tw-rows,6))]",
         error
             ? "border-red-500 focus:border-red-500"
             : "border-zinc-300 focus:border-red-800",

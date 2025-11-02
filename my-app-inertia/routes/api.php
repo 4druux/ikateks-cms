@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\Admin\AccountSettingsController;
 use App\Http\Controllers\Api\Admin\CustomersController;
+use App\Http\Controllers\Api\Admin\DashboardController;
 use App\Http\Controllers\Api\Admin\NewsController;
 use App\Http\Controllers\Api\Admin\PrincipalsController;
 use App\Http\Controllers\Api\Admin\ProductController;
@@ -32,6 +33,7 @@ Route::get('/customers', [PublicCustomersController::class, 'index']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('admin')->group(function () {
         Route::put('/account/settings', [AccountSettingsController::class, 'updateApi']);
+        Route::get('/dashboard-stats', [DashboardController::class, 'getStats'])->name('dashboard.stats');
 
         Route::get('/categories', [ProductController::class, 'indexCategories'])->name('categories.index');
         Route::post('/categories', [ProductController::class, 'storeCategory'])->name('categories.store');
@@ -48,7 +50,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/news', [NewsController::class, 'index'])->name('news.index');
         Route::post('/news', [NewsController::class, 'store'])->name('news.store');
         Route::get('/news/{news}', [NewsController::class, 'show'])->name('news.show');
-        Route::post('/news/{news}', [NewsController::class, 'update'])->name('news.update');
+        Route::put('/news/{news}', [NewsController::class, 'update'])->name('news.update');
         Route::delete('/news/{news:id}', [NewsController::class, 'destroy'])->name('news.destroy');
         
         Route::get('/principals', [PrincipalsController::class, 'index'])->name('principals.index');

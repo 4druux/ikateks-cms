@@ -22,7 +22,7 @@ const PrivacyPolicyContent = () => {
 
     return (
         <section className="mt-10 md:mt-16 lg:mt-20 xl:mt-24 2xl:mt-28">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-16">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6">
                 <div className="text-left lg:text-center mb-6 md:mb-12">
                     <h1 className="roboto-medium text-2xl md:text-3xl lg:text-4xl font-extrabold max-w-4xl mx-auto uppercase text-zinc-800 md:mb-1">
                         {t("privacyPage.content.headline")}{" "}

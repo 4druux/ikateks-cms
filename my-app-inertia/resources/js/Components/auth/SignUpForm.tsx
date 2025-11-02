@@ -46,14 +46,14 @@ export default function SignUpForm() {
                 error.response?.status === 422
             ) {
                 setErrors(error.response.data.errors);
-                toast.error("Gagal mendaftar, periksa kembali data Anda.");
+                toast.error("Fail to register, please try again.");
             } else if (axios.isAxiosError(error)) {
                 toast.error(
                     error.response?.data?.message ||
-                        "Terjadi kesalahan pada server."
+                        "An error occurred on the server."
                 );
             } else {
-                toast.error("Terjadi kesalahan yang tidak diketahui.");
+                toast.error("An unexpected error occurred.");
             }
         } finally {
             setIsSubmitting(false);
@@ -63,18 +63,16 @@ export default function SignUpForm() {
     return (
         <div className="w-full max-w-md px-4 md:px-0">
             <div className="flex flex-col items-start">
-                <h1 className="mt-4 text-3xl text-zinc-900">
-                    Selamat Datang! 👋
-                </h1>
+                <h1 className="mt-4 text-3xl text-zinc-900">Welcome! 👋</h1>
                 <p className="mt-1 text-sm text-zinc-500">
-                    Silakan daftar akun Anda, dan mulai menggunakan aplikasi.
+                    Please register your account, and start using the app.
                 </p>
             </div>
             <form className="mt-8 space-y-6" onSubmit={handleSubmit} noValidate>
                 <InputField
                     id="name"
                     name="name"
-                    label="Nama Lengkap"
+                    label="Name"
                     type="text"
                     value={values.name}
                     onChange={handleChange}
@@ -104,7 +102,7 @@ export default function SignUpForm() {
                 <PasswordField
                     id="password_confirmation"
                     name="password_confirmation"
-                    label="Konfirmasi Password"
+                    label="Confirm Password"
                     value={values.password_confirmation}
                     onChange={handleChange}
                     error={
@@ -128,14 +126,14 @@ export default function SignUpForm() {
                             )
                         }
                     >
-                        {isSubmitting ? "Mendaftar..." : "Daftar"}
+                        {isSubmitting ? "Loading..." : "Sign Up"}
                     </Button>
                 </div>
             </form>
             <h1 className="mt-4 text-sm text-zinc-700">
-                Sudah mempunyai akun?{" "}
+                Already have an account?{" "}
                 <Link href="/login" className="text-red-900 hover:underline">
-                    Silahkan Masuk
+                    Login
                 </Link>
             </h1>
         </div>

@@ -86,7 +86,7 @@ export default function PrincipalsPage() {
                         {principals.map((principal) => (
                             <div
                                 key={principal.id}
-                                className="relative group border rounded-lg overflow-hidden aspect-square bg-zinc-100 flex items-center justify-center p-2"
+                                className="relative group border rounded-lg overflow-hidden aspect-square bg-zinc-50 flex items-center justify-center p-2"
                             >
                                 <img
                                     src={
@@ -101,7 +101,7 @@ export default function PrincipalsPage() {
                                     }}
                                 />
 
-                                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center" />
+                                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center" />
                                 <div className="absolute top-2 right-2 flex gap-2 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                                     <button
                                         type="button"

@@ -105,7 +105,7 @@ const News = ({
     if (isLoading && !initialSlug) {
         return (
             <section className="mt-10 md:mt-16 lg:mt-20 xl:mt-24 2xl:mt-28">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-16">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6">
                     <div className="text-left lg:text-center mb-6 md:mb-12">
                         <h1 className="roboto-medium text-4xl md:text-5xl lg:text-6xl font-extrabold max-w-4xl mx-auto uppercase text-zinc-800">
                             {t("news.headline")}{" "}
@@ -128,7 +128,7 @@ const News = ({
     if (error) {
         return (
             <section className="mt-10 md:mt-16 lg:mt-20 xl:mt-24 2xl:mt-28">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-16 text-center text-red-600">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center text-red-600">
                     {t("news.error")}
                 </div>
             </section>
@@ -140,7 +140,7 @@ const News = ({
     return (
         <>
             <section className="mt-10 md:mt-16 lg:mt-20 xl:mt-24 2xl:mt-28">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-16">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6">
                     <div className="text-left lg:text-center">
                         <h1 className="roboto-medium text-4xl md:text-5xl lg:text-6xl font-extrabold max-w-4xl mx-auto uppercase text-zinc-800">
                             {t("news.headline")}{" "}

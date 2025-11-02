@@ -23,10 +23,13 @@ interface UseCategoriesReturn {
     isMutating: boolean;
     error: any;
     handleDelete: (id: number) => Promise<void>;
+
     handleCreate: (
         formData: FormData,
-        onSuccess?: () => void
+        onSuccess: () => void,
+        onValidationError: (errors: Record<string, string[]>) => void
     ) => Promise<boolean>;
+
     handleUpdate: (
         slug: string,
         formData: FormData,
@@ -50,7 +53,9 @@ export default function useCategories(): UseCategoriesReturn {
     const handleCreate = useCallback(
         async (
             formData: FormData,
-            onSuccess?: () => void
+
+            onSuccess: () => void,
+            onValidationError: (errors: Record<string, string[]>) => void
         ): Promise<boolean> => {
             setIsMutating(true);
             const toastId = toast.loading("Creating category...");
@@ -76,6 +81,8 @@ export default function useCategories(): UseCategoriesReturn {
                     axios.isAxiosError<ValidationErrorResponse>(err) &&
                     err.response?.status === 422
                 ) {
+                    onValidationError(err.response.data.errors);
+
                     toast.error(
                         err.response.data.message ||
                             "Validation failed. Please check the form.",
@@ -99,11 +106,12 @@ export default function useCategories(): UseCategoriesReturn {
         async (id: number) => {
             if (
                 window.confirm(
-                    "Apakah Anda yakin ingin menghapus kategori ini? Produk terkait juga akan terhapus."
+                    "Are you sure you want to delete this category? Related products will also be deleted."
                 )
             ) {
                 setIsMutating(true);
-                const toastId = toast.loading("Menghapus kategori...");
+
+                const toastId = toast.loading("Deleting category...");
 
                 mutate(
                     (currentData) =>
@@ -113,14 +121,16 @@ export default function useCategories(): UseCategoriesReturn {
 
                 try {
                     await deleteCategory(id);
-                    toast.success("Kategori berhasil dihapus.", {
+
+                    toast.success("Category deleted successfully.", {
                         id: toastId,
                     });
                 } catch (err: any) {
                     console.error("Failed to delete category:", err);
                     toast.error(
                         err.response?.data?.message ||
-                            "Gagal menghapus kategori.",
+                            "Failed to delete category.",
+
                         { id: toastId }
                     );
                     mutate();

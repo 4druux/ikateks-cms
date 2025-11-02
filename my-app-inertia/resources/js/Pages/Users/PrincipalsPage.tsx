@@ -32,7 +32,7 @@ const PrincipalsPage = ({ lenis }: PrincipalsProps) => {
                     description={t("principalsPage.hero.description")}
                 />
 
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-16 mt-10 md:mt-16 lg:mt-20 xl:mt-24 2xl:mt-28 space-y-16 md:space-y-20 lg:space-y-24 xl:space-y-32 2xl:space-y-40">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 mt-10 md:mt-16 lg:mt-20 xl:mt-24 2xl:mt-28 space-y-16 md:space-y-20 lg:space-y-24 xl:space-y-32 2xl:space-y-40">
                     <Principals lenis={lenis} />
                     <section>
                         <div className="text-left lg:text-center mb-12 md:mb-16">

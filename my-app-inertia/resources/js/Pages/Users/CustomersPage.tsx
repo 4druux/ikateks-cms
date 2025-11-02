@@ -24,7 +24,7 @@ const CustomerPage = () => {
                     description={t("homePage.customer.description")}
                 />
 
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-16 py-16 md:py-24">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-24">
                     <div className="text-left lg:text-center mb-12 md:mb-16">
                         <h1 className="roboto-medium text-4xl md:text-5xl lg:text-6xl font-extrabold max-w-4xl mx-auto uppercase text-zinc-800">
                             {t("homePage.customer.headline")}{" "}

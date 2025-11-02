@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class ProductController extends Controller
 {
@@ -98,6 +99,7 @@ class ProductController extends Controller
             }
             $imagePath = $request->file('image')->store('categories', 'public');
             $validated['image_path'] = $imagePath;
+            unset($validated['image']);
         } else {
             unset($validated['image']);
         }
@@ -142,7 +144,7 @@ class ProductController extends Controller
     public function storeProduct(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|unique:products,name',
             'description' => 'required|string',
             'name_id' => 'required|string|max:255',
             'description_id' => 'required|string',
@@ -189,7 +191,12 @@ class ProductController extends Controller
     public function updateProduct(Request $request, Product $product)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                 Rule::unique('products', 'name')->ignore($product->id),
+            ],
             'description' => 'required|string',
             'name_id' => 'required|string|max:255',
             'description_id' => 'required|string',
@@ -216,6 +223,7 @@ class ProductController extends Controller
             }
             $imagePath = $request->file('image')->store('products', 'public');
             $validated['image_path'] = $imagePath;
+            unset($validated['image']);
         } else {
             unset($validated['image']);
         }

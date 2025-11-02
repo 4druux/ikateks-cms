@@ -134,7 +134,9 @@ const ProductDetailPage: React.FC<{ categorySlug: string; slug: string }> = ({
                         </h3>
                         <div className="prose max-w-none text-gray-700">
                             {product.description ? (
-                                <p>{product.description}</p>
+                                <p className="whitespace-pre-wrap">
+                                    {product.description}
+                                </p>
                             ) : (
                                 <p className="italic text-gray-500">
                                     No description provided.

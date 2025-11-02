@@ -35,31 +35,43 @@ const EditCategoriesPage: React.FC<{ slug: string }> = ({ slug }) => {
 
     useEffect(() => {
         if (!slug) {
-            toast.error("Gagal memuat slug kategori.");
+            toast.error("Category slug not found.");
             router.visit("/admin/categories");
             return;
         }
 
+        let isMounted = true;
+
         getCategoryBySlug(slug)
             .then((category) => {
-                setData("mainField", category.title);
-                setData("description", category.description);
-                setData("mainField_id", category.title_id);
-                setData("description_id", category.description_id);
+                if (isMounted) {
+                    setData("mainField", category.title);
+                    setData("description", category.description);
+                    setData("mainField_id", category.title_id);
+                    setData("description_id", category.description_id);
 
-                setLoadedTitle(category.title);
-                setImagePreview(category.image_url);
-                setExistingImageUrl(category.image_url);
+                    setLoadedTitle(category.title);
+                    setImagePreview(category.image_url);
+                    setExistingImageUrl(category.image_url);
+                }
             })
             .catch((err) => {
-                console.error(err);
-                toast.error("Kategori tidak ditemukan atau gagal dimuat.");
-                router.visit("/admin/categories");
+                if (isMounted) {
+                    console.error(err);
+                    toast.error("Category not found.");
+                    router.visit("/admin/categories");
+                }
             })
             .finally(() => {
-                setIsLoading(false);
+                if (isMounted) {
+                    setIsLoading(false);
+                }
             });
-    }, [slug, setData, setImagePreview, setExistingImageUrl]);
+
+        return () => {
+            isMounted = false;
+        };
+    }, [setData, setExistingImageUrl, setImagePreview, slug]);
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();

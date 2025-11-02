@@ -67,7 +67,6 @@ const FormFields: React.FC<FormFieldsProps> = ({
                 value={data.mainField}
                 onChange={handleChange}
                 error={errors.mainField || errors.title || errors.name}
-                required
                 placeholder={titlePlaceholder}
             />
 
@@ -75,12 +74,11 @@ const FormFields: React.FC<FormFieldsProps> = ({
                 id="description"
                 name="description"
                 label={descriptionLabel}
-                rows={4}
+                rows={6}
                 value={data.description}
                 onChange={handleChange}
                 error={errors.description}
                 placeholder={descriptionPlaceholder}
-                required
             />
 
             <hr className="my-4" />
@@ -92,7 +90,6 @@ const FormFields: React.FC<FormFieldsProps> = ({
                 value={data.mainField_id}
                 onChange={handleChange}
                 error={errors.mainField_id || errors.title_id || errors.name_id}
-                required
                 placeholder={titleIdPlaceholder}
             />
 
@@ -100,12 +97,11 @@ const FormFields: React.FC<FormFieldsProps> = ({
                 id="description_id"
                 name="description_id"
                 label={descriptionIdLabel}
-                rows={4}
+                rows={6}
                 value={data.description_id}
                 onChange={handleChange}
                 error={errors.description_id}
                 placeholder={descriptionIdPlaceholder}
-                required
             />
         </>
     );

@@ -71,7 +71,7 @@ const NewsDetailPage: React.FC<{ slug: string }> = ({ slug }) => {
         <>
             <Head title={newsItem.title} />
             <PageContent
-                pageTitle={newsItem.title}
+                pageTitle="Manage News"
                 breadcrumbItems={breadcrumbItems}
                 pageClassName="mt-4"
             >
@@ -120,11 +120,13 @@ const NewsDetailPage: React.FC<{ slug: string }> = ({ slug }) => {
                     </div>
                     <div className="md:col-span-2">
                         <h3 className="text-lg font-semibold text-gray-900 border-b pb-2 mb-4">
-                            Content
+                            Description
                         </h3>
                         <div className="prose max-w-none text-gray-700">
                             {newsItem.description ? (
-                                <p>{newsItem.description}</p>
+                                <p className="whitespace-pre-wrap">
+                                    {newsItem.description}
+                                </p>
                             ) : (
                                 <p className="italic text-gray-500">
                                     No content provided.

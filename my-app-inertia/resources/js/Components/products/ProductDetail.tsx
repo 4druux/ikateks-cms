@@ -36,7 +36,7 @@ const ProductDetail = ({
     )}`;
 
     return (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-16 mt-10 md:mt-16 lg:mt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 mt-10 md:mt-16 lg:mt-20">
             <Link
                 href={`/products/${categorySlug}`}
                 className="text-red-800 font-medium hover:underline inline-flex items-center group mb-2"
@@ -58,7 +58,7 @@ const ProductDetail = ({
                     <h1 className="text-3xl md:text-4xl font-extrabold text-zinc-800 uppercase">
                         {productName}
                     </h1>
-                    <p className="mt-1 text-lg text-zinc-600">
+                    <p className="mt-1 text-lg text-zinc-600 whitespace-pre-wrap">
                         {productDescription}
                     </p>
 

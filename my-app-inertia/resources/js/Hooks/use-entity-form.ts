@@ -83,8 +83,8 @@ export function useEntityForm(): UseEntityFormReturn {
 
     const handleRemoveImage = useCallback(() => {
         setData("image", null);
-        setImagePreview(existingImageUrl);
-    }, [setData, existingImageUrl]);
+        setImagePreview(null);
+    }, [setData]);
 
     const buildFormData = useCallback(
         (

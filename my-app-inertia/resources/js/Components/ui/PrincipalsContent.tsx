@@ -19,7 +19,7 @@ const PrincipalsContent = ({
                 {principals.map((item) => {
                     const Icon = item.icon;
                     return (
-                        <div
+                        <button
                             key={item.id}
                             onClick={() => onPrincipalsClick(item)}
                             className="group relative cursor-pointer"
@@ -37,10 +37,10 @@ const PrincipalsContent = ({
                                         strokeWidth={1.5}
                                     />
                                 </div>
-                                <h3 className="text-xl font-bold text-zinc-800">
+                                <h3 className="text-xl font-bold text-zinc-800 text-start">
                                     {item.title}
                                 </h3>
-                                <p className="mt-2 flex-grow text-zinc-600 line-clamp-3">
+                                <p className="mt-2 flex-grow text-zinc-600 line-clamp-3 text-start">
                                     {item.description}
                                 </p>
                                 <div className="mt-4 flex items-center justify-between border-t border-zinc-100 pt-4">
@@ -50,7 +50,7 @@ const PrincipalsContent = ({
                                     <ArrowRight className="h-5 w-5 text-zinc-400 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-red-900" />
                                 </div>
                             </div>
-                        </div>
+                        </button>
                     );
                 })}
             </div>

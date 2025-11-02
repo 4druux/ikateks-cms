@@ -28,16 +28,20 @@ interface UseProductsReturn {
     isMutating: boolean;
     error: any;
     handleDelete: (id: number) => Promise<void>;
+
     handleCreate: (
         formData: FormData,
-        onSuccess?: () => void
+        onSuccess: () => void,
+        onValidationError: (errors: Record<string, string[]>) => void
     ) => Promise<boolean>;
+
     handleUpdate: (
         slug: string,
         formData: FormData,
         onValidationError: (errors: Record<string, string[]>) => void,
         onSuccess?: () => void
     ) => Promise<boolean>;
+
     mutateProducts: () => Promise<ProductsResponse | undefined>;
 }
 
@@ -62,7 +66,8 @@ export default function useProducts(
     const handleCreate = useCallback(
         async (
             formData: FormData,
-            onSuccess?: () => void
+            onSuccess: () => void,
+            onValidationError: (errors: Record<string, string[]>) => void
         ): Promise<boolean> => {
             setIsMutating(true);
             const toastId = toast.loading("Creating product...");
@@ -97,6 +102,8 @@ export default function useProducts(
                     axios.isAxiosError<ValidationErrorResponse>(err) &&
                     err.response?.status === 422
                 ) {
+                    onValidationError(err.response.data.errors);
+
                     toast.error(
                         err.response.data.message ||
                             "Validation failed. Please check the form.",
@@ -119,11 +126,10 @@ export default function useProducts(
     const handleDelete = useCallback(
         async (id: number) => {
             if (
-                window.confirm("Apakah Anda yakin ingin menghapus produk ini?")
+                window.confirm("Are you sure you want to delete this product?")
             ) {
                 setIsMutating(true);
-                const toastId = toast.loading("Menghapus produk...");
-
+                const toastId = toast.loading("Deleting product...");
                 mutate(
                     (currentData) =>
                         currentData
@@ -139,14 +145,15 @@ export default function useProducts(
 
                 try {
                     await deleteProduct(id);
-                    toast.success("Produk berhasil dihapus.", {
+                    toast.success("Product deleted successfully.", {
                         id: toastId,
                     });
                 } catch (err: any) {
                     console.error("Failed to delete product:", err);
                     toast.error(
                         err.response?.data?.message ||
-                            "Gagal menghapus produk.",
+                            "Failed to delete product.",
+
                         { id: toastId }
                     );
                     mutate();

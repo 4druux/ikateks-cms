@@ -1,43 +1,43 @@
 {
-  "homePage": {
-    "hero": {
-      "title": "Membangun Kesukesan Bersama",
-      "companyName": "PT. Ikateks Citra Persada",
-      "description": "ICP - Mendorong Keunggulan, Menaklukkan Tantangan, Menangkap Peluang."
-    },
-    "aboutSection": {
-      "headline": "Tentang",
-      "headlineSpan": "Kami.",
-      "description": "Meru Solution adalah firma konsultan terkemuka yang berdedikasi untuk membantu bisnis berkembang di era digital",
-      "stats": {
-        "experience": {
-          "title": "tahun pengalaman",
-          "description": "Pengalaman ekstensif tim kami memastikan pemahaman mendalam tentang lanskap digital dan tren industri, memungkinkan kami memberikan solusi inovatif yang terbukti."
+    "homePage": {
+        "hero": {
+            "title": "Membangun Kesukesan Bersama",
+            "companyName": "PT. Ikateks Citra Persada",
+            "description": "ICP - Membangun kesuksesan bersama dengan memberdayakan inovasi dan memperkuat kemitraan di industri tekstil."
         },
-        "cases": {
-          "title": "Kasus terselesaikan",
-          "description": "Kami memiliki rekam jejak yang terbukti dalam menangani tantangan kompleks, memberikan hasil nyata, dan kesuksesan di berbagai proyek klien."
+        "aboutSection": {
+            "headline": "Tentang",
+            "headlineSpan": "Kami.",
+            "description": "Meru Solution adalah firma konsultan terkemuka yang berdedikasi untuk membantu bisnis berkembang di era digital",
+            "stats": {
+                "experience": {
+                    "title": "tahun pengalaman",
+                    "description": "Pengalaman ekstensif tim kami memastikan pemahaman mendalam tentang lanskap digital dan tren industri, memungkinkan kami memberikan solusi inovatif yang terbukti."
+                },
+                "cases": {
+                    "title": "Kasus terselesaikan",
+                    "description": "Kami memiliki rekam jejak yang terbukti dalam menangani tantangan kompleks, memberikan hasil nyata, dan kesuksesan di berbagai proyek klien."
+                },
+                "clients": {
+                    "title": "Klien telah dilayani",
+                    "description": "Kami telah bermitra dengan lebih dari seratus klien, membantu mereka menavigasi transformasi digital dan mencapai kesuksesan yang terukur."
+                }
+            },
+            "linkText": "Lebih Lanjut Tentang Kami"
         },
-        "clients": {
-          "title": "Klien telah dilayani",
-          "description": "Kami telah bermitra dengan lebih dari seratus klien, membantu mereka menavigasi transformasi digital dan mencapai kesuksesan yang terukur."
+        "growSection": {
+            "headline": "Tumbuh",
+            "headlineSpan": "terbuka.",
+            "description": "Solusi komprehensif yang disesuaikan dengan kebutuhan bisnis Anda.",
+            "imageAlt": "kantor"
+        },
+        "customer": {
+            "title": "Dipercaya Oleh Industri Pionir",
+            "description": "Kami telah bermitra dengan lebih dari seratus klien, membantu mereka menavigasi transformasi digital dan mencapai kesuksesan yang terukur."
+        },
+        "cta": {
+            "title": "Siap Mentransformasi Bisnis Anda?",
+            "linkText": "Mari berdiskusi dengan kami"
         }
-      },
-      "linkText": "Lebih Lanjut Tentang Kami"
-    },
-    "growSection": {
-      "headline": "Tumbuh",
-      "headlineSpan": "terbuka.",
-      "description": "Solusi komprehensif yang disesuaikan dengan kebutuhan bisnis Anda.",
-      "imageAlt": "kantor"
-    },
-    "customer": {
-      "title": "Dipercaya Oleh Industri Pionir",
-      "description": "Kami telah bermitra dengan lebih dari seratus klien, membantu mereka menavigasi transformasi digital dan mencapai kesuksesan yang terukur."
-    },
-    "cta": {
-      "title": "Siap Mentransformasi Bisnis Anda?",
-      "linkText": "Mari berdiskusi dengan kami"
     }
-  }
 }

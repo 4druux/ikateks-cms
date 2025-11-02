@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import PageContent from "@/Components/ui/admin/PageContent";
-import { Head, usePage } from "@inertiajs/react";
+import { Head, router, usePage } from "@inertiajs/react";
 import { toast } from "react-hot-toast";
 import { ArrowLeft, Loader2, Save } from "lucide-react";
 import InputField from "@/Components/common/InputField";
@@ -83,12 +83,16 @@ const AccountSettingsPage: React.FC = () => {
 
         try {
             const response = await axios.put<SuccessResponse>(
-                "/api/account/settings",
+                "/api/admin/account/settings",
                 formData
             );
+
             toast.success(
-                response.data.message || "Pengaturan akun berhasil diperbarui."
+                response.data.message ||
+                    "Account settings updated successfully."
             );
+
+            router.reload({ only: ["auth"] });
 
             setFormData((prev) => ({
                 ...prev,
@@ -104,13 +108,14 @@ const AccountSettingsPage: React.FC = () => {
                 error.response?.data?.errors
             ) {
                 setErrors(error.response.data.errors);
-                toast.error(error.response.data.message || "Data tidak valid.");
+
+                toast.error(error.response.data.message || "Invalid data.");
             } else if (axios.isAxiosError(error)) {
                 toast.error(
-                    error.response?.data?.message || "Gagal memperbarui akun."
+                    error.response?.data?.message || "Failed to update account."
                 );
             } else {
-                toast.error("Terjadi kesalahan yang tidak diketahui.");
+                toast.error("An unknown error occurred.");
             }
         } finally {
             setProcessing(false);
@@ -128,10 +133,10 @@ const AccountSettingsPage: React.FC = () => {
                 <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                     <div className="md:col-span-1 flex flex-col items-center">
                         <div className="w-16 h-16 md:w-24 md:h-24 rounded-full bg-red-900 flex items-center justify-center text-white text-2xl md:text-4xl font-bold mb-2 md:mb-4">
-                            {getInitials(formData.name)}
+                            {getInitials(auth.user.name)}
                         </div>
                         <h3 className="text-md md:text-lg font-medium text-neutral-700">
-                            {formData.name}
+                            {auth.user.name}
                         </h3>
                         <p className="text-sm md:text-md text-neutral-500 capitalize">
                             {auth.user.role.replace("_", " ")}

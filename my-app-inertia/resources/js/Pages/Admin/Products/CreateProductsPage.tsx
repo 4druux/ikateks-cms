@@ -26,6 +26,7 @@ const CreateProductsPage: React.FC<{ categorySlug: string }> = ({
     const {
         data,
         errors,
+        setError,
         clearErrors,
         reset,
         imagePreview,
@@ -70,11 +71,33 @@ const CreateProductsPage: React.FC<{ categorySlug: string }> = ({
             product_category_id: productCategoryId,
         });
 
-        await handleCreate(formDataToSend, () => {
-            reset();
-            handleRemoveImage();
-            router.visit(`/admin/categories/${categorySlug}`);
-        });
+        await handleCreate(
+            formDataToSend,
+
+            () => {
+                reset();
+                handleRemoveImage();
+                router.visit(`/admin/categories/${categorySlug}`);
+            },
+
+            (backendErrors) => {
+                if (backendErrors.name) {
+                    setError("mainField", backendErrors.name[0]);
+                }
+                if (backendErrors.description) {
+                    setError("description", backendErrors.description[0]);
+                }
+                if (backendErrors.name_id) {
+                    setError("mainField_id", backendErrors.name_id[0]);
+                }
+                if (backendErrors.description_id) {
+                    setError("description_id", backendErrors.description_id[0]);
+                }
+                if (backendErrors.image) {
+                    setError("image", backendErrors.image[0]);
+                }
+            }
+        );
     };
 
     if (isLoadingCategory) {

@@ -17,7 +17,7 @@ const ProductCategoriesPage = () => {
                     title={t("productCategoriesPage.hero.title")}
                     description={t("productCategoriesPage.hero.description")}
                 />
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-16 mt-10 md:mt-16 lg:mt-20 xl:mt-24 2xl:mt-28">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 mt-10 md:mt-16 lg:mt-20 xl:mt-24 2xl:mt-28">
                     <ProductCategories />
                 </div>
 

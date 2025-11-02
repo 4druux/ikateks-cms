@@ -42,7 +42,9 @@
             "productDescription": "Maaf, kami tidak dapat menemukan produk yang Anda cari."
         },
         "common": {
-            "noProducts": "Tidak ada produk spesifik untuk kategori ini."
+            "noProducts": "Tidak ada produk spesifik untuk kategori ini.",
+            "categories": "Kategori",
+            "products": "Produk"
         },
         "headline": "Produk",
         "headline-span": "Kami.",

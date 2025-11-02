@@ -20,6 +20,7 @@ const CreateCategoriesPage: React.FC = () => {
     const {
         data,
         errors,
+        setError,
         clearErrors,
         reset,
         imagePreview,
@@ -35,13 +36,34 @@ const CreateCategoriesPage: React.FC = () => {
 
         const formDataToSend = buildFormData("title");
 
-        await handleCreate(formDataToSend, () => {
-            reset();
-            handleRemoveImage();
-            router.visit("/admin/categories");
-        });
-    };
+        await handleCreate(
+            formDataToSend,
 
+            () => {
+                reset();
+                handleRemoveImage();
+                router.visit("/admin/categories");
+            },
+
+            (backendErrors) => {
+                if (backendErrors.title) {
+                    setError("mainField", backendErrors.title[0]);
+                }
+                if (backendErrors.description) {
+                    setError("description", backendErrors.description[0]);
+                }
+                if (backendErrors.title_id) {
+                    setError("mainField_id", backendErrors.title_id[0]);
+                }
+                if (backendErrors.description_id) {
+                    setError("description_id", backendErrors.description_id[0]);
+                }
+                if (backendErrors.image) {
+                    setError("image", backendErrors.image[0]);
+                }
+            }
+        );
+    };
     return (
         <>
             <Head title="Create Category" />

@@ -45,9 +45,9 @@ const ProductCategoryDetailPage = ({ categorySlug }: CategoryDetailProps) => {
             <>
                 <Head title={t("common:nav.products")} />
                 <Hero
-                    imageSrc="/images/office-2.jpg" 
-                    title={t("common:loading...")} 
-                    description={t("common:loading...")} 
+                    imageSrc="/images/office-2.jpg"
+                    title={t("common:loading...")}
+                    description={t("common:loading...")}
                 />
                 <div className="flex justify-center items-center h-64 my-20">
                     <DotLoader />
@@ -70,7 +70,7 @@ const ProductCategoryDetailPage = ({ categorySlug }: CategoryDetailProps) => {
                     title={t("productCategoriesPage.hero.title")}
                     description={t("productCategoriesPage.hero.description")}
                 />
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-16 py-20 min-h-[50vh] flex flex-col items-center justify-center">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 py-20 min-h-[50vh] flex flex-col items-center justify-center">
                     <h1 className="text-4xl font-bold text-center">
                         {t("product.notFound.categoryTitle")}
                     </h1>
@@ -107,7 +107,7 @@ const ProductCategoryDetailPage = ({ categorySlug }: CategoryDetailProps) => {
                     description={categoryDescription}
                 />
 
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-16 mt-10 md:mt-16 lg:mt-20">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 mt-10 md:mt-16 lg:mt-20">
                     <ProductCategoriesDetail
                         products={products || []}
                         categorySlug={categorySlug}

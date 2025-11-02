@@ -21,7 +21,7 @@ const AboutPage = () => {
                     description={t("aboutPage.hero.description")}
                 />
 
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-16 mt-16 md:mt-20 lg:mt-24 xl:mt-32 2xl:mt-40 space-y-16 md:space-y-20 lg:space-y-24 xl:space-y-32 2xl:space-y-40">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 mt-16 md:mt-20 lg:mt-24 xl:mt-32 2xl:mt-40 space-y-16 md:space-y-20 lg:space-y-24 xl:space-y-32 2xl:space-y-40">
                     <AboutOne />
                     <AboutTwo />
                     <AboutThree />

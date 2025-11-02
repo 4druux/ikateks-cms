@@ -35,7 +35,7 @@ export default function SignInForm() {
             toast.success("Login berhasil!");
             router.visit("/admin");
         } catch (error) {
-            const loginErrorMessage = "Email atau password salah.";
+            const loginErrorMessage = "Invalid email or password.";
 
             if (
                 axios.isAxiosError<ValidationErrorResponse>(error) &&
@@ -59,10 +59,10 @@ export default function SignInForm() {
             } else if (axios.isAxiosError(error)) {
                 toast.error(
                     error.response?.data?.message ||
-                        "Terjadi kesalahan pada server."
+                        "An error occurred on the server."
                 );
             } else {
-                toast.error("Terjadi kesalahan yang tidak diketahui.");
+                toast.error("An unexpected error occurred.");
             }
         } finally {
             setIsSubmitting(false);
@@ -72,11 +72,9 @@ export default function SignInForm() {
     return (
         <div className="w-full max-w-md px-4 md:px-0">
             <div className="flex flex-col items-start">
-                <h1 className="mt-4 text-3xl text-zinc-900">
-                    Selamat Datang! 👋
-                </h1>
+                <h1 className="mt-4 text-3xl text-zinc-900">Welcome! 👋</h1>
                 <p className="mt-1 text-sm text-zinc-500">
-                    Silakan masuk ke akun Anda, dan mulai menggunakan aplikasi.
+                    Please log in to your account, and start using the app.
                 </p>
             </div>
             <form className="mt-8 space-y-6" onSubmit={handleSubmit} noValidate>
@@ -113,14 +111,14 @@ export default function SignInForm() {
                             )
                         }
                     >
-                        {isSubmitting ? "Memproses..." : "Masuk"}
+                        {isSubmitting ? "Loading..." : "Sign In"}
                     </Button>
                 </div>
             </form>
             <h1 className="mt-4 text-sm text-zinc-700">
-                Tidak mempunyai akun?{" "}
+                Don&apos;t have an account?{" "}
                 <Link href="/register" className="text-red-900 hover:underline">
-                    Silahkan Daftar
+                    Register
                 </Link>
             </h1>
         </div>
