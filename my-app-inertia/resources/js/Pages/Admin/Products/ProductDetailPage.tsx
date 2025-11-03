@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Head, router } from "@inertiajs/react";
-import { Product, getProductBySlug } from "@/Utils/api";
+import { Product, getProductBySlug, getCategoryBySlug } from "@/Utils/api";
 import useProducts from "@/Hooks/use-product";
 import PageContent from "@/Components/ui/admin/PageContent";
 import HeaderContent from "@/Components/ui/admin/HeaderContent";
@@ -14,6 +14,7 @@ const ProductDetailPage: React.FC<{ categorySlug: string; slug: string }> = ({
     slug,
 }) => {
     const [product, setProduct] = useState<Product | null>(null);
+    const [category, setCategory] = useState<{ title: string } | null>(null);
     const [isLoading, setIsLoading] = useState(true);
 
     const { handleDelete, isMutating } = useProducts(categorySlug);
@@ -30,13 +31,14 @@ const ProductDetailPage: React.FC<{ categorySlug: string; slug: string }> = ({
             return;
         }
 
-        getProductBySlug(slug)
-            .then((data) => {
-                setProduct(data);
+        Promise.all([getProductBySlug(slug), getCategoryBySlug(categorySlug)])
+            .then(([productData, categoryData]) => {
+                setProduct(productData);
+                setCategory(categoryData);
             })
             .catch((err) => {
                 console.error(err);
-                toast.error("Produk tidak ditemukan atau gagal dimuat.");
+                toast.error("Produk atau Kategori tidak ditemukan.");
                 router.visit(`/admin/categories/${categorySlug}`);
             })
             .finally(() => {
@@ -46,11 +48,8 @@ const ProductDetailPage: React.FC<{ categorySlug: string; slug: string }> = ({
 
     const handleDeleteClick = async () => {
         if (!product) return;
-        await handleDelete(product.id);
 
-        if (!isMutating) {
-            router.visit(`/admin/categories/${categorySlug}`);
-        }
+        await handleDelete(product.id);
     };
 
     if (isLoading) {
@@ -72,7 +71,10 @@ const ProductDetailPage: React.FC<{ categorySlug: string; slug: string }> = ({
     const breadcrumbItems = [
         { label: "Home", href: "/admin" },
         { label: "Categories", href: "/admin/categories" },
-        { label: categorySlug, href: `/admin/categories/${categorySlug}` },
+        {
+            label: category ? category.title : isLoading ? "..." : categorySlug,
+            href: `/admin/categories/${categorySlug}`,
+        },
         { label: product.name },
     ];
 

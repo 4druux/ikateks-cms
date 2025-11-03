@@ -11,7 +11,7 @@ class PublicProductController extends Controller
 {
     public function indexCategories()
     {
-        $categories = ProductCategory::latest()->get();
+        $categories = ProductCategory::oldest()->get();
         $categories->each(function ($category) {
             if ($category->image_path) {
                 $category->image_url = Storage::url($category->image_path);

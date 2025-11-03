@@ -11,7 +11,7 @@ class PublicCustomersController extends Controller
 
     public function index()
     {
-        $customers = Customers::latest()->get();
+        $customers = Customers::oldest()->get();
         $customers->each(function ($customer) {
             if ($customer->image_path) {
                 $customer->image_url = Storage::url($customer->image_path);

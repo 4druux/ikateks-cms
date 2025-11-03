@@ -14,7 +14,7 @@ class NewsController extends Controller
 
     public function index()
     {
-        $newsItems = News::latest()->get();
+        $newsItems = News::oldest()->get();
         $newsItems->each(function ($item) {
             if ($item->image_path) {
                 $item->image_url = Storage::url($item->image_path);

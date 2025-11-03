@@ -14,12 +14,10 @@ import DotLoader from "@/Components/ui/DotLoader";
 const CreateProductsPage: React.FC<{ categorySlug: string }> = ({
     categorySlug,
 }) => {
-    const breadcrumbItems = [
-        { label: "Home", href: "/admin" },
-        { label: "Categories", href: "/admin/categories" },
-        { label: categorySlug, href: `/admin/categories/${categorySlug}` },
-        { label: "Create Product" },
-    ];
+    const [category, setCategory] = useState<{
+        id: number;
+        title: string;
+    } | null>(null);
 
     const { handleCreate, isMutating } = useProducts(null);
 
@@ -49,6 +47,7 @@ const CreateProductsPage: React.FC<{ categorySlug: string }> = ({
         getCategoryBySlug(categorySlug)
             .then((category) => {
                 setProductCategoryId(String(category.id));
+                setCategory(category);
                 setIsLoadingCategory(false);
             })
             .catch((err) => {
@@ -107,6 +106,16 @@ const CreateProductsPage: React.FC<{ categorySlug: string }> = ({
             </div>
         );
     }
+
+    const breadcrumbItems = [
+        { label: "Home", href: "/admin" },
+        { label: "Categories", href: "/admin/categories" },
+        {
+            label: category ? category.title : categorySlug,
+            href: `/admin/categories/${categorySlug}`,
+        },
+        { label: "Create Product" },
+    ];
 
     return (
         <>

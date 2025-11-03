@@ -13,7 +13,7 @@ class PrincipalsController extends Controller
 
     public function index()
     {
-        $principals = Principals::latest()->get();
+        $principals = Principals::oldest()->get();
         $principals->each(function ($principal) {
             if ($principal->image_path) {
                 $principal->image_url = Storage::url($principal->image_path);

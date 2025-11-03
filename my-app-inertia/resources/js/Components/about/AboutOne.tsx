@@ -34,7 +34,7 @@ const AboutOne = () => {
 
                 <img
                     className="relative z-20 w-full h-full object-cover rounded-lg"
-                    src="/images/about/himawan.jpg"
+                    src="/images/about/Himawan.jpg"
                     alt={aboutOne.imageAlt}
                 />
             </div>

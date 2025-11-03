@@ -2,7 +2,7 @@ import React, { useState, FormEvent, useEffect } from "react";
 import PageContent from "@/Components/ui/admin/PageContent";
 import { Head, router } from "@inertiajs/react";
 import { toast } from "react-hot-toast";
-import { getProductBySlug } from "@/Utils/api";
+import { getProductBySlug, getCategoryBySlug } from "@/Utils/api";
 import DotLoader from "@/Components/ui/DotLoader";
 import FormLayout from "@/Components/ui/admin/FormLayout";
 import FormFields from "@/Components/ui/admin/FormFields";
@@ -36,6 +36,7 @@ const EditProductsPage: React.FC<{ categorySlug: string; slug: string }> = ({
     const [isLoading, setIsLoading] = useState(!!slug);
     const [loadedName, setLoadedName] = useState<string>("...");
     const [productCategoryId, setProductCategoryId] = useState<string>("");
+    const [category, setCategory] = useState<{ title: string } | null>(null);
 
     useEffect(() => {
         if (!categorySlug) {
@@ -49,21 +50,22 @@ const EditProductsPage: React.FC<{ categorySlug: string; slug: string }> = ({
             return;
         }
 
-        getProductBySlug(slug)
-            .then((product) => {
+        Promise.all([getProductBySlug(slug), getCategoryBySlug(categorySlug)])
+            .then(([product, categoryData]) => {
                 setData("mainField", product.name);
                 setData("description", product.description);
                 setData("mainField_id", product.name_id);
                 setData("description_id", product.description_id);
-
                 setProductCategoryId(String(product.product_category_id));
                 setLoadedName(product.name);
                 setImagePreview(product.image_url);
                 setExistingImageUrl(product.image_url);
+
+                setCategory(categoryData);
             })
             .catch((err) => {
                 console.error(err);
-                toast.error("Produk tidak ditemukan atau gagal dimuat.");
+                toast.error("Produk atau Kategori tidak ditemukan.");
                 router.visit(`/admin/categories/${categorySlug}`);
             })
             .finally(() => {
@@ -122,7 +124,10 @@ const EditProductsPage: React.FC<{ categorySlug: string; slug: string }> = ({
     const breadcrumbItems = [
         { label: "Home", href: "/admin" },
         { label: "Categories", href: "/admin/categories" },
-        { label: categorySlug, href: `/admin/categories/${categorySlug}` },
+        {
+            label: category ? category.title : isLoading ? "..." : categorySlug,
+            href: `/admin/categories/${categorySlug}`,
+        },
         { label: isLoading ? "..." : `Edit ${loadedName}` },
     ];
 
