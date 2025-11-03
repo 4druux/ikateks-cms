@@ -69,7 +69,7 @@ const ProductListForCategory: React.FC<{
 };
 
 const Navbar = () => {
-    const { t, i18n } = useTranslation("product");
+    const { t, i18n } = useTranslation(["common", "product"]);
     const [isOpen, setIsOpen] = useState(false);
     const { url } = usePage();
     const [isVisible, setIsVisible] = useState(true);

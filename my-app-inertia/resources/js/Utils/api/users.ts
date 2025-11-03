@@ -6,12 +6,12 @@ export interface ResetPasswordData {
 }
 
 export const approveUser = async (userId: string | number) => {
-    const response = await axios.post(`/api/users/${userId}/approve`);
+    const response = await axios.post(`/api/admin/users/${userId}/approve`);
     return response.data;
 };
 
 export const rejectUser = async (userId: string | number) => {
-    const response = await axios.delete(`/api/users/${userId}`);
+    const response = await axios.delete(`/api/admin/users/${userId}`);
     return response.data;
 };
 
@@ -20,7 +20,7 @@ export const resetPassword = async (
     passwordData: ResetPasswordData
 ) => {
     const response = await axios.put(
-        `/api/users/${userId}/reset-password`,
+        `/api/admin/users/${userId}/reset-password`,
         passwordData
     );
     return response.data;

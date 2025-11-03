@@ -39,8 +39,8 @@ class AuthController extends Controller
         ]);
 
         $message = $isFirstUser
-            ? 'Registrasi Super Admin berhasil! Silakan login.'
-            : 'Registrasi berhasil! Akun Anda sedang menunggu persetujuan Super Admin.';
+            ? 'Super Admin registration successful! Please log in.'
+            : 'Registration successful! Your account is pending Super Admin approval.';
 
         return response()->json(['message' => $message], 201);
     }
@@ -63,7 +63,7 @@ class AuthController extends Controller
 
         if (!Auth::attempt($credentials)) {
             throw ValidationException::withMessages([
-                'email' => __('Email atau password salah.'),
+                'email' => __('Incorrect email or password.'),
             ]);
         }
 
@@ -74,14 +74,14 @@ class AuthController extends Controller
             $request->session()->regenerateToken();
 
             throw ValidationException::withMessages([
-                'login' => 'Akun Anda sedang menunggu persetujuan Super Admin.',
+                'login' => 'Your account is pending Super Admin approval.',
             ]);
         }
 
         $request->session()->regenerate();
 
         return response()->json([
-            'message' => 'Login berhasil!',
+            'message' => 'Login successful!',
             'user' => $user
         ]);
     }

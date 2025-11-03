@@ -80,10 +80,6 @@ export default [
                 typescript: {
                     project: "./tsconfig.json",
                 },
-                alias: {
-                    map: [["@", path.resolve(__dirname, "resources/js")]],
-                    extensions: [".js", ".jsx", ".ts", ".tsx"],
-                },
             },
         },
     },

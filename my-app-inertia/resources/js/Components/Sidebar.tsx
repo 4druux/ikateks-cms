@@ -7,6 +7,7 @@ import {
     Newspaper,
     Building2,
     Handshake,
+    UserCog2,
 } from "lucide-react";
 import { Link, usePage } from "@inertiajs/react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
@@ -106,6 +107,14 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
             description: "Manage Customers",
             href: "/admin/customers",
             canView: !!auth.user && hasAccess(["superadmin", "admin"]),
+        },
+        {
+            id: "manage-account",
+            label: "Manage Account",
+            icon: UserCog2,
+            description: "Manage Account",
+            href: "/admin/manage-account",
+            canView: !!auth.user && hasAccess(["superadmin"]),
         },
     ];
 

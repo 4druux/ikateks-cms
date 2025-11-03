@@ -1,15 +1,24 @@
-import React, { useState } from "react";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import React, { useRef, useState } from "react";
+import { Mail, Phone, MapPin, Send, Loader2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import emailjs from "@emailjs/browser";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const ContactContent = () => {
     const { t } = useTranslation("contact");
+    const form = useRef<HTMLFormElement>(null);
     const [formData, setFormData] = useState({
         name: "",
         email: "",
         company: "",
         message: "",
     });
+
+    const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+    const recaptchaRef = useRef<ReCAPTCHA>(null);
+
+    const [isLoading, setIsLoading] = useState(false);
+    const [statusMessage, setStatusMessage] = useState("");
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -22,9 +31,53 @@ const ContactContent = () => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        console.log("Form submitted:", formData);
-    };
 
+        if (!form.current) {
+            console.error("Form ref is not attached to the form element!");
+            setStatusMessage("A system error occurred. Please try again.");
+            return;
+        }
+
+        if (!recaptchaToken) {
+            setStatusMessage("Please complete the reCAPTCHA.");
+            return;
+        }
+
+        setIsLoading(true);
+        setStatusMessage("");
+
+        emailjs
+            .sendForm(
+                import.meta.env.VITE_EMAILJS_SERVICE_ID!,
+                import.meta.env.VITE_EMAILJS_TEMPLATE_ID!,
+                form.current,
+                import.meta.env.VITE_EMAILJS_PUBLIC_KEY!
+            )
+            .then(
+                (result) => {
+                    console.log("Email sent:", result.text);
+                    setStatusMessage(
+                        t("contactPage.section.form.status.success")
+                    );
+                    setIsLoading(false);
+                    setFormData({
+                        name: "",
+                        email: "",
+                        company: "",
+                        message: "",
+                    });
+                    recaptchaRef.current?.reset();
+                    setRecaptchaToken(null);
+                },
+                (error) => {
+                    console.error("Failed to send email:", error.text);
+                    setStatusMessage(
+                        t("contactPage.section.form.status.error")
+                    );
+                    setIsLoading(false);
+                }
+            );
+    };
     return (
         <section className="mt-10 md:mt-16 lg:mt-20 xl:mt-24 2xl:mt-28">
             <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -117,7 +170,11 @@ const ContactContent = () => {
                             <h2 className="text-2xl font-bold text-zinc-800 mb-6">
                                 {t("contactPage.section.form.title")}
                             </h2>
-                            <form onSubmit={handleSubmit} className="space-y-6">
+                            <form
+                                ref={form}
+                                onSubmit={handleSubmit}
+                                className="space-y-6"
+                            >
                                 <div>
                                     <label
                                         htmlFor="name"
@@ -145,7 +202,6 @@ const ContactContent = () => {
                                         )}
                                     />
                                 </div>
-
                                 <div>
                                     <label
                                         htmlFor="email"
@@ -173,7 +229,6 @@ const ContactContent = () => {
                                         )}
                                     />
                                 </div>
-
                                 <div>
                                     <label
                                         htmlFor="company"
@@ -195,7 +250,6 @@ const ContactContent = () => {
                                         )}
                                     />
                                 </div>
-
                                 <div>
                                     <label
                                         htmlFor="message"
@@ -223,13 +277,51 @@ const ContactContent = () => {
                                         )}
                                     />
                                 </div>
-
+                                <ReCAPTCHA
+                                    ref={recaptchaRef}
+                                    sitekey={
+                                        import.meta.env.VITE_RECAPTCHA_SITE_KEY!
+                                    }
+                                    onChange={(token) => {
+                                        setRecaptchaToken(token);
+                                        setStatusMessage("");
+                                    }}
+                                    onExpired={() => {
+                                        setRecaptchaToken(null);
+                                        setStatusMessage(
+                                            "reCAPTCHA expired. Please check the box again."
+                                        );
+                                    }}
+                                />
+                                {statusMessage && (
+                                    <p
+                                        className={`text-center text-sm ${
+                                            statusMessage ===
+                                            t(
+                                                "contactPage.section.form.status.success"
+                                            )
+                                                ? "text-green-600"
+                                                : "text-red-600"
+                                        }`}
+                                    >
+                                        {statusMessage}
+                                    </p>
+                                )}
                                 <button
                                     type="submit"
+                                    disabled={isLoading || !recaptchaToken}
                                     className="w-full bg-red-900 text-white px-6 py-3 font-semibold hover:bg-red-900/90 transition-colors flex items-center justify-center group"
                                 >
-                                    {t("contactPage.section.form.button")}
-                                    <Send className="ml-2 w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300 ease-in-out" />
+                                    {isLoading ? (
+                                        <Loader2 className="mr-2 w-5 h-5 animate-spin" />
+                                    ) : (
+                                        <Send className="mr-2 w-5 h-5" />
+                                    )}
+                                    {isLoading
+                                        ? t(
+                                              "contactPage.section.form.buttonLoading"
+                                          )
+                                        : t("contactPage.section.form.button")}
                                 </button>
                             </form>
                         </div>

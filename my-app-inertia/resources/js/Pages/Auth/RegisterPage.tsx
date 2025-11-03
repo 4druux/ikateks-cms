@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import DotLoader from "@/Components/ui/DotLoader";
 import Badge from "@/Components/auth/Badge";
 import AuthHeader from "@/Components/auth/AuthHeader";

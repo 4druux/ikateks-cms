@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\Admin\DashboardController;
 use App\Http\Controllers\Api\Admin\NewsController;
 use App\Http\Controllers\Api\Admin\PrincipalsController;
 use App\Http\Controllers\Api\Admin\ProductController;
+use App\Http\Controllers\Api\Admin\UserManagementController;
 use App\Http\Controllers\Api\PublicCustomersController;
 use App\Http\Controllers\Api\PublicNewsController;
 use App\Http\Controllers\Api\PublicPrincipalsController;
@@ -60,5 +61,13 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/customers', [CustomersController::class, 'index'])->name('customers.index');
         Route::post('/customers', [CustomersController::class, 'store'])->name('customers.store');
         Route::delete('/customers/{customer}', [CustomersController::class, 'destroy'])->name('customers.destroy');
+
+        Route::controller(UserManagementController::class)->prefix('users')->group(function () {
+        Route::get('/', 'index');
+        Route::put('/{user}', 'update');
+        Route::delete('/{user}', 'destroy');
+        Route::post('/{user}/approve', 'approve');
+        Route::put('/{user}/reset-password', 'resetPassword');
+    });
     });
 });
