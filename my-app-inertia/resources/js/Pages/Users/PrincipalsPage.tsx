@@ -5,7 +5,7 @@ import Hero from "@/Components/ui/users/Hero";
 import Principals from "@/Components/principals/Principals";
 import CallToAction from "@/Components/ui/users/CallToAction";
 import DotLoader from "@/Components/ui/DotLoader";
-import { Principal, fetcher } from "@/Utils/api";
+import { PrincipalLogo, fetcher } from "@/Utils/api";
 import useSWR from "swr";
 
 interface PrincipalsProps {
@@ -19,7 +19,7 @@ const PrincipalsPage = ({ lenis }: PrincipalsProps) => {
         data: principalsData,
         error,
         isLoading,
-    } = useSWR<Principal[]>("/api/principals", fetcher);
+    } = useSWR<PrincipalLogo[]>("/api/principals-logo", fetcher);
 
     return (
         <>
@@ -34,6 +34,7 @@ const PrincipalsPage = ({ lenis }: PrincipalsProps) => {
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 mt-10 md:mt-16 lg:mt-20 xl:mt-24 2xl:mt-28 space-y-16 md:space-y-20 lg:space-y-24 xl:space-y-32 2xl:space-y-40">
                     <Principals lenis={lenis} />
+
                     <section>
                         <div className="text-left lg:text-center mb-12 md:mb-16">
                             <h2 className="roboto-medium text-4xl md:text-5xl lg:text-6xl font-extrabold max-w-4xl mx-auto uppercase text-zinc-800">

@@ -2,7 +2,7 @@ import React from "react";
 import { Head, Link } from "@inertiajs/react";
 import PageContent from "@/Components/ui/admin/PageContent";
 import useSWR from "swr";
-import { fetcher, NewsItem, Customer, Principal, Category } from "@/Utils/api";
+import { fetcher, NewsItem, Customer, PrincipalLogo, Category } from "@/Utils/api";
 import {
     LayoutGrid,
     Package,
@@ -100,8 +100,8 @@ export default function HomePage() {
     >("/api/admin/customers", fetcher, { revalidateOnFocus: false });
 
     const { data: recentPrincipals, isLoading: isLoadingPrincipals } = useSWR<
-        Principal[]
-    >("/api/admin/principals", fetcher, { revalidateOnFocus: false });
+        PrincipalLogo[]
+    >("/api/admin/principals/logo", fetcher, { revalidateOnFocus: false });
 
     const getRecentItems = <T,>(items: T[] | undefined, count: number): T[] => {
         if (!items) return [];

@@ -2,17 +2,17 @@ import React, { useState, FormEvent, useEffect } from "react";
 import PageContent from "@/Components/ui/admin/PageContent";
 import { Head, router } from "@inertiajs/react";
 import { toast } from "react-hot-toast";
-import { getNewsBySlug } from "@/Utils/api";
+import { getAboutById } from "@/Utils/api";
 import DotLoader from "@/Components/ui/DotLoader";
-import useNews from "@/Hooks/use-news";
+import useAbout from "@/Hooks/use-about";
 import FormLayout from "@/Components/ui/admin/FormLayout";
 import FormFields from "@/Components/ui/admin/FormFields";
 import HeaderContent from "@/Components/ui/admin/HeaderContent";
-import { Newspaper } from "lucide-react";
 import { useEntityForm } from "@/Hooks/use-entity-form";
+import { Building } from "lucide-react";
 
-const EditNewsPage: React.FC<{ slug: string }> = ({ slug }) => {
-    const { handleUpdate, isMutating } = useNews();
+const EditAboutPage: React.FC<{ id: number }> = ({ id }) => {
+    const { handleUpdate, isMutating } = useAbout();
 
     const {
         data,
@@ -30,36 +30,36 @@ const EditNewsPage: React.FC<{ slug: string }> = ({ slug }) => {
         buildFormData,
     } = useEntityForm();
 
-    const [isLoading, setIsLoading] = useState(!!slug);
+    const [isLoading, setIsLoading] = useState(!!id);
     const [loadedTitle, setLoadedTitle] = useState<string>("...");
 
     useEffect(() => {
-        if (!slug) {
-            toast.error("Failed to load news slug.");
-            router.visit("/admin/news");
+        if (!id) {
+            toast.error("Failed to load about id.");
+            router.visit("/admin/about");
             return;
         }
 
-        getNewsBySlug(slug)
-            .then((newsItem) => {
-                setData("mainField", newsItem.title);
-                setData("description", newsItem.description);
-                setData("mainField_id", newsItem.title_id);
-                setData("description_id", newsItem.description_id);
+        getAboutById(id)
+            .then((aboutItem) => {
+                setData("mainField", aboutItem.title);
+                setData("description", aboutItem.description);
+                setData("mainField_id", aboutItem.title_id);
+                setData("description_id", aboutItem.description_id);
 
-                setLoadedTitle(newsItem.title);
-                setImagePreview(newsItem.image_url ?? null);
-                setExistingImageUrl(newsItem.image_url ?? null);
+                setLoadedTitle(aboutItem.title);
+                setImagePreview(aboutItem.image_url ?? null);
+                setExistingImageUrl(aboutItem.image_url ?? null);
             })
             .catch((err) => {
                 console.error(err);
-                toast.error("News item not found or failed to load.");
-                router.visit("/admin/news");
+                toast.error("About item not found or failed to load.");
+                router.visit("/admin/about");
             })
             .finally(() => {
                 setIsLoading(false);
             });
-    }, [slug, setData, setImagePreview, setExistingImageUrl]);
+    }, [id, setData, setImagePreview, setExistingImageUrl]);
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -68,7 +68,7 @@ const EditNewsPage: React.FC<{ slug: string }> = ({ slug }) => {
         const formDataToSend = buildFormData("title");
 
         await handleUpdate(
-            slug,
+            id,
             formDataToSend,
             (backendErrors) => {
                 if (backendErrors.title) {
@@ -89,7 +89,7 @@ const EditNewsPage: React.FC<{ slug: string }> = ({ slug }) => {
             },
             () => {
                 reset();
-                router.visit("/admin/news");
+                router.visit("/admin/about");
             }
         );
     };
@@ -104,7 +104,7 @@ const EditNewsPage: React.FC<{ slug: string }> = ({ slug }) => {
 
     const breadcrumbItems = [
         { label: "Home", href: "/admin" },
-        { label: "News", href: "/admin/news" },
+        { label: "About", href: "/admin/about" },
         {
             label: isLoading ? "..." : `Edit ${loadedTitle}`,
         },
@@ -112,24 +112,24 @@ const EditNewsPage: React.FC<{ slug: string }> = ({ slug }) => {
 
     return (
         <>
-            <Head title="Edit News" />
+            <Head title="Edit About" />
             <PageContent
-                pageTitle="Manage News"
+                pageTitle="Manage About"
                 breadcrumbItems={breadcrumbItems}
                 pageClassName="mt-4"
             >
                 <HeaderContent
-                    Icon={Newspaper}
-                    title="Edit News"
-                    description="Update news article details."
+                    Icon={Building}
+                    title="Edit About"
+                    description="Update about article details."
                 />
 
                 <FormLayout
                     onSubmit={handleSubmit}
                     isMutating={isMutating}
-                    submitText="Update News"
+                    submitText="Update About"
                     mutatingText="Updating..."
-                    backHref="/admin/news"
+                    backHref="/admin/about"
                 >
                     <FormFields
                         data={data}
@@ -138,12 +138,12 @@ const EditNewsPage: React.FC<{ slug: string }> = ({ slug }) => {
                         handleChange={handleChange}
                         handleImageChange={handleImageChange}
                         handleRemoveImage={handleRemoveImage}
-                        imageLabel="News Image"
-                        titleLabel="News Title (English)"
+                        imageLabel="About Image"
+                        titleLabel="About Title (English)"
                         titlePlaceholder="e.g., Company Expansion Update"
                         descriptionLabel="Content (English)"
-                        descriptionPlaceholder="Write the news content here..."
-                        titleIdLabel="News Title (Indonesia)"
+                        descriptionPlaceholder="Write the about content here..."
+                        titleIdLabel="About Title (Indonesia)"
                         titleIdPlaceholder="cth., Pembaruan Ekspansi Perusahaan"
                         descriptionIdLabel="Content (Indonesia)"
                         descriptionIdPlaceholder="Tulis isi berita di sini..."
@@ -154,4 +154,4 @@ const EditNewsPage: React.FC<{ slug: string }> = ({ slug }) => {
     );
 };
 
-export default EditNewsPage;
+export default EditAboutPage;

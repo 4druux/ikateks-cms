@@ -1,50 +1,43 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Lenis from "lenis";
 import { AnimatePresence } from "framer-motion";
-import {
-    principals as staticPrincipalsData,
-    type TranslatedPrincipalsItem,
-    type StaticPrincipalsItem,
-} from "../../data/principals";
 import ModalPrincipals from "@/Components/ui/ModalPrincipals";
 import { useTranslation } from "react-i18next";
 import { ArrowRight } from "lucide-react";
 import PrincipalsContent from "@/Components/ui/PrincipalsContent";
 import Button from "@/Components/common/Button";
+import useSWR from "swr";
+import { PrincipalItem, fetcher } from "@/Utils/api";
+import DotLoader from "@/Components/ui/DotLoader";
 
-interface PrincipalssProps {
+interface PrincipalsProps {
     lenis: Lenis | null;
     limit?: number;
     showViewAllButton?: boolean;
 }
 
-const Principals = ({
+const Principals: React.FC<PrincipalsProps> = ({
     lenis,
     limit,
     showViewAllButton = false,
-}: PrincipalssProps) => {
+}) => {
     const { t } = useTranslation("principals");
+
     const [selectedPrincipals, setSelectedPrincipals] =
-        useState<TranslatedPrincipalsItem | null>(null);
+        useState<PrincipalItem | null>(null);
     const isModalOpen = !!selectedPrincipals;
 
-    const translatedPrincipalss: TranslatedPrincipalsItem[] =
-        staticPrincipalsData.map((item: StaticPrincipalsItem) => {
-            const translations = t(`principals.${item.i18nKey}`, {
-                returnObjects: true,
-            }) as Omit<TranslatedPrincipalsItem, "id" | "icon" | "i18nKey">;
-
-            return {
-                ...item,
-                ...translations,
-            };
-        });
+    const {
+        data: principalsData,
+        error,
+        isLoading,
+    } = useSWR<PrincipalItem[]>("/api/principals", fetcher);
 
     const principalsToShow = limit
-        ? translatedPrincipalss.slice(0, limit)
-        : translatedPrincipalss;
+        ? (principalsData || []).slice(0, limit)
+        : principalsData || [];
 
-    const handleOpenModal = (item: TranslatedPrincipalsItem) => {
+    const handleOpenModal = (item: PrincipalItem) => {
         setSelectedPrincipals(item);
     };
 
@@ -81,10 +74,22 @@ const Principals = ({
             </div>
 
             <div className="mt-6 md:mt-12">
-                <PrincipalsContent
-                    principals={principalsToShow}
-                    onPrincipalsClick={handleOpenModal}
-                />
+                {isLoading && (
+                    <div className="flex justify-center py-10">
+                        <DotLoader />
+                    </div>
+                )}
+                {error && (
+                    <div className="text-center text-red-600">
+                        Failed to load principals.
+                    </div>
+                )}
+                {principalsToShow.length > 0 && (
+                    <PrincipalsContent
+                        principals={principalsToShow}
+                        onPrincipalsClick={handleOpenModal}
+                    />
+                )}
             </div>
 
             {showViewAllButton && (

@@ -1,21 +1,21 @@
 import React, { FormEvent } from "react";
 import PageContent from "@/Components/ui/admin/PageContent";
 import { Head, router } from "@inertiajs/react";
-import { Newspaper } from "lucide-react";
+import { Building } from "lucide-react";
 import HeaderContent from "@/Components/ui/admin/HeaderContent";
-import useNews from "@/Hooks/use-news";
+import useAbout from "@/Hooks/use-about";
 import FormLayout from "@/Components/ui/admin/FormLayout";
 import FormFields from "@/Components/ui/admin/FormFields";
 import { useEntityForm } from "@/Hooks/use-entity-form";
 
-const CreateNewsPage: React.FC = () => {
+const CreateAboutPage: React.FC = () => {
     const breadcrumbItems = [
         { label: "Home", href: "/admin" },
-        { label: "News", href: "/admin/news" },
+        { label: "About", href: "/admin/about" },
         { label: "Create" },
     ];
 
-    const { handleCreate, isMutating } = useNews();
+    const { handleCreate, isMutating } = useAbout();
 
     const {
         data,
@@ -42,7 +42,7 @@ const CreateNewsPage: React.FC = () => {
             () => {
                 reset();
                 handleRemoveImage();
-                router.visit("/admin/news");
+                router.visit("/admin/about");
             },
 
             (backendErrors) => {
@@ -64,27 +64,28 @@ const CreateNewsPage: React.FC = () => {
             }
         );
     };
+
     return (
         <>
-            <Head title="Create News" />
+            <Head title="Create About" />
             <PageContent
-                pageTitle="Manage News"
+                pageTitle="Manage About"
                 breadcrumbItems={breadcrumbItems}
                 pageClassName="mt-4"
             >
                 <HeaderContent
-                    Icon={Newspaper}
-                    title="Create News"
-                    description="Add a new news article."
+                    Icon={Building}
+                    title="Create About"
+                    description="Add a new about."
                 />
 
                 <div className="mt-6">
                     <FormLayout
                         onSubmit={handleSubmit}
                         isMutating={isMutating}
-                        submitText="Add News"
+                        submitText="Add About"
                         mutatingText="Adding..."
-                        backHref="/admin/news"
+                        backHref="/admin/about"
                     >
                         <FormFields
                             data={data}
@@ -93,15 +94,15 @@ const CreateNewsPage: React.FC = () => {
                             handleChange={handleChange}
                             handleImageChange={handleImageChange}
                             handleRemoveImage={handleRemoveImage}
-                            imageLabel="News Image"
-                            titleLabel="News Title (English)"
+                            imageLabel="About Image"
+                            titleLabel="About Title (English)"
                             titlePlaceholder="e.g., Company Expansion Update"
                             descriptionLabel="Content (English)"
-                            descriptionPlaceholder="Write the news content here..."
-                            titleIdLabel="News Title (Indonesia)"
+                            descriptionPlaceholder="Write the about content here..."
+                            titleIdLabel="About Title (Indonesia)"
                             titleIdPlaceholder="cth., Pembaruan Ekspansi Perusahaan"
                             descriptionIdLabel="Content (Indonesia)"
-                            descriptionIdPlaceholder="Tulis isi berita di sini..."
+                            descriptionIdPlaceholder="Tulis isi tentang di sini..."
                         />
                     </FormLayout>
                 </div>
@@ -110,4 +111,4 @@ const CreateNewsPage: React.FC = () => {
     );
 };
 
-export default CreateNewsPage;
+export default CreateAboutPage;

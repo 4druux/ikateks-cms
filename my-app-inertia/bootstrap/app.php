@@ -32,6 +32,7 @@ return Application::configure(basePath: dirname(__DIR__))
     })->create();
 
 
+// production mode
 // <?php
 
 // use App\Http\Middleware\HandleInertiaRequests;

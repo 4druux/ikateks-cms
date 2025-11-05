@@ -1,44 +1,24 @@
 {
-  "homePage": {
-    "hero": {
-      "title": "Build Success Together",
-      "companyName": "PT. Ikateks Citra Persada",
-      "description": "ICP - Building success together by empowering innovation and strengthening partnerships in the textile industry."
-    },
-    "aboutSection": {
-      "headline": "About",
-      "headlineSpan": "Us.",
-      "description": "Meru Solution is a leading consulting firm dedicated to helping businesses thrive in the digital age",
-      "stats": {
-        "experience": {
-          "title": "years of experience",
-          "description": "Our team's extensive experience ensures a deep understanding of the digital landscape and industry trends, allowing us to provide proven, innovative solutions."
+    "homePage": {
+        "hero": {
+            "title": "Build Success Together",
+            "companyName": "PT. Ikateks Citra Persada",
+            "description": "ICP - Building success together by empowering innovation and strengthening partnerships in the textile industry."
         },
-        "cases": {
-          "title": "Cases are solved",
-          "description": "We have a proven track record of tackling complex challenges, delivering tangible results and successful outcomes across diverse client projects."
+        "growSection": {
+            "headline": "growth",
+            "headlineSpan": "unlocked.",
+            "description": "Comprehensive solutions tailored to your business needs.",
+            "imageAlt": "office"
         },
-        "clients": {
-          "title": "Client served",
-          "description": "We've partnered with over a hundred clients, helping them navigate their digital transformation and achieve measurable, lasting success."
+        "customer": {
+            "headline": "Trusted By Industry",
+            "headlineSpan": "Leaders",
+            "description": "We have established over a hundred clients, helping them navigate digital transformation and achieve measurable success."
+        },
+        "cta": {
+            "title": "Ready to Transform Your Business?",
+            "linkText": "Let's discuss with us"
         }
-      },
-      "linkText": "Read More About Us"
-    },
-    "growSection": {
-      "headline": "growth",
-      "headlineSpan": "unlocked.",
-      "description": "Comprehensive solutions tailored to your business needs.",
-      "imageAlt": "office"
-    },
-    "customer": {
-      "headline": "Trusted By Industry",
-      "headlineSpan": "Leaders",
-      "description": "We have established over a hundred clients, helping them navigate digital transformation and achieve measurable success."
-    },
-    "cta": {
-      "title": "Ready to Transform Your Business?",
-      "linkText": "Let's discuss with us"
     }
-  }
 }

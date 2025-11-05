@@ -4,50 +4,7 @@
             "title": "About Us",
             "description": "ICP - Building success together by empowering innovation and strengthening partnerships in the textile industry."
         },
-        "aboutOne": {
-            "title": "PT. Ikateks Citra Persada",
-            "description": [
-                "PT. Ikateks Citra Persada (ICP) was established on April 6 2018, founded by Mr. Himawan Syaputra, in South Tangerang. ICP started its work by serving as advisor to several textile companies related to production quality, efficiency, and textile product innovation.",
-                "As the founder of ICP, Mr. Himawan is a member of the Association of Indonesian Textile Experts which provides space for local textile experts to take a bigger role in the development of the textile industry in the country by utilizing Indonesia's natural resources.",
-                "PT. Ikateks Citra Persada is not only engaged in textile trading, but also plays a role in the development of textile products and the industry of equipment for safety protection made of textile materials."
-            ],
-            "imageAlt": "company-advantages"
-        },
-        "aboutTwo": {
-            "title": "Mission and Vision.",
-            "description": [
-                "PT. Ikateks Citra Persada (ICP) has a vision to develop local potential and resources towards the international market.",
-                "To achieve its goals, PT. Ikateks Citra Persada has a mission to improve the quality of textile products by increasing the capacity of human resources and local natural resources so that they can compete in the international market” towards an independent national clothing security."
-            ],
-            "imageAlt": "Himawan Syaputra"
-        },
-        "aboutThree": {
-            "title": "Product and Services",
-            "description": [
-                "PT. Ikateks Citra Persada (ICP) focuses on developing the quality of local textile products in order to compete in the international market, especially in the protective and safety equipment industry made of textile materials, including textile products that have special advantages in function and quality.",
-                "We are committed to being a trusted partner that drives your business forward through innovation, reliability, and collaboration, delivering sustainable value in the textile industry."
-            ],
-            "imageAlt": "company-advantages"
-        },
-        "companyAdvantage": {
-            "headline": "Company",
-            "headline-span": "Advantages",
-            "description": "PT. Ikateks Citra Persada (ICP) is a trusted partner in the textile industry, dedicated to developing local potential and resources to compete in the international market.",
-            "items": {
-                "expertise": {
-                    "title": "Expertise & Innovation",
-                    "description": "PT. Ikateks Citra Persada has a very broad opportunity to empower Indonesian textile experts in an effort to maintain and improve quality, as well as research and develop textile product variants."
-                },
-                "partnership": {
-                    "title": "Strategic Partnership",
-                    "description": "PT. Ikateks Citra Persada can be a partner for local entrepreneurs to help improve quality and solve problems around textile products."
-                },
-                "global": {
-                    "title": "Global & Future-Ready",
-                    "description": "PT. Ikateks Citra Persada harnesses Indonesian textile expertise and resources to deliver innovative solutions for future challenges in a global era."
-                }
-            }
-        },
+        "linkText": "Read More About Us",
         "tagline": {
             "quote": "Build Success Together"
         }

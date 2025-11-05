@@ -13,11 +13,6 @@ export interface NewsItem {
     updated_at: string;
 }
 
-export const getAllNews = async (): Promise<NewsItem[]> => {
-    const response = await axios.get("/api/admin/news");
-    return response.data;
-};
-
 export const createNews = async (formData: FormData): Promise<NewsItem> => {
     const response = await axios.post("/api/admin/news", formData, {
         headers: {

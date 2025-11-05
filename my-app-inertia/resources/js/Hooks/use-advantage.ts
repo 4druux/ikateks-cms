@@ -1,24 +1,24 @@
 import useSWR from "swr";
 import { useCallback, useState } from "react";
 import {
-    NewsItem,
-    createNews,
-    deleteNews,
-    updateNews,
+    AdvantageItem,
+    createAdvantage,
+    deleteAdvantage,
+    updateAdvantage,
     fetcher,
 } from "@/Utils/api";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 
-const NEWS_API_URL = "/api/admin/news";
+const ADVANTAGE_API_URL = "/api/admin/company-advantages";
 
 interface ValidationErrorResponse {
     message: string;
     errors: Record<string, string[]>;
 }
 
-interface UseNewsReturn {
-    newsItems: NewsItem[] | undefined;
+interface UseAdvantageReturn {
+    advantageItems: AdvantageItem[] | undefined;
     isLoading: boolean;
     isMutating: boolean;
     error: any;
@@ -31,17 +31,17 @@ interface UseNewsReturn {
     ) => Promise<boolean>;
 
     handleUpdate: (
-        slug: string,
+        id: number,
         formData: FormData,
         onValidationError: (errors: Record<string, string[]>) => void,
         onSuccess?: () => void
     ) => Promise<boolean>;
-    mutateNews: () => Promise<NewsItem[] | undefined>;
+    mutateAdvantage: () => Promise<AdvantageItem[] | undefined>;
 }
 
-export default function useNews(): UseNewsReturn {
-    const { data, error, isLoading, mutate } = useSWR<NewsItem[]>(
-        NEWS_API_URL,
+export default function useAdvantage(): UseAdvantageReturn {
+    const { data, error, isLoading, mutate } = useSWR<AdvantageItem[]>(
+        ADVANTAGE_API_URL,
         fetcher,
         {
             revalidateOnFocus: true,
@@ -58,16 +58,16 @@ export default function useNews(): UseNewsReturn {
             onValidationError: (errors: Record<string, string[]>) => void
         ): Promise<boolean> => {
             setIsMutating(true);
-            const toastId = toast.loading("Creating news item...");
+            const toastId = toast.loading("Creating advantage item...");
             try {
-                const newNewsItem = await createNews(formData);
+                const newAdvantageItem = await createAdvantage(formData);
 
                 mutate(
-                    (currentData = []) => [...currentData, newNewsItem],
+                    (currentData = []) => [...currentData, newAdvantageItem],
                     true
                 );
 
-                toast.success("News item created successfully!", {
+                toast.success("Advantage item created successfully!", {
                     id: toastId,
                 });
                 if (onSuccess) {
@@ -76,7 +76,7 @@ export default function useNews(): UseNewsReturn {
                 setIsMutating(false);
                 return true;
             } catch (err: any) {
-                console.error("Failed to create news item:", err);
+                console.error("Failed to create advantage item:", err);
                 if (
                     axios.isAxiosError<ValidationErrorResponse>(err) &&
                     err.response?.status === 422
@@ -91,7 +91,7 @@ export default function useNews(): UseNewsReturn {
                 } else {
                     toast.error(
                         err.response?.data?.message ||
-                            "Failed to create news item.",
+                            "Failed to create advantage item.",
                         { id: toastId }
                     );
                 }
@@ -106,14 +106,14 @@ export default function useNews(): UseNewsReturn {
         async (id: number): Promise<boolean> => {
             if (
                 !window.confirm(
-                    "Are you sure you want to delete this news item?"
+                    "Are you sure you want to delete this advantage item?"
                 )
             ) {
                 return false;
             }
 
             setIsMutating(true);
-            const toastId = toast.loading("Deleting news item...");
+            const toastId = toast.loading("Deleting advantage item...");
 
             mutate(
                 (currentData) => currentData?.filter((item) => item.id !== id),
@@ -121,16 +121,16 @@ export default function useNews(): UseNewsReturn {
             );
 
             try {
-                await deleteNews(id);
-                toast.success("News item deleted successfully.", {
+                await deleteAdvantage(id);
+                toast.success("Advantage item deleted successfully.", {
                     id: toastId,
                 });
                 return true;
             } catch (err: any) {
-                console.error("Failed to delete news item:", err);
+                console.error("Failed to delete advantage item:", err);
                 toast.error(
                     err.response?.data?.message ||
-                        "Failed to delete news item.",
+                        "Failed to delete advantage item.",
                     { id: toastId }
                 );
                 mutate();
@@ -144,25 +144,25 @@ export default function useNews(): UseNewsReturn {
 
     const handleUpdate = useCallback(
         async (
-            slug: string,
+            id: number,
             formData: FormData,
             onValidationError: (errors: Record<string, string[]>) => void,
             onSuccess?: () => void
         ): Promise<boolean> => {
             setIsMutating(true);
-            const toastId = toast.loading("Updating news item...");
+            const toastId = toast.loading("Updating advantage item...");
             try {
-                const updatedNewsItem = await updateNews(slug, formData);
+                const updatedAdvantageItem = await updateAdvantage(id, formData);
 
                 mutate(
                     (currentData = []) =>
                         currentData.map((item) =>
-                            item.slug === slug ? updatedNewsItem : item
+                            item.id === id ? updatedAdvantageItem : item
                         ),
                     true
                 );
 
-                toast.success("News item updated successfully!", {
+                toast.success("Advantage item updated successfully!", {
                     id: toastId,
                 });
                 if (onSuccess) {
@@ -171,7 +171,7 @@ export default function useNews(): UseNewsReturn {
                 setIsMutating(false);
                 return true;
             } catch (err: any) {
-                console.error("Failed to update news item:", err);
+                console.error("Failed to update advantage item:", err);
                 if (
                     axios.isAxiosError<ValidationErrorResponse>(err) &&
                     err.response?.status === 422
@@ -185,7 +185,7 @@ export default function useNews(): UseNewsReturn {
                 } else {
                     toast.error(
                         err.response?.data?.message ||
-                            "Failed to update news item.",
+                            "Failed to update advantage item.",
                         { id: toastId }
                     );
                 }
@@ -196,18 +196,18 @@ export default function useNews(): UseNewsReturn {
         [mutate]
     );
 
-    const mutateNews = useCallback(() => {
+    const mutateAdvantage = useCallback(() => {
         return mutate();
     }, [mutate]);
 
     return {
-        newsItems: data,
+        advantageItems: data,
         isLoading,
         isMutating,
         error,
         handleDelete,
         handleCreate,
         handleUpdate,
-        mutateNews,
+        mutateAdvantage,
     };
 }

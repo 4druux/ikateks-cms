@@ -1,17 +1,33 @@
-import React, { useRef } from "react";
+import React, { useRef, useMemo } from "react";
 import { motion } from "framer-motion";
 import { X, CheckCircle } from "lucide-react";
-import { type TranslatedPrincipalsItem } from "../../data/principals";
+import { PrincipalItem } from "@/Utils/api";
 import { useTranslation } from "react-i18next";
 
 interface ModalProps {
-    item: TranslatedPrincipalsItem;
+    item: PrincipalItem;
     onClose: () => void;
 }
 
 const ModalPrincipals = ({ item, onClose }: ModalProps) => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation(["principals", "common"]);
+    const lang = i18n.language;
     const modalRef = useRef<HTMLDivElement>(null);
+
+    const title = lang === "id" ? item.title_id : item.title;
+    const description = lang === "id" ? item.description_id : item.description;
+
+    const methodologyList = useMemo(() => {
+        const jsonString =
+            lang === "id" ? item.methodology_id : item.methodology;
+        try {
+            const arr = JSON.parse(jsonString);
+            return Array.isArray(arr) ? arr : [];
+        } catch (_err) {
+            return [];
+        }
+    }, [item, lang]);
+
     const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
         if (e.target === e.currentTarget) {
             onClose();
@@ -54,64 +70,53 @@ const ModalPrincipals = ({ item, onClose }: ModalProps) => {
 
                 <div className="sticky top-9 md:top-0 z-10 flex items-center justify-between border-b border-zinc-200 bg-white px-4 md:px-6 py-2 md:py-4 shadow-sm md:shadow-none">
                     <h2 className="text-2xl font-bold text-zinc-800">
-                        {item.title}
+                        {title}
                     </h2>
                     <button
                         onClick={onClose}
                         className="p-2 rounded-full text-zinc-600 transition-colors bg-white/50 hover:bg-zinc-100 hover:text-zinc-900"
-                        aria-label={t("modal.close")}
+                        aria-label={t("common:modal.close")}
                     >
                         <X size={24} />
                     </button>
                 </div>
 
                 <div className="p-4 md:p-6">
-                    <div className="flex items-start gap-4 mb-6">
-                        <div className="mt-1 flex flex-wrap gap-2">
-                            {item.keywords.map((keyword: string) => (
-                                <span
-                                    key={keyword}
-                                    className="rounded-full bg-red-50 px-3 py-1 text-xs font-semibold text-red-900"
-                                >
-                                    {keyword}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-
                     <div className="space-y-6">
                         <div>
                             <h3 className="text-xl font-semibold text-zinc-800 mb-2">
-                                {t("modal.description")}
+                                {t("common:modal.description")}
                             </h3>
                             <p className="leading-relaxed text-zinc-600">
-                                {item.description}
+                                {description}
                             </p>
                         </div>
 
-                        <div>
-                            <h3 className="text-xl font-semibold text-zinc-800 mb-3">
-                                {t("modal.overviewMethodology")}
-                            </h3>
-                            <ul className="space-y-2">
-                                {item.overviewMethodology.map(
-                                    (method: string) => (
-                                        <li
-                                            key={method}
-                                            className="flex items-start gap-3"
-                                        >
-                                            <CheckCircle
-                                                className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0"
-                                                strokeWidth={2}
-                                            />
-                                            <span className="text-zinc-600">
-                                                {method}
-                                            </span>
-                                        </li>
-                                    )
-                                )}
-                            </ul>
-                        </div>
+                        {methodologyList.length > 0 && (
+                            <div>
+                                <h3 className="text-xl font-semibold text-zinc-800 mb-3">
+                                    {t("common:modal.overviewMethodology")}
+                                </h3>
+                                <ul className="space-y-2">
+                                    {methodologyList.map(
+                                        (method: string, index: number) => (
+                                            <li
+                                                key={index}
+                                                className="flex items-start gap-3"
+                                            >
+                                                <CheckCircle
+                                                    className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0"
+                                                    strokeWidth={2}
+                                                />
+                                                <span className="text-zinc-600">
+                                                    {method}
+                                                </span>
+                                            </li>
+                                        )
+                                    )}
+                                </ul>
+                            </div>
+                        )}
                     </div>
                 </div>
             </motion.div>

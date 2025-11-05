@@ -1,48 +1,48 @@
 import React, { useState, useEffect } from "react";
 import { Head, router } from "@inertiajs/react";
-import { NewsItem, getNewsBySlug } from "@/Utils/api";
-import useNews from "@/Hooks/use-news";
+import { AboutItem, getAboutById } from "@/Utils/api";
+import useAbout from "@/Hooks/use-about";
 import PageContent from "@/Components/ui/admin/PageContent";
 import HeaderContent from "@/Components/ui/admin/HeaderContent";
 import DotLoader from "@/Components/ui/DotLoader";
 import Button from "@/Components/common/Button";
-import { Newspaper, ArrowLeft, Edit, Trash2 } from "lucide-react";
+import { Building, ArrowLeft, Edit, Trash2 } from "lucide-react";
 import { toast } from "react-hot-toast";
 
-const NewsDetailPage: React.FC<{ slug: string }> = ({ slug }) => {
-    const [newsItem, setNewsItem] = useState<NewsItem | null>(null);
+const AboutDetailPage: React.FC<{ id: number }> = ({ id }) => {
+    const [aboutItem, setAboutItem] = useState<AboutItem | null>(null);
     const [isLoading, setIsLoading] = useState(true);
 
-    const { handleDelete, isMutating } = useNews();
+    const { handleDelete, isMutating } = useAbout();
 
     useEffect(() => {
-        if (!slug) {
-            toast.error("Failed to load news slug.");
-            router.visit("/admin/news");
+        if (!id) {
+            toast.error("Failed to load about id.");
+            router.visit("/admin/about");
             return;
         }
 
-        getNewsBySlug(slug)
+        getAboutById(id)
             .then((data) => {
-                setNewsItem(data);
+                setAboutItem(data);
             })
             .catch((err) => {
                 console.error(err);
-                toast.error("News item not found or failed to load.");
-                router.visit("/admin/news");
+                toast.error("About item not found or failed to load.");
+                router.visit("/admin/about");
             })
             .finally(() => {
                 setIsLoading(false);
             });
-    }, [slug]);
+    }, [id]);
 
     const handleDeleteClick = async () => {
-        if (!newsItem) return;
+        if (!aboutItem) return;
 
-        const isSuccess = await handleDelete(newsItem.id);
+        const isSuccess = await handleDelete(aboutItem.id);
 
         if (isSuccess) {
-            router.visit("/admin/news");
+            router.visit("/admin/about");
         }
     };
 
@@ -54,40 +54,40 @@ const NewsDetailPage: React.FC<{ slug: string }> = ({ slug }) => {
         );
     }
 
-    if (!newsItem) {
+    if (!aboutItem) {
         return (
             <div className="flex items-center justify-center min-h-screen">
-                News item not found.
+                About item not found.
             </div>
         );
     }
 
     const breadcrumbItems = [
         { label: "Home", href: "/admin" },
-        { label: "News", href: "/admin/news" },
-        { label: newsItem.title },
+        { label: "About", href: "/admin/about" },
+        { label: aboutItem.title },
     ];
 
     return (
         <>
-            <Head title={newsItem.title} />
+            <Head title={aboutItem.title} />
             <PageContent
-                pageTitle="Manage News"
+                pageTitle="Manage About"
                 breadcrumbItems={breadcrumbItems}
                 pageClassName="mt-4"
             >
                 <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-6 lg:gap-4">
                     <HeaderContent
-                        Icon={Newspaper}
-                        title={newsItem.title}
-                        description="Complete details for this news article."
+                        Icon={Building}
+                        title={aboutItem.title}
+                        description="Complete details for this about article."
                     />
 
                     <div className="flex justify-end flex-shrink-0 gap-2 mt-4 lg:mt-0">
                         <Button
                             as="link"
                             variant="outline"
-                            href={`/admin/news/edit/${newsItem.slug}`}
+                            href={`/admin/about/edit/${aboutItem.id}`}
                             size="md"
                             iconLeft={<Edit className="h-4 w-4" />}
                         >
@@ -107,10 +107,10 @@ const NewsDetailPage: React.FC<{ slug: string }> = ({ slug }) => {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div className="md:col-span-1">
-                        {newsItem.image_url ? (
+                        {aboutItem.image_url ? (
                             <img
-                                src={newsItem.image_url}
-                                alt={newsItem.title}
+                                src={aboutItem.image_url}
+                                alt={aboutItem.title}
                                 className="w-full h-auto object-cover aspect-[4/3]"
                             />
                         ) : (
@@ -120,13 +120,14 @@ const NewsDetailPage: React.FC<{ slug: string }> = ({ slug }) => {
                         )}
                     </div>
                     <div className="md:col-span-2">
-                        <h3 className="text-lg font-semibold text-gray-900 border-b pb-2 mb-4">
-                            Description
-                        </h3>
+                        <h2 className="text-2xl font-semibold text-gray-900 mb-2">
+                            {aboutItem.title}
+                        </h2>
+
                         <div className="prose max-w-none text-gray-700">
-                            {newsItem.description ? (
+                            {aboutItem.description ? (
                                 <p className="whitespace-pre-wrap">
-                                    {newsItem.description}
+                                    {aboutItem.description}
                                 </p>
                             ) : (
                                 <p className="italic text-gray-500">
@@ -141,7 +142,7 @@ const NewsDetailPage: React.FC<{ slug: string }> = ({ slug }) => {
                     <Button
                         as="link"
                         variant="outline"
-                        href="/admin/news"
+                        href="/admin/about"
                         size="md"
                         iconLeft={<ArrowLeft className="h-5 w-5" />}
                     >
@@ -153,4 +154,4 @@ const NewsDetailPage: React.FC<{ slug: string }> = ({ slug }) => {
     );
 };
 
-export default NewsDetailPage;
+export default AboutDetailPage;

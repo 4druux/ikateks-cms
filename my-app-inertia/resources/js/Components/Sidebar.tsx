@@ -8,6 +8,7 @@ import {
     Building2,
     Handshake,
     UserCog2,
+    Building,
 } from "lucide-react";
 import { Link, usePage } from "@inertiajs/react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
@@ -74,6 +75,14 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
             icon: HomeIcon,
             description: "Home Page",
             href: "/admin",
+            canView: !!auth.user,
+        },
+        {
+            id: "about",
+            label: "About",
+            icon: Building,
+            description: "Manage About",
+            href: "/admin/about",
             canView: !!auth.user,
         },
         {
@@ -229,6 +238,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
                                                                     ? "text-white"
                                                                     : "text-zinc-600"
                                                             }`}
+                                                            strokeWidth={1.5}
                                                         />
                                                         <div className="flex-1">
                                                             <div
@@ -348,6 +358,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
                                                             ? "text-white"
                                                             : "text-zinc-600"
                                                     }`}
+                                                    strokeWidth={1.5}
                                                 />
                                                 <div className="flex-1">
                                                     <div

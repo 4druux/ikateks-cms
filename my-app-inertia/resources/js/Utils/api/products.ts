@@ -28,11 +28,6 @@ export interface Product {
     category?: Category;
 }
 
-export const getAllCategories = async () => {
-    const response = await axios.get("/api/admin/categories");
-    return response.data;
-};
-
 export const createCategory = async (formData: FormData) => {
     const response = await axios.post("/api/admin/categories", formData, {
         headers: {
@@ -63,15 +58,6 @@ export const updateCategory = async (slug: string, formData: FormData) => {
 
 export const deleteCategory = async (id: number) => {
     const response = await axios.delete(`/api/admin/categories/${id}`);
-    return response.data;
-};
-
-export const getAllProducts = async (categoryId?: number) => {
-    let url = "/api/admin/products";
-    if (categoryId) {
-        url += `?category_id=${categoryId}`;
-    }
-    const response = await axios.get(url);
     return response.data;
 };
 

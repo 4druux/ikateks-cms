@@ -1,24 +1,24 @@
 import useSWR from "swr";
 import { useCallback, useState } from "react";
 import {
-    NewsItem,
-    createNews,
-    deleteNews,
-    updateNews,
+    AboutItem,
+    createAbout,
+    deleteAbout,
+    updateAbout,
     fetcher,
 } from "@/Utils/api";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 
-const NEWS_API_URL = "/api/admin/news";
+const ABOUT_API_URL = "/api/admin/about";
 
 interface ValidationErrorResponse {
     message: string;
     errors: Record<string, string[]>;
 }
 
-interface UseNewsReturn {
-    newsItems: NewsItem[] | undefined;
+interface UseAboutReturn {
+    aboutItems: AboutItem[] | undefined;
     isLoading: boolean;
     isMutating: boolean;
     error: any;
@@ -31,17 +31,17 @@ interface UseNewsReturn {
     ) => Promise<boolean>;
 
     handleUpdate: (
-        slug: string,
+        id: number,
         formData: FormData,
         onValidationError: (errors: Record<string, string[]>) => void,
         onSuccess?: () => void
     ) => Promise<boolean>;
-    mutateNews: () => Promise<NewsItem[] | undefined>;
+    mutateAbout: () => Promise<AboutItem[] | undefined>;
 }
 
-export default function useNews(): UseNewsReturn {
-    const { data, error, isLoading, mutate } = useSWR<NewsItem[]>(
-        NEWS_API_URL,
+export default function useAbout(): UseAboutReturn {
+    const { data, error, isLoading, mutate } = useSWR<AboutItem[]>(
+        ABOUT_API_URL,
         fetcher,
         {
             revalidateOnFocus: true,
@@ -58,16 +58,16 @@ export default function useNews(): UseNewsReturn {
             onValidationError: (errors: Record<string, string[]>) => void
         ): Promise<boolean> => {
             setIsMutating(true);
-            const toastId = toast.loading("Creating news item...");
+            const toastId = toast.loading("Creating about item...");
             try {
-                const newNewsItem = await createNews(formData);
+                const newAboutItem = await createAbout(formData);
 
                 mutate(
-                    (currentData = []) => [...currentData, newNewsItem],
+                    (currentData = []) => [...currentData, newAboutItem],
                     true
                 );
 
-                toast.success("News item created successfully!", {
+                toast.success("About item created successfully!", {
                     id: toastId,
                 });
                 if (onSuccess) {
@@ -76,7 +76,7 @@ export default function useNews(): UseNewsReturn {
                 setIsMutating(false);
                 return true;
             } catch (err: any) {
-                console.error("Failed to create news item:", err);
+                console.error("Failed to create about item:", err);
                 if (
                     axios.isAxiosError<ValidationErrorResponse>(err) &&
                     err.response?.status === 422
@@ -91,7 +91,7 @@ export default function useNews(): UseNewsReturn {
                 } else {
                     toast.error(
                         err.response?.data?.message ||
-                            "Failed to create news item.",
+                            "Failed to create about item.",
                         { id: toastId }
                     );
                 }
@@ -106,14 +106,14 @@ export default function useNews(): UseNewsReturn {
         async (id: number): Promise<boolean> => {
             if (
                 !window.confirm(
-                    "Are you sure you want to delete this news item?"
+                    "Are you sure you want to delete this about item?"
                 )
             ) {
                 return false;
             }
 
             setIsMutating(true);
-            const toastId = toast.loading("Deleting news item...");
+            const toastId = toast.loading("Deleting about item...");
 
             mutate(
                 (currentData) => currentData?.filter((item) => item.id !== id),
@@ -121,16 +121,16 @@ export default function useNews(): UseNewsReturn {
             );
 
             try {
-                await deleteNews(id);
-                toast.success("News item deleted successfully.", {
+                await deleteAbout(id);
+                toast.success("About item deleted successfully.", {
                     id: toastId,
                 });
                 return true;
             } catch (err: any) {
-                console.error("Failed to delete news item:", err);
+                console.error("Failed to delete about item:", err);
                 toast.error(
                     err.response?.data?.message ||
-                        "Failed to delete news item.",
+                        "Failed to delete about item.",
                     { id: toastId }
                 );
                 mutate();
@@ -144,25 +144,25 @@ export default function useNews(): UseNewsReturn {
 
     const handleUpdate = useCallback(
         async (
-            slug: string,
+            id: number,
             formData: FormData,
             onValidationError: (errors: Record<string, string[]>) => void,
             onSuccess?: () => void
         ): Promise<boolean> => {
             setIsMutating(true);
-            const toastId = toast.loading("Updating news item...");
+            const toastId = toast.loading("Updating about item...");
             try {
-                const updatedNewsItem = await updateNews(slug, formData);
+                const updatedAboutItem = await updateAbout(id, formData);
 
                 mutate(
                     (currentData = []) =>
                         currentData.map((item) =>
-                            item.slug === slug ? updatedNewsItem : item
+                            item.id === id ? updatedAboutItem : item
                         ),
                     true
                 );
 
-                toast.success("News item updated successfully!", {
+                toast.success("About item updated successfully!", {
                     id: toastId,
                 });
                 if (onSuccess) {
@@ -171,7 +171,7 @@ export default function useNews(): UseNewsReturn {
                 setIsMutating(false);
                 return true;
             } catch (err: any) {
-                console.error("Failed to update news item:", err);
+                console.error("Failed to update about item:", err);
                 if (
                     axios.isAxiosError<ValidationErrorResponse>(err) &&
                     err.response?.status === 422
@@ -185,7 +185,7 @@ export default function useNews(): UseNewsReturn {
                 } else {
                     toast.error(
                         err.response?.data?.message ||
-                            "Failed to update news item.",
+                            "Failed to update about item.",
                         { id: toastId }
                     );
                 }
@@ -196,18 +196,18 @@ export default function useNews(): UseNewsReturn {
         [mutate]
     );
 
-    const mutateNews = useCallback(() => {
+    const mutateAbout = useCallback(() => {
         return mutate();
     }, [mutate]);
 
     return {
-        newsItems: data,
+        aboutItems: data,
         isLoading,
         isMutating,
         error,
         handleDelete,
         handleCreate,
         handleUpdate,
-        mutateNews,
+        mutateAbout,
     };
 }

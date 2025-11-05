@@ -5,26 +5,6 @@
             "companyName": "PT. Ikateks Citra Persada",
             "description": "ICP - Membangun kesuksesan bersama dengan memberdayakan inovasi dan memperkuat kemitraan di industri tekstil."
         },
-        "aboutSection": {
-            "headline": "Tentang",
-            "headlineSpan": "Kami.",
-            "description": "Meru Solution adalah firma konsultan terkemuka yang berdedikasi untuk membantu bisnis berkembang di era digital",
-            "stats": {
-                "experience": {
-                    "title": "tahun pengalaman",
-                    "description": "Pengalaman ekstensif tim kami memastikan pemahaman mendalam tentang lanskap digital dan tren industri, memungkinkan kami memberikan solusi inovatif yang terbukti."
-                },
-                "cases": {
-                    "title": "Kasus terselesaikan",
-                    "description": "Kami memiliki rekam jejak yang terbukti dalam menangani tantangan kompleks, memberikan hasil nyata, dan kesuksesan di berbagai proyek klien."
-                },
-                "clients": {
-                    "title": "Klien telah dilayani",
-                    "description": "Kami telah bermitra dengan lebih dari seratus klien, membantu mereka menavigasi transformasi digital dan mencapai kesuksesan yang terukur."
-                }
-            },
-            "linkText": "Lebih Lanjut Tentang Kami"
-        },
         "growSection": {
             "headline": "Tumbuh",
             "headlineSpan": "terbuka.",
