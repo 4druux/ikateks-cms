@@ -4,16 +4,18 @@ export default function AuthHeader() {
             <div className="flex flex-col items-start gap-2">
                 <div className="block sm:hidden">
                     <img
-                        src="./images/icp.png"
-                        alt="icp logo"
-                        className="w-16"
+                        src="./images/Logo-Tulisan-ICP-Hitam.png"
+                        alt="Logo ICP"
+                        className="h-10"
                     />
                 </div>
 
-                <div className="flex flex-col items-start">
-                    <h2 className="text-md font-medium text-zinc-800">
-                        PT. Ikateks Citra Persada - CMS Company Profile
-                    </h2>
+                <div className="hidden sm:block">
+                    <div className="flex flex-col items-start">
+                        <h2 className="text-md font-medium text-zinc-800">
+                            PT. Ikateks Citra Persada - CMS Company Profile
+                        </h2>
+                    </div>
                 </div>
             </div>
             <hr className="my-4" />

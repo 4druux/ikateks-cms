@@ -78,7 +78,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
                 <div className="flex items-center justify-between bg-white lg:border border-zinc-300 rounded-lg lg:shadow-sm py-3 lg:px-4">
                     <div className="flex items-center gap-2 pl-3 lg:pl-0">
                         <img
-                            src="/images/icp.png"
+                            src="/images/Logo-ICP-Hitam.png"
                             alt="Logo ICP"
                             className="w-10 md:w-14 object-cover"
                         />

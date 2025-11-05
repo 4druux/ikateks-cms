@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title inertia>{{ config('app.name', 'PT Ikateks') }}</title>
-    <link rel="icon" type="image/png" href="{{ asset('images/icp-title.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/Logo-ICP-Putih-Title.png') }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">

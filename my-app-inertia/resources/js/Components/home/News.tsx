@@ -183,7 +183,11 @@ const News = ({ lenis, newsSectionRef }: NewsProps) => {
         return (
             <section ref={newsSectionRef}>
                 <div className="flex gap-2 bg-red-950 px-4 sm:px-6 lg:px-8 xl:px-16 py-2">
-                    <img src="/images/icp-white.png" alt="" className="w-10" />
+                    <img
+                        src="/images/Logo-ICP-Putih.png"
+                        alt="Logo ICP"
+                        className="w-10"
+                    />
                     <h1 className="geometos text-zinc-100 font-bold tracking-wide">
                         {t("news.title")}
                     </h1>
@@ -199,7 +203,11 @@ const News = ({ lenis, newsSectionRef }: NewsProps) => {
         return (
             <section ref={newsSectionRef}>
                 <div className="flex gap-2 bg-red-950 px-4 sm:px-6 lg:px-8 xl:px-16 py-2">
-                    <img src="/images/icp-white.png" alt="" className="w-10" />
+                    <img
+                        src="/images/Logo-ICP-Putih.png"
+                        alt="Logo ICP"
+                        className="w-10"
+                    />
                     <h1 className="geometos text-zinc-100 font-bold tracking-wide">
                         {t("news.title")}
                     </h1>
@@ -215,7 +223,11 @@ const News = ({ lenis, newsSectionRef }: NewsProps) => {
         return (
             <section ref={newsSectionRef}>
                 <div className="flex gap-2 bg-red-950 px-4 sm:px-6 lg:px-8 xl:px-16 py-2">
-                    <img src="/images/icp-white.png" alt="" className="w-10" />
+                    <img
+                        src="/images/Logo-ICP-Putih.png"
+                        alt="Logo ICP"
+                        className="w-10"
+                    />
                     <h1 className="geometos text-zinc-100 font-bold tracking-wide">
                         {t("news.title")}
                     </h1>
@@ -252,7 +264,11 @@ const News = ({ lenis, newsSectionRef }: NewsProps) => {
         <>
             <section ref={newsSectionRef}>
                 <div className="flex gap-2 bg-red-950 px-4 sm:px-6 lg:px-8 xl:px-16 py-2">
-                    <img src="/images/icp-white.png" alt="" className="w-10" />
+                    <img
+                        src="/images/Logo-ICP-Putih.png"
+                        alt="Logo ICP"
+                        className="w-10"
+                    />
                     <h1 className="geometos text-zinc-100 font-bold tracking-wide">
                         {t("news.title")}
                     </h1>

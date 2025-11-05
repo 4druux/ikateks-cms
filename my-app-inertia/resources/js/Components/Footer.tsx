@@ -19,9 +19,9 @@ const Footer = () => {
                     <div className="flex flex-col gap-4">
                         <Link href="/" className="">
                             <img
-                                src="/images/icp-footer.png"
-                                alt="Meru logo"
-                                className="h-14"
+                                src="/images/Logo-Tulisan-ICP-Putih.png"
+                                alt="Logo ICP"
+                                className="h-12"
                             />
                         </Link>
 
@@ -139,7 +139,7 @@ const Footer = () => {
                                 {t("footer.headings.contact")}
                             </h4>
                             <a
-                                href="https://api.whatsapp.com/send/?phone=62882211232801&text&type=phone_number&app_absent=0"
+                                href="https://api.whatsapp.com/send/?phone=6282211232801&text&type=phone_number&app_absent=0"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-zinc-400 hover:text-white hover:underline hover:translate-x-1 transition duration-300 text-sm"

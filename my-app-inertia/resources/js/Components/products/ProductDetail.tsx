@@ -27,7 +27,7 @@ const ProductDetail = ({
             ? currentProduct.description_id
             : currentProduct.description;
 
-    const phoneNumber = "6285810249867";
+    const phoneNumber = "6282211232801";
     const message = t("product.cta.waMessage", {
         productName: productName,
     });

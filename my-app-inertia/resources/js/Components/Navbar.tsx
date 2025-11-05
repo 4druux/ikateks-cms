@@ -221,8 +221,8 @@ const Navbar = () => {
                                 <img
                                     src={
                                         isTop && !isOpen
-                                            ? "/images/icp-white.png"
-                                            : "/images/icp.png"
+                                            ? "/images/Logo-ICP-Putih.png"
+                                            : "/images/Logo-ICP-Hitam.png"
                                     }
                                     alt="Logo"
                                     className="h-9 pr-20"
