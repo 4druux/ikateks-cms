@@ -124,5 +124,8 @@ Route::middleware(['auth', 'prevent.caching'])->group(function () {
     Route::inertia('/admin/manage-account', 'Admin/ManageAccount/SelectAccount')->name('index');
     Route::inertia('/admin/manage-account/show', 'Admin/ManageAccount/ShowAccount')->name('show');
 
+
+    Route::inertia('/admin/footer', 'Admin/SettingsPage')->name('index');
+
     Route::inertia('/admin/account-settings', 'Admin/AccountSettingsPage')->name('account.settings');
 });

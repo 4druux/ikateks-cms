@@ -7,6 +7,11 @@
         "linkText": "Read More About Us",
         "tagline": {
             "quote": "Build Success Together"
+        },
+        "companyAdvantage": {
+            "headline": "Company",
+            "headline-span": "Advantages",
+            "description": "PT. Ikateks Citra Persada (ICP) is a trusted partner in the textile industry, dedicated to developing local potential and resources to compete in the international market."
         }
     }
 }

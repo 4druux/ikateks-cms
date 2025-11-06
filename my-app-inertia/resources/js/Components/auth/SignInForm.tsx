@@ -32,7 +32,7 @@ export default function SignInForm() {
         try {
             await axios.post("/api/login", values);
 
-            toast.success("Login berhasil!");
+            toast.success("Login Successfully!");
             router.visit("/admin");
         } catch (error) {
             const loginErrorMessage = "Invalid email or password.";

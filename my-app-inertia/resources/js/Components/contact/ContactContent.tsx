@@ -3,9 +3,24 @@ import { Mail, Phone, MapPin, Send, Loader2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import emailjs from "@emailjs/browser";
 import ReCAPTCHA from "react-google-recaptcha";
+import { usePage } from "@inertiajs/react";
+import { SettingsData } from "@/Utils/api/settings";
+
+interface SharedProps {
+    settings: SettingsData;
+}
 
 const ContactContent = () => {
-    const { t } = useTranslation("contact");
+    const { t, i18n } = useTranslation("contact");
+    const lang = i18n.language;
+
+    const { settings } = usePage().props as unknown as SharedProps;
+
+    const locationAddress =
+        lang === "id"
+            ? settings?.location_address_id
+            : settings?.location_address;
+
     const form = useRef<HTMLFormElement>(null);
     const [formData, setFormData] = useState({
         name: "",
@@ -105,12 +120,14 @@ const ContactContent = () => {
                                     <h3 className="font-semibold text-zinc-800 mb-1">
                                         {t("contactPage.section.info.email")}
                                     </h3>
-                                    <a
-                                        href="mailto:admin@ikateks.com"
-                                        className="text-zinc-600 hover:text-blue-800 hover:underline"
-                                    >
-                                        admin@ikateks.com
-                                    </a>
+                                    {settings?.contact_email && (
+                                        <a
+                                            href={`mailto:${settings.contact_email}`}
+                                            className="text-zinc-600 hover:text-blue-800 hover:underline"
+                                        >
+                                            {settings.contact_email}
+                                        </a>
+                                    )}
                                 </div>
                             </div>
 
@@ -122,14 +139,16 @@ const ContactContent = () => {
                                     <h3 className="font-semibold text-zinc-800 mb-1">
                                         {t("contactPage.section.info.phone")}
                                     </h3>
-                                    <a
-                                        href="https://api.whatsapp.com/send/?phone=6282211232801&text&type=phone_number&app_absent=0"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-zinc-600 hover:text-blue-800 hover:underline"
-                                    >
-                                        +62 822 1123 2801
-                                    </a>
+                                    {settings?.contact_phone_href && (
+                                        <a
+                                            href={settings.contact_phone_href}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-zinc-600 hover:text-blue-800 hover:underline"
+                                        >
+                                            {settings.contact_phone_number}
+                                        </a>
+                                    )}
                                 </div>
                             </div>
 
@@ -141,15 +160,16 @@ const ContactContent = () => {
                                     <h3 className="font-semibold text-zinc-800 mb-1">
                                         {t("contactPage.section.info.address")}
                                     </h3>
-                                    <a
-                                        href="https://maps.app.goo.gl/y2mQ5rFuEFnDu9Zu9"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-zinc-600 hover:text-blue-800 hover:underline"
-                                    >
-                                        Vila Dago Tol, Blok A1 No. 27-28
-                                        Tangerang Selatan, Banten 15414
-                                    </a>
+                                    {settings?.location_href && (
+                                        <a
+                                            href={settings.location_href}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-zinc-600 hover:text-blue-800 hover:underline"
+                                        >
+                                            {locationAddress}
+                                        </a>
+                                    )}
                                 </div>
                             </div>
                         </div>

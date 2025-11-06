@@ -7,6 +7,11 @@
         "linkText": "Lebih Lanjut Tentang Kami",
         "tagline": {
             "quote": "Bangun Kesuksesan Bersama"
+        },
+        "companyAdvantage": {
+            "headline": "Keunggulan",
+            "headline-span": "Perusahaan",
+            "description": "PT. Ikateks Citra Persada (ICP) adalah mitra tepercaya di industri tekstil, yang berdedikasi untuk mengembangkan potensi dan sumber daya lokal agar mampu bersaing di pasar internasional."
         }
     }
 }

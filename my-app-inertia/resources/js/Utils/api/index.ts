@@ -9,3 +9,4 @@ export * from "./products";
 export * from "./news";
 export * from "./principals";
 export * from "./customers";
+export * from "./settings";

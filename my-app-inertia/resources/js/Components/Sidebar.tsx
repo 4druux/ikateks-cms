@@ -9,6 +9,7 @@ import {
     Handshake,
     UserCog2,
     Building,
+    LayoutDashboard,
 } from "lucide-react";
 import { Link, usePage } from "@inertiajs/react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
@@ -124,6 +125,14 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
             description: "Manage Account",
             href: "/admin/manage-account",
             canView: !!auth.user && hasAccess(["superadmin"]),
+        },
+        {
+            id: "settings",
+            label: "Footer",
+            icon: LayoutDashboard,
+            description: "Manage Footer",
+            href: "/admin/footer",
+            canView: !!auth.user && hasAccess(["superadmin", "admin"]),
         },
     ];
 

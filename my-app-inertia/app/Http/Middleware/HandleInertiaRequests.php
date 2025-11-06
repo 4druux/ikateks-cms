@@ -2,6 +2,8 @@
 
 namespace App\Http\Middleware;
 
+use Illuminate\Support\Facades\Cache;
+use App\Models\Settings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\File;
@@ -51,6 +53,10 @@ class HandleInertiaRequests extends Middleware
                 }
                 return $translations;
             },
+
+            'settings' => Cache::rememberForever('site.settings', function () {
+                return Settings::firstOrCreate(['id' => 1]);
+            }),
         ]);
     }
 }

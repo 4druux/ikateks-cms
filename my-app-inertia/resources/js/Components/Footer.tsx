@@ -1,16 +1,59 @@
+import React from "react";
 import { ArrowUpRight } from "lucide-react";
-import {
-    FaFacebook,
-    FaInstagram,
-    FaXTwitter,
-    FaLinkedin,
-    FaYoutube,
-} from "react-icons/fa6";
-import { Link } from "@inertiajs/react";
+import * as FaIcons from "react-icons/fa6";
+import { Link, usePage } from "@inertiajs/react";
 import { useTranslation } from "react-i18next";
+import { SettingsData } from "@/Utils/api/settings";
+
+interface SharedProps {
+    settings: SettingsData;
+}
+
+const getSocialIcon = (name: string): React.ElementType => {
+    const Icon = (FaIcons as any)[name];
+    return Icon || FaIcons.FaLink;
+};
 
 const Footer = () => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
+    const lang = i18n.language;
+
+    const { settings } = usePage().props as unknown as SharedProps;
+
+    const description =
+        lang === "id"
+            ? settings?.footer_description_id
+            : settings?.footer_description;
+    const location =
+        lang === "id"
+            ? settings?.location_address_id
+            : settings?.location_address;
+    const copyright =
+        lang === "id" ? settings?.copyright_text_id : settings?.copyright_text;
+
+    const socialLinks = Array.isArray(settings?.social_links)
+        ? settings.social_links
+        : [];
+
+    const renderSocialIcons = () => (
+        <div className="flex items-start gap-4">
+            {socialLinks.map((link) => {
+                const IconComponent = getSocialIcon(link.icon_name);
+                return (
+                    <a
+                        key={link.name}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={link.name}
+                        className="p-2 bg-white hover:-translate-y-1 rounded-full transition duration-300"
+                    >
+                        <IconComponent className="w-5 h-5 text-zinc-800" />
+                    </a>
+                );
+            })}
+        </div>
+    );
 
     return (
         <footer className="bg-gradient-to-t from-zinc-900 via-zinc-950 to-zinc-950 text-white -mt-1">
@@ -21,12 +64,11 @@ const Footer = () => {
                             <img
                                 src="/images/Logo-Tulisan-ICP-Putih.png"
                                 alt="Logo ICP"
-                                className="h-12"
+                                className="h-12 sm:h-8 xl:h-10"
                             />
                         </Link>
-
                         <p className="text-zinc-400 text-sm max-w-sm">
-                            {t("footer.description")}
+                            {description || t("footer.description")}
                         </p>
                         <Link
                             href="/about"
@@ -45,43 +87,7 @@ const Footer = () => {
                         <h4 className="font-semibold text-zinc-200 mb-4">
                             {t("footer.followUs")}
                         </h4>
-                        <div className="flex items-start gap-4">
-                            <a
-                                href="/"
-                                aria-label={t("footer.aria.facebook")}
-                                className="p-2 bg-white hover:-translate-y-1 rounded-full transition duration-300"
-                            >
-                                <FaFacebook className="w-5 h-5 text-zinc-800" />
-                            </a>
-                            <a
-                                href="/"
-                                aria-label={t("footer.aria.instagram")}
-                                className="p-2 bg-white hover:-translate-y-1 rounded-full transition duration-300"
-                            >
-                                <FaInstagram className="w-5 h-5 text-zinc-800" />
-                            </a>
-                            <a
-                                href="/"
-                                aria-label={t("footer.aria.x")}
-                                className="p-2 bg-white hover:-translate-y-1 rounded-full transition duration-300"
-                            >
-                                <FaXTwitter className="w-5 h-5 text-zinc-800" />
-                            </a>
-                            <a
-                                href="/"
-                                aria-label={t("footer.aria.linkedin")}
-                                className="p-2 bg-white hover:-translate-y-1 rounded-full transition duration-300"
-                            >
-                                <FaLinkedin className="w-5 h-5 text-zinc-800" />
-                            </a>
-                            <a
-                                href="/"
-                                aria-label={t("footer.aria.youtube")}
-                                className="p-2 bg-white hover:-translate-y-1 rounded-full transition duration-300"
-                            >
-                                <FaYoutube className="w-5 h-5 text-zinc-800" />
-                            </a>
-                        </div>
+                        {renderSocialIcons()}
                     </div>
 
                     <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 md:col-span-3 gap-8">
@@ -101,7 +107,6 @@ const Footer = () => {
                             >
                                 {t("nav.about")}
                             </Link>
-
                             <Link
                                 href="/products"
                                 className="text-zinc-400 hover:text-white hover:underline hover:translate-x-1 transition duration-300 text-sm"
@@ -138,35 +143,40 @@ const Footer = () => {
                             <h4 className="font-semibold text-zinc-200 mb-2">
                                 {t("footer.headings.contact")}
                             </h4>
-                            <a
-                                href="https://api.whatsapp.com/send/?phone=6282211232801&text&type=phone_number&app_absent=0"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-zinc-400 hover:text-white hover:underline hover:translate-x-1 transition duration-300 text-sm"
-                            >
-                                +62 822 1123 2801
-                            </a>
-                            <a
-                                href="mailto:admin@ikateks.com"
-                                className="text-zinc-400 hover:text-white hover:underline hover:translate-x-1 transition duration-300 text-sm"
-                            >
-                                admin@ikateks.com
-                            </a>
+                            {settings?.contact_phone_href && (
+                                <a
+                                    href={settings.contact_phone_href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-zinc-400 hover:text-white hover:underline hover:translate-x-1 transition duration-300 text-sm"
+                                >
+                                    {settings.contact_phone_number}
+                                </a>
+                            )}
+                            {settings?.contact_email && (
+                                <a
+                                    href={`mailto:${settings.contact_email}`}
+                                    className="text-zinc-400 hover:text-white hover:underline hover:translate-x-1 transition duration-300 text-sm"
+                                >
+                                    {settings.contact_email}
+                                </a>
+                            )}
                         </div>
 
                         <div className="flex flex-col gap-2">
                             <h4 className="font-semibold text-zinc-200">
                                 {t("footer.headings.location")}
                             </h4>
-                            <a
-                                href="https://maps.app.goo.gl/y2mQ5rFuEFnDu9Zu9"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-zinc-400 hover:text-white hover:underline text-sm not-italic"
-                            >
-                                Vila Dago Tol, Blok A1 No. 27-28 Tangerang
-                                Selatan, Banten 15414
-                            </a>
+                            {settings?.location_href && (
+                                <a
+                                    href={settings.location_href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-zinc-400 hover:text-white hover:underline text-sm not-italic"
+                                >
+                                    {location}
+                                </a>
+                            )}
                         </div>
 
                         <div className="hidden md:block">
@@ -174,44 +184,7 @@ const Footer = () => {
                                 <h4 className="font-semibold text-zinc-200 mb-2">
                                     {t("footer.followUs")}
                                 </h4>
-
-                                <div className="flex gap-4">
-                                    <a
-                                        href="/"
-                                        aria-label={t("footer.aria.facebook")}
-                                        className="p-2 bg-white hover:-translate-y-1 rounded-full transition duration-300"
-                                    >
-                                        <FaFacebook className="w-5 h-5 text-zinc-800" />
-                                    </a>
-                                    <a
-                                        href="/"
-                                        aria-label={t("footer.aria.instagram")}
-                                        className="p-2 bg-white hover:-translate-y-1 rounded-full transition duration-300"
-                                    >
-                                        <FaInstagram className="w-5 h-5 text-zinc-800" />
-                                    </a>
-                                    <a
-                                        href="/"
-                                        aria-label={t("footer.aria.x")}
-                                        className="p-2 bg-white hover:-translate-y-1 rounded-full transition duration-300"
-                                    >
-                                        <FaXTwitter className="w-5 h-5 text-zinc-800" />
-                                    </a>
-                                    <a
-                                        href="/"
-                                        aria-label={t("footer.aria.linkedin")}
-                                        className="p-2 bg-white hover:-translate-y-1 rounded-full transition duration-300"
-                                    >
-                                        <FaLinkedin className="w-5 h-5 text-zinc-800" />
-                                    </a>
-                                    <a
-                                        href="/"
-                                        aria-label={t("footer.aria.youtube")}
-                                        className="p-2 bg-white hover:-translate-y-1 rounded-full transition duration-300"
-                                    >
-                                        <FaYoutube className="w-5 h-5 text-zinc-800" />
-                                    </a>
-                                </div>
+                                {renderSocialIcons()}
                             </div>
                         </div>
                     </div>
@@ -219,10 +192,10 @@ const Footer = () => {
 
                 <div className="mt-12 flex flex-col items-center justify-center gap-6 md:gap-10">
                     <div className="border-t border-zinc-800 w-full" />
-
                     <p className="text-sm text-center text-zinc-500">
-                        © {new Date().getFullYear()} Ikateks Citra Persada .{" "}
-                        {t("footer.copyright")}
+                        © {new Date().getFullYear()}{" "}
+                        {settings?.company_name || "Ikateks Citra Persada"} .{" "}
+                        {copyright || t("footer.copyright")}
                     </p>
                 </div>
             </div>

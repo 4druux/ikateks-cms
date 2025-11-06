@@ -8,6 +8,8 @@ use App\Http\Controllers\Api\Admin\{
     NewsController,
     PrincipalsController,
     ProductController,
+    PublicSettingsController,
+    SettingsController,
     UserManagementController
 };
 
@@ -49,6 +51,7 @@ Route::controller(PublicPrincipalsController::class)->group(function () {
 Route::get('/about', [PublicAboutController::class, 'index']);
 Route::get('/company-advantages', [PublicAboutController::class, 'getAdvantages']);
 Route::get('/customers', [PublicCustomersController::class, 'index']);
+Route::get('/settings', [PublicSettingsController::class, 'index']);
 
 Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
     Route::put('/account/settings', [AccountSettingsController::class, 'updateApi']);
@@ -118,5 +121,10 @@ Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
         Route::delete('/{user}', 'destroy');
         Route::post('/{user}/approve', 'approve');
         Route::put('/{user}/reset-password', 'resetPassword');
+    });
+
+    Route::controller(SettingsController::class)->prefix('settings')->group(function () {
+        Route::get('/', 'show');
+        Route::post('/', 'update');
     });
 });
