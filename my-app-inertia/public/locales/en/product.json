@@ -3,10 +3,6 @@
         "headline": "Products",
         "headline-span": "Categories.",
         "description": "Explore our diverse range of high-quality textile products and solutions.",
-        "hero": {
-            "title": "Products",
-            "description": "We provide a wide array of textile products, from raw fibers to finished technical fabrics, tailored to meet your specific needs."
-        },
         "cta": {
             "title": "Interested in Our Products?",
             "linkText": "Contact Us"

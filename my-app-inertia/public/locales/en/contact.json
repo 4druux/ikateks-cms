@@ -1,9 +1,5 @@
 {
     "contactPage": {
-        "hero": {
-            "title": "Contact Us",
-            "description": "Let's build something great together. Reach out to our team to discuss your project or ask us anything."
-        },
         "section": {
             "headline": "Get In",
             "headline-span": "Touch",

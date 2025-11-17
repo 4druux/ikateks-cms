@@ -2,11 +2,17 @@ import { useTranslation } from "react-i18next";
 import { Head } from "@inertiajs/react";
 import Hero from "@/Components/ui/users/Hero";
 import useSWR from "swr";
-import { Customer, fetcher } from "@/Utils/api";
+import { Customer, fetcher, PageHero } from "@/Utils/api";
 import DotLoader from "@/Components/ui/DotLoader";
 
 const CustomerPage = () => {
     const { t } = useTranslation(["home", "common"]);
+
+    const {
+        data: heroData,
+        error: heroError,
+        isLoading: isLoadingHero,
+    } = useSWR<PageHero>("/api/hero?page=customers", fetcher);
 
     const {
         data: customers,
@@ -14,14 +20,17 @@ const CustomerPage = () => {
         isLoading,
     } = useSWR<Customer[]>("/api/customers", fetcher);
 
+    const TotalError = heroError || error;
+    const TotalLoading = isLoadingHero || isLoading;
+
     return (
         <>
             <Head title={t("common:nav.customers")} />
             <div className="min-h-screen bg-zinc-50">
                 <Hero
-                    imageSrc="/images/office-5.jpg"
-                    title={t("homePage.customer.headline")}
-                    description={t("homePage.customer.description")}
+                    heroData={heroData}
+                    isLoading={isLoadingHero}
+                    fallbackImage="https://placehold.co/800x600?text=Placeholder+4:3&font=roboto"
                 />
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-24">
@@ -37,20 +46,20 @@ const CustomerPage = () => {
                         </p>
                     </div>
 
-                    {isLoading && (
+                    {TotalLoading && (
                         <div className="flex justify-center items-center h-40">
                             <DotLoader />
                         </div>
                     )}
 
-                    {error && (
+                    {TotalError && (
                         <p className="text-center text-red-600">
                             {t("customers:error")}
                         </p>
                     )}
 
-                    {!isLoading &&
-                        !error &&
+                    {!TotalLoading &&
+                        !TotalError &&
                         customers &&
                         customers.length > 0 && (
                             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
@@ -76,8 +85,8 @@ const CustomerPage = () => {
                             </div>
                         )}
 
-                    {!isLoading &&
-                        !error &&
+                    {!TotalLoading &&
+                        !TotalError &&
                         (!customers || customers.length === 0) && (
                             <p className="text-center text-zinc-600">
                                 {t("customers:empty")}

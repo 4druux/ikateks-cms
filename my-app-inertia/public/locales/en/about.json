@@ -1,9 +1,5 @@
 {
     "aboutPage": {
-        "hero": {
-            "title": "About Us",
-            "description": "ICP - Building success together by empowering innovation and strengthening partnerships in the textile industry."
-        },
         "linkText": "Read More About Us",
         "tagline": {
             "quote": "Build Success Together"

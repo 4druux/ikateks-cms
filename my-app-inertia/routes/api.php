@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\Admin\{
     AccountSettingsController,
     CustomersController,
     DashboardController,
+    HeroController,
     NewsController,
     PrincipalsController,
     ProductController,
@@ -16,6 +17,7 @@ use App\Http\Controllers\Api\Admin\{
 use App\Http\Controllers\Api\{
     PublicAboutController,
     PublicCustomersController,
+    PublicHeroController,
     PublicNewsController,
     PublicPrincipalsController,
     PublicProductController
@@ -32,10 +34,13 @@ Route::controller(AuthController::class)->group(function () {
 });
 
 // Public Routes
+Route::get('/hero', [PublicHeroController::class, 'index']);
+
 Route::controller(PublicProductController::class)->group(function () {
     Route::get('/categories', 'indexCategories');
     Route::get('/categories/{category}/products', 'indexProducts');
     Route::get('/products/{product}', 'showProduct');
+    Route::get('/products/{product}/subproducts', 'indexSubProducts');
 });
 
 Route::controller(PublicNewsController::class)->group(function () {
@@ -86,6 +91,12 @@ Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
         Route::get('/products/{product}', 'showProduct')->name('products.show');
         Route::put('/products/{product}', 'updateProduct')->name('products.update');
         Route::delete('/products/{product:id}', 'destroyProduct')->name('products.destroy');
+
+        Route::get('/products/{product}/subproducts', 'indexSubProducts')->name('products.subproducts.index');
+        Route::post('/subproducts', 'storeSubProduct')->name('subproducts.store');
+        Route::get('/subproducts/{subProduct}', 'showSubProduct')->name('subproducts.show');
+        Route::put('/subproducts/{subProduct}', 'updateSubProduct')->name('subproducts.update');
+        Route::delete('/subproducts/{subProduct:id}', 'destroySubProduct')->name('subproducts.destroy');
     });
 
     Route::controller(NewsController::class)->prefix('news')->name('news.')->group(function () {
@@ -97,9 +108,9 @@ Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
     });
         
     Route::controller(PrincipalsController::class)->prefix('principals')->name('principals.')->group(function () {
-        Route::get('/logo', 'indexLogo')->name('index');
-        Route::post('/logo', 'storeLogo')->name('store');
-        Route::delete('/logo/{principal}', 'destroyLogo')->name('destroy');
+        Route::get('/logo', 'indexLogo')->name('logo.index');
+        Route::post('/logo', 'storeLogo')->name('logo.store');
+        Route::delete('/logo/{principal}', 'destroyLogo')->name('logo.destroy');
         
         Route::get('/', 'index')->name('index');
         Route::post('/', 'store')->name('store');
@@ -121,6 +132,12 @@ Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
         Route::delete('/{user}', 'destroy');
         Route::post('/{user}/approve', 'approve');
         Route::put('/{user}/reset-password', 'resetPassword');
+    });
+
+    Route::controller(HeroController::class)->prefix('hero')->name('hero.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/{hero:page_key}', 'show')->name('show');
+        Route::put('/{hero:page_key}', 'update')->name('update');
     });
 
     Route::controller(SettingsController::class)->prefix('settings')->group(function () {

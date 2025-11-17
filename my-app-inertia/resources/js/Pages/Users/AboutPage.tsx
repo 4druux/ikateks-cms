@@ -3,7 +3,7 @@ import CompanyAdvantage from "@/Components/about/CompanyAdvantage";
 import Tagline from "@/Components/about/Tagline";
 import { useTranslation } from "react-i18next";
 import { Head } from "@inertiajs/react";
-import { AdvantageItem, fetcher } from "@/Utils/api";
+import { AdvantageItem, fetcher, PageHero } from "@/Utils/api";
 import useSWR from "swr";
 import DotLoader from "@/Components/ui/DotLoader";
 import AboutSection, { AboutItem } from "@/Components/about/AboutSection";
@@ -18,13 +18,19 @@ const AboutPage = () => {
     } = useSWR<AboutItem[]>("/api/about", fetcher);
 
     const {
+        data: heroData,
+        error: heroError,
+        isLoading: isLoadingHero,
+    } = useSWR<PageHero>("/api/hero?page=about", fetcher);
+
+    const {
         data: advantageItems,
         error: advantageError,
         isLoading: isLoadingAdvantage,
     } = useSWR<AdvantageItem[]>("/api/company-advantages", fetcher);
 
-    const isLoading = isLoadingAbout || isLoadingAdvantage;
-    const error = aboutError || advantageError;
+    const isLoading = isLoadingAbout || isLoadingAdvantage || isLoadingHero;
+    const error = aboutError || advantageError || heroError;
 
     return (
         <>
@@ -32,9 +38,9 @@ const AboutPage = () => {
 
             <div className="min-h-screen bg-zinc-50">
                 <Hero
-                    imageSrc="/images/office-3.jpg"
-                    title={t("aboutPage.hero.title")}
-                    description={t("aboutPage.hero.description")}
+                    heroData={heroData}
+                    isLoading={isLoadingHero}
+                    fallbackImage="https://placehold.co/800x600?text=Placeholder+4:3&font=roboto"
                 />
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 mt-16 md:mt-20 lg:mt-24 xl:mt-32 2xl:mt-40 space-y-16 md:space-y-20 lg:space-y-24 xl:space-y-32 2xl:space-y-40">

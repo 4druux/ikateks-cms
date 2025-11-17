@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { Head, router } from "@inertiajs/react";
-import { Product, getProductBySlug, getCategoryBySlug } from "@/Utils/api";
-import useProducts from "@/Hooks/use-product";
+import { getCategoryBySlug } from "@/Utils/api";
+import useSubProducts from "@/Hooks/use-subproducts";
 import PageContent from "@/Components/ui/admin/PageContent";
 import HeaderContent from "@/Components/ui/admin/HeaderContent";
 import DotLoader from "@/Components/ui/DotLoader";
 import Button from "@/Components/common/Button";
-import { Package, ArrowLeft, Edit, Trash2 } from "lucide-react";
+import { Package, ArrowLeft, PlusCircle } from "lucide-react";
 import { toast } from "react-hot-toast";
+import ProductContent from "@/Components/ui/ProductContent";
+import DataNotFound from "@/Components/ui/admin/DataNotFound";
 
 const ProductDetailPage: React.FC<{ categorySlug: string; slug: string }> = ({
     categorySlug,
     slug,
 }) => {
-    const [product, setProduct] = useState<Product | null>(null);
     const [category, setCategory] = useState<{ title: string } | null>(null);
-    const [isLoading, setIsLoading] = useState(true);
-
-    const { handleDelete, isMutating } = useProducts(categorySlug);
+    const { product, subProducts, isLoading, error, handleDelete } =
+        useSubProducts(slug);
 
     useEffect(() => {
         if (!categorySlug) {
@@ -25,32 +25,25 @@ const ProductDetailPage: React.FC<{ categorySlug: string; slug: string }> = ({
             router.visit("/admin/categories");
             return;
         }
-        if (!slug) {
-            toast.error("Gagal memuat slug produk.");
-            router.visit(`/admin/categories/${categorySlug}`);
-            return;
-        }
 
-        Promise.all([getProductBySlug(slug), getCategoryBySlug(categorySlug)])
-            .then(([productData, categoryData]) => {
-                setProduct(productData);
+        getCategoryBySlug(categorySlug)
+            .then((categoryData) => {
                 setCategory(categoryData);
             })
             .catch((err) => {
                 console.error(err);
-                toast.error("Produk atau Kategori tidak ditemukan.");
-                router.visit(`/admin/categories/${categorySlug}`);
-            })
-            .finally(() => {
-                setIsLoading(false);
+                toast.error("Kategori tidak ditemukan.");
+                router.visit(`/admin/categories/`);
             });
-    }, [slug, categorySlug]);
+    }, [categorySlug]);
 
-    const handleDeleteClick = async () => {
-        if (!product) return;
-
-        await handleDelete(product.id);
-    };
+    useEffect(() => {
+        if (error) {
+            console.error(error);
+            toast.error("Gagal memuat produk.");
+            router.visit(`/admin/categories/${categorySlug}`);
+        }
+    }, [error, categorySlug]);
 
     if (isLoading) {
         return (
@@ -93,24 +86,15 @@ const ProductDetailPage: React.FC<{ categorySlug: string; slug: string }> = ({
                         description="Detail lengkap untuk produk ini."
                     />
 
-                    <div className="flex justify-end flex-shrink-0 gap-2">
+                    <div className="flex justify-end flex-shrink-0">
                         <Button
                             as="link"
                             variant="outline"
-                            href={`/admin/categories/${categorySlug}/edit/${product.slug}`}
+                            href={`/admin/categories/${categorySlug}/products/${product.slug}/subproducts/create`}
                             size="md"
-                            iconLeft={<Edit className="h-4 w-4" />}
+                            iconLeft={<PlusCircle className="h-5 w-5" />}
                         >
-                            Edit
-                        </Button>
-                        <Button
-                            variant="danger"
-                            size="md"
-                            iconLeft={<Trash2 className="h-4 w-4" />}
-                            onClick={handleDeleteClick}
-                            disabled={isMutating}
-                        >
-                            {isMutating ? "Deleting..." : "Delete"}
+                            Add New Sub Product
                         </Button>
                     </div>
                 </div>
@@ -146,6 +130,32 @@ const ProductDetailPage: React.FC<{ categorySlug: string; slug: string }> = ({
                             )}
                         </div>
                     </div>
+                </div>
+
+                <div className="mt-12">
+                    <h2 className="text-xl font-semibold text-gray-900 mb-4">
+                        Sub Products
+                    </h2>
+                    {subProducts && subProducts.length > 0 ? (
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                            {subProducts.map((subProduct) => (
+                                <ProductContent
+                                    key={subProduct.id}
+                                    imageUrl={subProduct.image_url}
+                                    title={subProduct.name}
+                                    description={subProduct.description}
+                                    href={`/admin/categories/${categorySlug}/products/${slug}/subproducts/${subProduct.slug}`}
+                                    editHref={`/admin/categories/${categorySlug}/products/${slug}/subproducts/edit/${subProduct.slug}`}
+                                    onDelete={() => handleDelete(subProduct.id)}
+                                />
+                            ))}
+                        </div>
+                    ) : (
+                        <DataNotFound
+                            title="No Sub-Products Found"
+                            message="There are no sub-products in this product yet. Click 'Add New Sub Product' to create one."
+                        />
+                    )}
                 </div>
 
                 <div className="mt-6 flex justify-start">

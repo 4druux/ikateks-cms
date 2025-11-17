@@ -8,10 +8,6 @@
         "viewAll": "Lihat Layanan Lainnya"
     },
     "principalsPage": {
-        "hero": {
-            "title": "Layanan Kami",
-            "description": "Solusi ahli yang mendorong inovasi dan kualitas di seluruh rantai nilai tekstil."
-        },
         "cta": {
             "title": "Siap Berinovasi Bersama Kami?",
             "linkText": "Mari diskusikan dengan kami"

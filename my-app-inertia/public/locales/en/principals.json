@@ -8,10 +8,6 @@
         "viewAll": "Discover More Services"
     },
     "principalsPage": {
-        "hero": {
-            "title": "Principals",
-            "description": "Expert solutions that drive innovation and quality across the entire textile value chain."
-        },
         "cta": {
             "title": "Ready to Innovate With Us?",
             "linkText": "Let's discuss with us"

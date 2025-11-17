@@ -15,10 +15,6 @@
     },
 
     "newsPage": {
-        "hero": {
-            "title": "Berita",
-            "description": "Kami membawa keahlian teknis yang mendalam di berbagai domain untuk memberikan solusi komprehensif yang mendorong transformasi digital dan pertumbuhan bisnis."
-        },
         "cta": {
             "title": "Siap Membangun Bersama Kami?",
             "linkText": "Mari berdiskusi dengan kami"

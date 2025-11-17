@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.ikateks.com/</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.ikateks.com/about</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.ikateks.com/products</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.ikateks.com/principals</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.ikateks.com/customers</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.ikateks.com/news</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.ikateks.com/contact</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.ikateks.com/privacy-policy</loc>
+    <priority>0.5</priority>
+  </url>
+</urlset>

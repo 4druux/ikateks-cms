@@ -5,7 +5,7 @@ import Hero from "@/Components/ui/users/Hero";
 import Principals from "@/Components/principals/Principals";
 import CallToAction from "@/Components/ui/users/CallToAction";
 import DotLoader from "@/Components/ui/DotLoader";
-import { PrincipalLogo, fetcher } from "@/Utils/api";
+import { PageHero, PrincipalLogo, fetcher } from "@/Utils/api";
 import useSWR from "swr";
 
 interface PrincipalsProps {
@@ -16,10 +16,19 @@ const PrincipalsPage = ({ lenis }: PrincipalsProps) => {
     const { t } = useTranslation(["principals", "common", "home"]);
 
     const {
+        data: heroData,
+        error: heroError,
+        isLoading: isLoadingHero,
+    } = useSWR<PageHero>("/api/hero?page=principals", fetcher);
+
+    const {
         data: principalsData,
         error,
         isLoading,
     } = useSWR<PrincipalLogo[]>("/api/principals-logo", fetcher);
+
+    const TotalError = heroError || error;
+    const TotalLoading = isLoadingHero || isLoading;
 
     return (
         <>
@@ -27,9 +36,9 @@ const PrincipalsPage = ({ lenis }: PrincipalsProps) => {
 
             <div className="min-h-screen bg-zinc-50">
                 <Hero
-                    imageSrc="/images/office-4.jpg"
-                    title={t("principalsPage.hero.title")}
-                    description={t("principalsPage.hero.description")}
+                    heroData={heroData}
+                    isLoading={TotalLoading}
+                    fallbackImage="https://placehold.co/800x600?text=Placeholder+4:3&font=roboto"
                 />
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 mt-10 md:mt-16 lg:mt-20 xl:mt-24 2xl:mt-28 space-y-16 md:space-y-20 lg:space-y-24 xl:space-y-32 2xl:space-y-40">
@@ -48,20 +57,20 @@ const PrincipalsPage = ({ lenis }: PrincipalsProps) => {
                             </p>
                         </div>
 
-                        {isLoading && (
+                        {TotalLoading && (
                             <div className="flex justify-center items-center h-40">
                                 <DotLoader />
                             </div>
                         )}
 
-                        {error && (
+                        {TotalError && (
                             <p className="text-center text-red-600">
                                 Failed to load principal logos.
                             </p>
                         )}
 
-                        {!isLoading &&
-                            !error &&
+                        {!TotalLoading &&
+                            !TotalError &&
                             principalsData &&
                             principalsData.length > 0 && (
                                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
@@ -87,8 +96,8 @@ const PrincipalsPage = ({ lenis }: PrincipalsProps) => {
                                 </div>
                             )}
 
-                        {!isLoading &&
-                            !error &&
+                        {!TotalLoading &&
+                            !TotalError &&
                             (!principalsData ||
                                 principalsData.length === 0) && (
                                 <p className="text-center text-zinc-600">

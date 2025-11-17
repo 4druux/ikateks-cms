@@ -3,9 +3,18 @@ import Tagline from "@/Components/about/Tagline";
 import ContactContent from "@/Components/contact/ContactContent";
 import { useTranslation } from "react-i18next";
 import { Head } from "@inertiajs/react";
+import { fetcher, PageHero } from "@/Utils/api";
+import useSWR from "swr";
+import DotLoader from "@/Components/ui/DotLoader";
 
 const ContactPage = () => {
     const { t } = useTranslation(["contact", "common"]);
+
+    const {
+        data: heroData,
+        error: heroError,
+        isLoading: isLoadingHero,
+    } = useSWR<PageHero>("/api/hero?page=contact", fetcher);
 
     return (
         <>
@@ -13,10 +22,23 @@ const ContactPage = () => {
 
             <div className="min-h-screen bg-zinc-50">
                 <Hero
-                    imageSrc="/images/contact.jpg"
-                    title={t("contactPage.hero.title")}
-                    description={t("contactPage.hero.description")}
+                    heroData={heroData}
+                    isLoading={isLoadingHero}
+                    fallbackImage="https://placehold.co/800x600?text=Placeholder+4:3&font=roboto"
                 />
+
+                {isLoadingHero && (
+                    <div className="flex justify-center items-center h-40">
+                        <DotLoader />
+                    </div>
+                )}
+
+                {heroError && (
+                    <p className="text-center text-red-600">
+                        Failed to load Contact page content.
+                    </p>
+                )}
+
                 <ContactContent />
                 <Tagline />
             </div>

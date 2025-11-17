@@ -10,9 +10,11 @@ import {
     UserCog2,
     Building,
     LayoutDashboard,
+    Image,
 } from "lucide-react";
 import { Link, usePage } from "@inertiajs/react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
+import { useLenis } from "@/Context/LenisContext";
 
 interface User {
     role: string | null;
@@ -48,6 +50,7 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
     const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
     const { auth } = usePage<SidebarPageProps>().props;
+    const lenis = useLenis();
 
     const userRole = auth.user?.role;
     const normalizedRole = userRole
@@ -134,6 +137,14 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
             href: "/admin/footer",
             canView: !!auth.user && hasAccess(["superadmin", "admin"]),
         },
+        {
+            id: "hero",
+            label: "Hero",
+            icon: Image,
+            description: "Manage Hero",
+            href: "/admin/hero",
+            canView: !!auth.user && hasAccess(["superadmin", "admin"]),
+        },
     ];
 
     const listVariants: Variants = {
@@ -198,7 +209,11 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
                     <hr className="mt-4" />
                 </div>
 
-                <nav className="flex-1 pr-5 py-5 overflow-y-auto">
+                <nav
+                    className="flex-1 pr-5 py-5 overflow-y-auto"
+                    onMouseEnter={() => lenis?.stop()}
+                    onMouseLeave={() => lenis?.start()}
+                >
                     <AnimatePresence>
                         {isOpen && (
                             <motion.ul

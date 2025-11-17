@@ -38,6 +38,14 @@ Route::prefix('products')->name('products.')->group(function () {
     Route::get('/{categorySlug}/{productSlug}', function ($categorySlug, $productSlug) { 
         return Inertia::render('Users/ProductDetailPage', ['categorySlug' => $categorySlug, 'productSlug' => $productSlug]); 
     })->name('detail');
+
+    Route::get('/{categorySlug}/{productSlug}/{subProductSlug}', function ($categorySlug, $productSlug, $subProductSlug) { 
+        return Inertia::render('Users/SubProductDetailPage', [
+            'categorySlug' => $categorySlug, 
+            'productSlug' => $productSlug,
+            'subProductSlug' => $subProductSlug
+        ]); 
+    })->name('subproduct.detail');
 });
 
 Route::middleware(['auth', 'prevent.caching'])->group(function () {
@@ -95,7 +103,28 @@ Route::middleware(['auth', 'prevent.caching'])->group(function () {
             'slug' => $productSlug
         ]);
     })->name('products.show');
-
+    
+    Route::get('/admin/categories/{categorySlug}/products/{productSlug}/subproducts/create', function ($categorySlug, $productSlug) {
+        return Inertia::render('Admin/Products/CreateSubProductsPage', [
+            'categorySlug' => $categorySlug,
+            'productSlug' => $productSlug
+        ]);
+    })->name('subproducts.create');
+    Route::get('/admin/categories/{categorySlug}/products/{productSlug}/subproducts/edit/{subProductSlug}', function ($categorySlug, $productSlug, $subProductSlug) {
+        return Inertia::render('Admin/Products/EditSubProductsPage', [
+            'categorySlug' => $categorySlug,
+            'productSlug' => $productSlug,
+            'slug' => $subProductSlug
+        ]);
+    })->name('subproducts.edit');
+    Route::get('/admin/categories/{categorySlug}/products/{productSlug}/subproducts/{subProductSlug}', function ($categorySlug, $productSlug, $subProductSlug) {
+        return Inertia::render('Admin/Products/SubProductDetailPage', [
+            'categorySlug' => $categorySlug,
+            'productSlug' => $productSlug,
+            'slug' => $subProductSlug
+        ]);
+    })->name('subproducts.show');
+    
 
     // News
     Route::inertia('/admin/news', 'Admin/News/NewsPage')->name('news');
@@ -128,4 +157,11 @@ Route::middleware(['auth', 'prevent.caching'])->group(function () {
     Route::inertia('/admin/footer', 'Admin/SettingsPage')->name('index');
 
     Route::inertia('/admin/account-settings', 'Admin/AccountSettingsPage')->name('account.settings');
+
+    Route::inertia('/admin/hero', 'Admin/Hero/HeroPage')->name('hero.index');
+    Route::get('/admin/hero/{page_key}', function ($page_key) {
+        return Inertia::render('Admin/Hero/EditHeroPage', [
+            'page_key' => $page_key
+        ]);
+    })->name('hero.edit');
 });

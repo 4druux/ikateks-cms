@@ -1,10 +1,5 @@
 {
     "homePage": {
-        "hero": {
-            "title": "Build Success Together",
-            "companyName": "PT. Ikateks Citra Persada",
-            "description": "ICP - Building success together by empowering innovation and strengthening partnerships in the textile industry."
-        },
         "growSection": {
             "headline": "growth",
             "headlineSpan": "unlocked.",

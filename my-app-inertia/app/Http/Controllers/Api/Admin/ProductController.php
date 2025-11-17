@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Models\SubProduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -185,6 +186,17 @@ class ProductController extends Controller
         if ($product->image_path) {
             $product->image_url = Storage::url($product->image_path);
         }
+
+        $product->load(['subProducts' => function ($query) {
+            $query->oldest();
+        }]);
+
+        $product->subProducts->each(function ($subProduct) {
+            if ($subProduct->image_path) {
+                $subProduct->image_url = Storage::url($subProduct->image_path);
+            }
+        });
+
         return response()->json($product);
     }
 
@@ -244,5 +256,129 @@ class ProductController extends Controller
         }
         $product->delete();
         return response()->json(['message' => 'Product deleted successfully.'], 200);
+    }
+
+    public function indexSubProducts(Product $product)
+    {
+        $subProducts = $product->subProducts()->oldest()->get();
+        $subProducts->each(function ($subProduct) {
+            if ($subProduct->image_path) {
+                $subProduct->image_url = Storage::url($subProduct->image_path);
+            }
+        });
+
+        if ($product->image_path) {
+            $product->image_url = Storage::url($product->image_path);
+        }
+
+        return response()->json([
+            'product' => $product,
+            'subProducts' => $subProducts
+        ]);
+    }
+
+    public function storeSubProduct(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255|unique:sub_products,name',
+            'description' => 'required|string',
+            'name_id' => 'required|string|max:255',
+            'description_id' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'product_id' => 'required|integer|exists:products,id',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        $validatedData = $validator->validated();
+        $dataToCreate = [
+            'name' => $validatedData['name'],
+            'product_id' => $validatedData['product_id'],
+            'description' => $validatedData['description'],
+            'name_id' => $validatedData['name_id'],
+            'description_id' => $validatedData['description_id'],
+            'slug' => Str::slug($validatedData['name']),
+            'image_path' => null,
+        ];
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('subproducts', 'public');
+            $dataToCreate['image_path'] = $imagePath;
+        }
+
+        $subProduct = SubProduct::create($dataToCreate);
+
+        if ($subProduct->image_path) {
+            $subProduct->image_url = Storage::url($subProduct->image_path);
+        }
+        return response()->json($subProduct, 201);
+    }
+
+    public function showSubProduct(SubProduct $subProduct)
+    {
+        if ($subProduct->image_path) {
+            $subProduct->image_url = Storage::url($subProduct->image_path);
+        }
+        return response()->json($subProduct);
+    }
+
+    public function updateSubProduct(Request $request, SubProduct $subProduct)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('sub_products', 'name')->ignore($subProduct->id),
+            ],
+            'description' => 'required|string',
+            'name_id' => 'required|string|max:255',
+            'description_id' => 'required|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'product_id' => 'required|integer|exists:products,id',
+            '_method' => 'sometimes|required|in:PUT',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        $validated = $validator->validated();
+
+        if ($request->filled('name') && $subProduct->name !== $validated['name']) {
+            $validated['slug'] = Str::slug($validated['name']);
+        } else {
+            unset($validated['name']);
+        }
+
+        if ($request->hasFile('image')) {
+            if ($subProduct->image_path) {
+                Storage::disk('public')->delete($subProduct->image_path);
+            }
+            $imagePath = $request->file('image')->store('subproducts', 'public');
+            $validated['image_path'] = $imagePath;
+            unset($validated['image']);
+        } else {
+            unset($validated['image']);
+        }
+
+        $subProduct->update($validated);
+        $subProduct->refresh();
+
+        if ($subProduct->image_path) {
+            $subProduct->image_url = Storage::url($subProduct->image_path);
+        }
+        return response()->json($subProduct);
+    }
+
+    public function destroySubProduct(SubProduct $subProduct)
+    {
+        if ($subProduct->image_path) {
+            Storage::disk('public')->delete($subProduct->image_path);
+        }
+        $subProduct->delete();
+        return response()->json(['message' => 'Sub-product deleted successfully.'], 200);
     }
 }

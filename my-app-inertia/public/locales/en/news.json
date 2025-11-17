@@ -15,10 +15,6 @@
     },
 
     "newsPage": {
-        "hero": {
-            "title": "News",
-            "description": "We bring deep technical expertise across multiple domains to deliver comprehensive solutions that drive digital transformation and business growth."
-        },
         "cta": {
             "title": "Ready to Build With Us?",
             "linkText": "Let's discuss with us"

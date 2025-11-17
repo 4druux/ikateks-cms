@@ -11,13 +11,18 @@ import Customer from "@/Components/home/Customer";
 import { useLenis } from "@/Context/LenisContext";
 import AboutSection, { AboutItem } from "@/Components/about/AboutSection";
 import DotLoader from "@/Components/ui/DotLoader";
-import { fetcher } from "@/Utils/api";
+import { fetcher, PageHero } from "@/Utils/api";
 import useSWR from "swr";
 
 export default function HomePage() {
     const { t } = useTranslation(["home", "about", "principals", "product"]);
     const newsSectionRef = useRef<HTMLElement>(null!);
     const lenis = useLenis();
+
+    const { data: heroData, isLoading: isLoadingHero } = useSWR<PageHero>(
+        "/api/hero?page=home",
+        fetcher
+    );
 
     const { data: aboutItems, isLoading: isLoadingAbout } = useSWR<AboutItem[]>(
         "/api/about",
@@ -40,7 +45,11 @@ export default function HomePage() {
         <>
             <Head title="PT Ikateks" />
             <div className="min-h-screen bg-zinc-50">
-                <Hero onScrollDown={handleScrollDown} />
+                <Hero
+                    onScrollDown={handleScrollDown}
+                    heroData={heroData}
+                    isLoading={isLoadingHero}
+                />
                 <News lenis={lenis} newsSectionRef={newsSectionRef} />
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 mt-10 md:mt-16 lg:mt-20 xl:mt-24 2xl:mt-28 space-y-16 md:space-y-20 lg:space-y-24 xl:space-y-32 2xl:space-y-40">
                     {isLoadingAbout ? (
@@ -74,7 +83,6 @@ export default function HomePage() {
                         </>
                     )}
                 </div>
-
                 <CallToAction
                     title={t("homePage.cta.title")}
                     linkText={t("homePage.cta.linkText")}

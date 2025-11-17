@@ -1,11 +1,12 @@
 import { ArrowLeft, Phone } from "lucide-react";
-import { Product } from "@/Utils/api";
+import { Product, SubProduct } from "@/Utils/api";
 import { useTranslation } from "react-i18next";
 import { Link } from "@inertiajs/react";
 import ProductContent from "../ui/ProductContent";
 
 interface ProductDetailProps {
     currentProduct: Product;
+    subProducts: SubProduct[];
     relatedProducts: Product[];
     categorySlug: string;
     categoryTitle: string;
@@ -13,6 +14,7 @@ interface ProductDetailProps {
 
 const ProductDetail = ({
     currentProduct,
+    subProducts,
     relatedProducts,
     categorySlug,
     categoryTitle,
@@ -75,6 +77,37 @@ const ProductDetail = ({
                     </div>
                 </div>
             </div>
+
+            {subProducts.length > 0 && (
+                <div className="mt-20 md:mt-28">
+                    <h2 className="text-3xl font-bold text-zinc-800 mb-8 border-b pb-4">
+                        {t("product.headings.subProducts", "Sub-Products")}
+                    </h2>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {subProducts.map((subProduct) => {
+                            const title =
+                                i18n.language === "id"
+                                    ? subProduct.name_id
+                                    : subProduct.name;
+                            const description =
+                                i18n.language === "id"
+                                    ? subProduct.description_id
+                                    : subProduct.description;
+
+                            return (
+                                <ProductContent
+                                    key={subProduct.id}
+                                    imageUrl={subProduct.image_url}
+                                    title={title}
+                                    description={description}
+                                    href={`/products/${categorySlug}/${currentProduct.slug}/${subProduct.slug}`}
+                                />
+                            );
+                        })}
+                    </div>
+                </div>
+            )}
 
             {relatedProducts.length > 0 && (
                 <div className="mt-20 md:mt-28">

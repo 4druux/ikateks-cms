@@ -1,5 +1,4 @@
 import { useTranslation } from "react-i18next";
-import Hero from "@/Components/ui/users/Hero";
 import CallToAction from "@/Components/ui/users/CallToAction";
 import { ArrowLeft } from "lucide-react";
 import ProductDetail from "@/Components/products/ProductDetail";
@@ -7,6 +6,7 @@ import { Head, Link } from "@inertiajs/react";
 import useSWR from "swr";
 import { Category, Product, fetcher } from "@/Utils/api";
 import DotLoader from "@/Components/ui/DotLoader";
+import HeroStatic from "@/Components/ui/users/HeroStatic";
 
 interface ProductDetailResponse {
     product: Product;
@@ -47,7 +47,7 @@ const ProductDetailPage = ({ productSlug }: ProductDetailProps) => {
         return (
             <>
                 <Head title={t("common:nav.products")} />
-                <Hero
+                <HeroStatic
                     imageSrc="/images/office-2.jpg"
                     title={t("common:loading...")}
                     description={t("common:loading...")}
@@ -68,7 +68,7 @@ const ProductDetailPage = ({ productSlug }: ProductDetailProps) => {
             <>
                 <Head title={t("common:nav.products")} />
 
-                <Hero
+                <HeroStatic
                     imageSrc="/images/office-2.jpg"
                     title={t("productPage.hero.title")}
                     description={t("productPage.hero.description")}
@@ -102,7 +102,7 @@ const ProductDetailPage = ({ productSlug }: ProductDetailProps) => {
         <>
             <Head title={productName} />
             <div className="min-h-screen">
-                <Hero
+                <HeroStatic
                     imageSrc="/images/office-2.jpg"
                     title={productName}
                     description={`${t(
@@ -112,6 +112,7 @@ const ProductDetailPage = ({ productSlug }: ProductDetailProps) => {
 
                 <ProductDetail
                     currentProduct={currentProduct}
+                    subProducts={(currentProduct as any).sub_products || []}
                     relatedProducts={relatedProducts || []}
                     categorySlug={categoryData.slug}
                     categoryTitle={categoryTitle}

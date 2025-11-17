@@ -1,12 +1,12 @@
 import { useTranslation } from "react-i18next";
 import { Head, Link } from "@inertiajs/react";
-import Hero from "@/Components/ui/users/Hero";
 import CallToAction from "@/Components/ui/users/CallToAction";
 import { ArrowLeft } from "lucide-react";
 import ProductCategoriesDetail from "@/Components/products/ProductCategoriesDetail";
 import useSWR from "swr";
 import { Category, Product, fetcher } from "@/Utils/api";
 import DotLoader from "@/Components/ui/DotLoader";
+import HeroStatic from "@/Components/ui/users/HeroStatic";
 
 interface CategoryDetailResponse {
     category: Category;
@@ -44,7 +44,7 @@ const ProductCategoryDetailPage = ({ categorySlug }: CategoryDetailProps) => {
         return (
             <>
                 <Head title={t("common:nav.products")} />
-                <Hero
+                <HeroStatic
                     imageSrc="/images/office-2.jpg"
                     title={t("common:loading...")}
                     description={t("common:loading...")}
@@ -65,7 +65,7 @@ const ProductCategoryDetailPage = ({ categorySlug }: CategoryDetailProps) => {
             <>
                 <Head title={t("common:nav.products")} />
 
-                <Hero
+                <HeroStatic
                     imageSrc="/images/office-2.jpg"
                     title={t("productCategoriesPage.hero.title")}
                     description={t("productCategoriesPage.hero.description")}
@@ -101,7 +101,7 @@ const ProductCategoryDetailPage = ({ categorySlug }: CategoryDetailProps) => {
         <>
             <Head title={categoryTitle} />
             <div className="min-h-screen">
-                <Hero
+                <HeroStatic
                     imageSrc="/images/office-2.jpg"
                     title={categoryTitle}
                     description={categoryDescription}

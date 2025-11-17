@@ -46,15 +46,25 @@ class PublicProductController extends Controller
             $product->image_url = Storage::url($product->image_path);
         }
 
+        $product->load(['subProducts' => function ($query) {
+            $query->oldest();
+        }]);
+
+        $product->subProducts->each(function ($subProduct) {
+            if ($subProduct->image_path) {
+                $subProduct->image_url = Storage::url($subProduct->image_path);
+            }
+        });
+
         $category = $product->productCategory;
         if ($category && $category->image_path) {
             $category->image_url = Storage::url($category->image_path);
         }
 
         $relatedProducts = $category ? $category->products()
-                            ->where('id', '!=', $product->id)
-                            ->latest()
-                            ->get() : collect(); 
+            ->where('id', '!=', $product->id)
+            ->latest()
+            ->get() : collect();
 
         $relatedProducts->each(function ($relatedProduct) {
             if ($relatedProduct->image_path) {
@@ -67,6 +77,25 @@ class PublicProductController extends Controller
             'product' => $product,
             'category' => $category,
             'relatedProducts' => $relatedProducts
+        ]);
+    }
+
+    public function indexSubProducts(Product $product)
+    {
+        $subProducts = $product->subProducts()->oldest()->get();
+        $subProducts->each(function ($subProduct) {
+            if ($subProduct->image_path) {
+                $subProduct->image_url = Storage::url($subProduct->image_path);
+            }
+        });
+
+        if ($product->image_path) {
+            $product->image_url = Storage::url($product->image_path);
+        }
+
+        return response()->json([
+            'product' => $product,
+            'subProducts' => $subProducts
         ]);
     }
 }
